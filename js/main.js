@@ -28,6 +28,7 @@
         if (!nav || !toggle) return;
         nav.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "Men\u00fc schlie\u00dfen");
         backdrop && backdrop.classList.add("is-visible");
         document.body.classList.add("nav-open");
         const firstLink = nav.querySelector("a, button");
@@ -38,6 +39,7 @@
         if (!nav || !toggle) return;
         nav.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Men\u00fc \u00f6ffnen");
         backdrop && backdrop.classList.remove("is-visible");
         document.body.classList.remove("nav-open");
         if (returnFocus) toggle.focus({ preventScroll: true });
@@ -51,10 +53,10 @@
     }
     backdrop && backdrop.addEventListener("click", () => closeMenu());
 
-    // Menü-Links schließen das Menü
+    // Menü-Links und CTA schließen das Menü
     nav &&
-        nav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => closeMenu());
+        nav.querySelectorAll("a, button").forEach((item) => {
+            item.addEventListener("click", () => closeMenu());
         });
 
     // Escape schließt Menü; bei Desktop-Breite offen halten
@@ -65,7 +67,7 @@
     });
 
     // Beim Wechsel auf Desktop Menü zurücksetzen
-    const desktopQuery = window.matchMedia("(min-width: 961px)");
+    const desktopQuery = window.matchMedia("(min-width: 1025px)");
     const handleDesktop = (e) => {
         if (e.matches) closeMenu();
     };
