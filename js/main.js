@@ -345,7 +345,6 @@
     initT2medVisualScroll(document.querySelector(".t2med"), {
         overhangEl: document.getElementById("leistungen"),
     });
-    initT2medVisualScroll(document.querySelector(".lp-hero"));
 
     /* ---------- Erstgespräch-Funnel-Modal ---------- */
     // TODO: Anbindung an ein echtes Terminbuchungs-/CRM-Tool. Aktuell reine UI-Vorbereitung.

@@ -94,6 +94,22 @@
     z-index: 1;
 }
 
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .lp-hero .t2med__visual {
+        animation: lp-hero-visual-in 2.8s cubic-bezier(0.16, 0.84, 0.24, 1) 0.35s both;
+    }
+}
+
+@keyframes lp-hero-visual-in {
+    from {
+        transform: translateX(calc(100% + 5rem));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
 .lp-hero .t2med__visual img {
     height: 100%;
     width: auto;
@@ -408,7 +424,8 @@
         top: auto;
         right: auto;
         bottom: auto;
-        transform: translateX(var(--t2med-scroll-x, 0px));
+        animation: none;
+        transform: none;
         height: auto;
         width: 100%;
         max-width: min(100%, 20rem);
