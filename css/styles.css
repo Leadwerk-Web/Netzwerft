@@ -1563,6 +1563,153 @@ h2.section__title {
 }
 
 /* ---------------------------------------------------------
+   9b. Video-Feature (Text + datenschutzfreundliche Einbindung)
+   --------------------------------------------------------- */
+.video-feature__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+.video-feature__text {
+    max-width: 40rem;
+}
+
+.video-embed {
+    position: relative;
+}
+
+.video-embed__trigger {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-primary-dark);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16 / 9;
+    box-shadow: var(--shadow-soft);
+}
+
+.video-embed__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-soft);
+}
+
+.video-embed__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 28, 44, 0.08), rgba(0, 28, 44, 0.5));
+    transition: background 0.3s ease;
+}
+
+.video-embed__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: clamp(64px, 8vw, 84px);
+    height: clamp(64px, 8vw, 84px);
+    border-radius: 50%;
+    background: var(--nw-accent);
+    color: var(--nw-ink);
+    box-shadow: 0 14px 32px -12px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s var(--ease-soft);
+}
+
+.video-embed__play svg {
+    margin-left: 3px;
+}
+
+.video-embed__hint {
+    position: absolute;
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-align: left;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.video-embed__trigger:hover .video-embed__poster,
+.video-embed__trigger:focus-visible .video-embed__poster {
+    transform: scale(1.03);
+}
+
+.video-embed__trigger:hover .video-embed__overlay,
+.video-embed__trigger:focus-visible .video-embed__overlay {
+    background: linear-gradient(180deg, rgba(0, 28, 44, 0.12), rgba(0, 28, 44, 0.58));
+}
+
+.video-embed__trigger:hover .video-embed__play,
+.video-embed__trigger:focus-visible .video-embed__play {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video-embed__trigger:focus-visible {
+    outline: 3px solid var(--nw-mint);
+    outline-offset: 3px;
+}
+
+.video-embed__iframe-wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: var(--color-primary-dark);
+}
+
+.video-embed__iframe-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-embed__note {
+    margin: 0.85rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--nw-ink-muted);
+}
+
+.video-embed__note a {
+    color: var(--nw-primary);
+    text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .video-embed__poster,
+    .video-embed__play,
+    .video-embed__overlay {
+        transition: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .video-feature__grid {
+        grid-template-columns: 1fr;
+        gap: clamp(1.75rem, 6vw, 2.75rem);
+    }
+
+    .video-feature__text {
+        max-width: none;
+    }
+}
+
+/* ---------------------------------------------------------
    10. Segmentkarten (klickbare gro?e Cards)
    --------------------------------------------------------- */
 .segment-card {

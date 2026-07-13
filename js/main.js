@@ -348,6 +348,31 @@
         overhangEl: document.getElementById("leistungen"),
     });
 
+    /* ---------- Video-Embed: datenschutzfreundlich (Klick-zum-Laden) ---------- */
+    document.querySelectorAll(".video-embed").forEach((embed) => {
+        const trigger = embed.querySelector(".video-embed__trigger");
+        const id = embed.dataset.videoId;
+        if (!trigger || !id) return;
+
+        trigger.addEventListener("click", () => {
+            const wrap = document.createElement("div");
+            wrap.className = "video-embed__iframe-wrap";
+
+            const iframe = document.createElement("iframe");
+            const params = "autoplay=1&rel=0&modestbranding=1";
+            iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`;
+            iframe.title = embed.dataset.videoTitle || "Video";
+            iframe.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            iframe.setAttribute("loading", "lazy");
+
+            wrap.appendChild(iframe);
+            trigger.replaceWith(wrap);
+            iframe.focus({ preventScroll: true });
+        });
+    });
+
     /* ---------- Erstgespräch-Funnel-Modal ---------- */
     // TODO: Anbindung an ein echtes Terminbuchungs-/CRM-Tool. Aktuell reine UI-Vorbereitung.
     const modal = document.getElementById("funnel-modal");
