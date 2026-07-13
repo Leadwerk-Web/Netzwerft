@@ -24,17 +24,20 @@
 }
 
 .handout__layout {
-    display: grid;
-    grid-template-columns: var(--handout-sidebar) minmax(0, 1fr);
     min-height: 100vh;
 }
 
 .handout__sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
-    align-self: start;
+    left: 0;
+    z-index: 100;
+    width: var(--handout-sidebar);
     height: 100vh;
-    overflow: auto;
+    height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     padding: 2rem 1.25rem 2.5rem;
     background: var(--handout-paper);
     border-right: 1px solid var(--handout-line);
@@ -84,6 +87,7 @@
 
 .handout__main {
     min-width: 0;
+    margin-left: var(--handout-sidebar);
 }
 
 .handout__hero {
@@ -741,15 +745,16 @@
 }
 
 @media (max-width: 960px) {
-    .handout__layout {
-        grid-template-columns: 1fr;
-    }
-
     .handout__sidebar {
         position: relative;
+        width: auto;
         height: auto;
         border-right: 0;
         border-bottom: 1px solid var(--handout-line);
+    }
+
+    .handout__main {
+        margin-left: 0;
     }
 
     .handout__grid-2,
@@ -774,8 +779,13 @@
 @media print {
     .handout__sidebar {
         position: static;
+        width: auto;
         height: auto;
         page-break-after: always;
+    }
+
+    .handout__main {
+        margin-left: 0;
     }
 
     .handout__layout {
