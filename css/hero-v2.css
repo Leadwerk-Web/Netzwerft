@@ -59,6 +59,16 @@
         );
 }
 
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
 .hero__top {
     position: relative;
     z-index: 4;
@@ -122,7 +132,7 @@
     min-height: 0;
     padding: 0 0 0.75rem;
     overflow: hidden;
-    --nw-kachel-radius: 24px;
+    --nw-kachel-radius: 36px;
     --nw-buehne-h: 720px;
     --nw-kachel-body-h: clamp(6.75rem, 12vw, 7.5rem);
 }
@@ -233,42 +243,77 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: #fff;
-    border-radius: var(--nw-kachel-radius, 24px);
-    border: 1px solid rgba(255, 255, 255, 0.92);
+    background: #0a2448;
+    border-radius: var(--nw-kachel-radius, 36px);
+    border: none;
     box-shadow:
-        0 2px 6px rgba(13, 71, 161, 0.05),
-        0 22px 48px rgba(13, 71, 161, 0.14),
-        0 48px 88px -20px rgba(21, 101, 192, 0.16);
+        0 1px 2px rgba(2, 8, 20, 0.2),
+        0 12px 28px rgba(2, 8, 20, 0.28),
+        0 36px 72px rgba(2, 8, 20, 0.35),
+        0 64px 120px -28px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
     overflow: hidden;
     isolation: isolate;
+    transform: translateZ(0);
 }
 
 .nw-karussell__kachel.is-fokus .nw-karussell__kachel-innen {
-    border-color: rgba(255, 255, 255, 1);
     box-shadow:
-        0 4px 10px rgba(13, 71, 161, 0.06),
-        0 32px 64px rgba(21, 101, 192, 0.22),
-        0 56px 110px -18px rgba(21, 101, 192, 0.2),
-        0 0 0 1px rgba(21, 101, 192, 0.08);
+        0 2px 4px rgba(2, 8, 20, 0.22),
+        0 18px 40px rgba(2, 8, 20, 0.32),
+        0 48px 96px rgba(13, 71, 161, 0.38),
+        0 80px 140px -24px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 .nw-karussell__kachel.is-seite .nw-karussell__kachel-innen {
     box-shadow:
-        0 2px 8px rgba(13, 71, 161, 0.06),
-        0 18px 42px rgba(13, 71, 161, 0.12),
-        0 36px 72px -24px rgba(21, 101, 192, 0.12);
+        0 1px 3px rgba(2, 8, 20, 0.2),
+        0 14px 32px rgba(2, 8, 20, 0.28),
+        0 40px 80px -20px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .nw-karussell__kachel-media {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    background-color: #dce8ef;
-    background-image: url('../Fotos/Slider_hero.png');
+    background-color: #0a2448;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.nw-karussell__kachel-media--t2med {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-t2med.jpg');
+}
+
+.nw-karussell__kachel-media--praxis-it {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-praxis-it.jpg');
+}
+
+.nw-karussell__kachel-media--telefonie {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-telefonie.jpg');
+}
+
+.nw-karussell__kachel-media--netzwerk {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-netzwerk.jpg');
+}
+
+.nw-karussell__kachel-media--sicherheit {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-sicherheit.jpg');
+}
+
+.nw-karussell__kachel-media--ti-kim {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-ti-kim.jpg');
+}
+
+.nw-karussell__kachel-media--support {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-support.jpg');
+}
+
+.nw-karussell__kachel-media--website {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-website.jpg');
 }
 
 .nw-karussell__kachel-media::after {
