@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design-Handout V3 — die netzwerft</title>
+    <meta name="description" content="Visuelles Style- und Komponenten-Manual der netzwerft Startseite V3 (Primary #004562, Accent #1E88E5, Light Blue #64B5F6)." />
+    <link rel="icon" href="svg/Favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles-v3.css" />
+    <link rel="stylesheet" href="css/hero-v3.css" />
+    <link rel="stylesheet" href="css/design-handout-v3.css" />
+</head>
+<body class="handout">
+    <a class="handout__skip" href="#handout-main">Zum Inhalt</a>
+
+    <div class="handout__layout">
+        <aside class="handout__sidebar" aria-label="Inhaltsverzeichnis">
+            <span class="handout__brand">die netzwerft</span>
+            <p class="handout__title">UI Styleguide V3</p>
+            <nav aria-label="Handout Navigation">
+                <ul class="handout__nav">
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#farben">Farbigkeit</a></li>
+                    <li><a href="#typografie">Typografie</a></li>
+                    <li><a href="#headlines">Headlines</a></li>
+                    <li><a href="#buttons">Buttons</a></li>
+                    <li><a href="#cta">CTA-Elemente</a></li>
+                    <li><a href="#navigation">Navigation</a></li>
+                    <li><a href="#hero">Hero</a></li>
+                    <li><a href="#layout">Grid &amp; Layout</a></li>
+                    <li><a href="#cards">Kacheln &amp; Cards</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#carousel">Karussell</a></li>
+                    <li><a href="#weitere">Weitere UI</a></li>
+                    <li><a href="#footer">Footer</a></li>
+                    <li><a href="#fazit">Designcharakter</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="handout__main" id="handout-main">
+            <header class="handout__hero" id="intro">
+                <p class="handout__hero-kicker">Design-Dokumentation</p>
+                <h1>Visuelles System der <span class="headline-bold">netzwerft</span> Startseite V3</h1>
+                <p>
+                    Dieses Handout dokumentiert Farben, Typografie, Layoutprinzipien und UI-Komponenten
+                    der bestehenden <code>index-v3.html</code>. Kernfarben:
+                    Primary <code>#004562</code>, Accent <code>#1E88E5</code>, Light Blue <code>#64B5F6</code>.
+                    Komponenten werden als Live-Spezimen und
+                    Seitenausschnitte dargestellt — kuratiert für Präsentation, Abstimmung und PDF-Export.
+                </p>
+            </header>
+
+            <!-- 2. Farben -->
+            <section class="handout__section" id="farben" aria-labelledby="farben-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">01 — Farbigkeit</span>
+                    <h2 id="farben-title">Farbkonzept &amp; Markenpalette</h2>
+                    <p>
+                        Drei Kern-Blaut&ouml;ne tragen das System: die verbindliche Prim&auml;rfarbe
+                        <code>#004562</code>, Accent <code>#1E88E5</code> und Light Blue <code>#64B5F6</code>.
+                        Referenz-Kategorien: &Auml;rzte <code>#0F67A4</code>, Zahn&auml;rzte <code>#197DCF</code>,
+                        Radiologie <code>#3597EB</code>, Gewerbe <code>#4DA6F0</code>.
+                    </p>
+                </div>
+
+                <div class="handout__grid-3">
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#004562"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Primary</strong>
+                            <code>#004562</code>
+                            <span>Markenfarbe (verbindlich), Buttons, Links, dunkle Verl&auml;ufe</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#00273c"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Primary Dark / Navy</strong>
+                            <code>#00273C</code>
+                            <span>Dunkle Sections, Footer-N&auml;he, Tiefe</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#00354e"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Primary Mid</strong>
+                            <code>#00354E</code>
+                            <span>Verl&auml;ufe, Karten, Hintergrundwechsel</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#1E88E5"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Accent Blue</strong>
+                            <code>#1E88E5</code>
+                            <span>CTAs, Eyebrows auf Dark, Icons</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:linear-gradient(135deg,#1E88E5 0%,#1565C0 100%)"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Accent-Verlauf</strong>
+                            <code>--grad-accent</code>
+                            <span>135&deg; &middot; #1E88E5 &rarr; #1565C0 &middot; Accent-Buttons</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#64B5F6"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Light Blue</strong>
+                            <code>#64B5F6</code>
+                            <span>Hover, Tabs, Karussell, Zahn&auml;rzte-Kacheln</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:linear-gradient(158deg,#2196F3,#42A5F5,#64B5F6)"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Light-Blue-Verlauf</strong>
+                            <code>--grad-ref-zahn</code>
+                            <span>158&deg; &middot; Referenz-Kategorie Zahn&auml;rzte</span>
+                        </div>
+                    </div>
+                    <div class="handout__color-rationale">
+                        <h3>Die drei Kern-Blaut&ouml;ne</h3>
+                        <div class="handout__color-rationale-grid">
+                            <div>
+                                <strong>Primary #004562</strong>
+                                <p>
+                                    Verbindliche Kunden-CI. Tr&auml;gt Vertrauen, Seriosit&auml;t und medizinische
+                                    Kompetenz &mdash; Basis f&uuml;r Buttons, Links und dunkle Fl&auml;chen.
+                                </p>
+                            </div>
+                            <div>
+                                <strong>Accent #1E88E5</strong>
+                                <p>
+                                    Klarer Aktionsimpuls f&uuml;r Eyebrows, Icons und ausgew&auml;hlte CTAs.
+                                    Heller und moderner als Primary, ohne mit der Markenfarbe zu konkurrieren.
+                                </p>
+                            </div>
+                            <div>
+                                <strong>Light Blue #64B5F6</strong>
+                                <p>
+                                    Interaktions- und Highlight-Ton: Hover, Navigation, Karussell und
+                                    Zahn&auml;rzte-Referenzen. Frisch, hell, klar abgestuft &uuml;ber Accent.
+                                </p>
+                            </div>
+                        </div>
+                        <p class="handout__color-rationale-sum">
+                            Kurz: Primary tr&auml;gt die Marke, Accent steuert Aufmerksamkeit, Light Blue markiert Interaktion.
+                        </p>
+                    </div>
+                    <p class="handout__swatch-group-title">Verl&auml;ufe &mdash; Dunkel (Primary-Familie)</p>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:linear-gradient(158deg,#020814 0%,#061530 34%,#0a2448 68%,#0d3a6a 88%,#004562 100%)"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Dunkel</strong>
+                            <code>--grad-dark</code>
+                            <span>158&deg; &middot; klare Blau-Tiefe, endet verbindlich in Primary #004562</span>
+                        </div>
+                    </div>
+                    <p class="handout__swatch-group-title">Referenz-Kategorien (vorgegeben)</p>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#0f67a4"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Ärzte</strong>
+                            <code>#0F67A4</code>
+                            <span>Referenz-Kategorie &Auml;rzte</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#197dcf"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Zahn&auml;rzte</strong>
+                            <code>#197DCF</code>
+                            <span>Referenz-Kategorie Zahn&auml;rzte</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#3597eb"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Radiologie</strong>
+                            <code>#3597EB</code>
+                            <span>Referenz-Kategorie Radiologie</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#4da6f0"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Gewerbe</strong>
+                            <code>#4DA6F0</code>
+                            <span>Referenz-Kategorie Gewerbe</span>
+                        </div>
+                    </div>
+                    <p class="handout__swatch-group-title">Neutrale Flächen</p>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#111111"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Ink</strong>
+                            <code>#111111</code>
+                            <span>Fließtext, Headlines auf Hell</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#47575f"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Ink Soft</strong>
+                            <code>#47575F</code>
+                            <span>Intro-Texte, Beschreibungen</span>
+                        </div>
+                    </div>
+                    <div class="handout__swatch">
+                        <div class="handout__swatch-chip" style="background:#f5f8fa;border:1px solid #dde5ea"></div>
+                        <div class="handout__swatch-meta">
+                            <strong>Surface</strong>
+                            <code>#F5F8FA</code>
+                            <span>Abwechselnde helle Sections</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Typografie -->
+            <section class="handout__section" id="typografie" aria-labelledby="typo-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">02 — Typografie</span>
+                    <h2 id="typo-title">Schrift &amp; Hierarchie</h2>
+                    <p>
+                        Montserrat für Headlines, Segoe UI für Fließtext. Markenüberschriften kombinieren
+                        bewusst <strong>Light (200)</strong> und <strong>Bold (700)</strong> in einer Zeile —
+                        der Akzentteil wird über <code>.headline-bold</code> gesetzt.
+                    </p>
+                </div>
+
+                <div class="handout__specimen" style="margin-bottom:1.5rem">
+                    <div class="handout__specimen-label">Headline-Prinzip — Light + Bold</div>
+                    <div class="handout__specimen-body">
+                        <div class="handout__weight-pattern">
+                            <div class="handout__weight-chip handout__weight-chip--light">
+                                <span class="handout__weight-num">200</span>
+                                <span class="handout__weight-label">Light · Basis der Headline</span>
+                                <span class="handout__weight-preview">Praxis-IT, die den</span>
+                            </div>
+                            <div class="handout__weight-chip handout__weight-chip--bold">
+                                <span class="handout__weight-num">700</span>
+                                <span class="handout__weight-label">Bold · <code>.headline-bold</code></span>
+                                <span class="handout__weight-preview">Alltag leichter</span>
+                            </div>
+                        </div>
+                        <p class="handout__weight-note">
+                            Gilt für H1 (Hero) und H2 (Section-Titles): dünn einleitend, fett für den
+                            emotionalen oder inhaltlichen Schwerpunkt. Tokens:
+                            <code>--headline-weight-thin: 200</code>,
+                            <code>--headline-weight-bold: 700</code>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="handout__type-stack">
+                    <div class="handout__type-sample">
+                        <h3>H1 — Hero (Originalgröße, dunkler Hintergrund)</h3>
+                        <div class="handout__type-h1-showcase handout__specimen-body handout__specimen-body--dark section--dark">
+                            <span class="hero__eyebrow">Medizin-IT aus einer Hand</span>
+                            <h1 class="hero__title">
+                                Praxis-IT, die den <span class="headline-bold">Alltag leichter</span> macht.
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="handout__type-sample">
+                        <h3>H2 — Section Title (Light + Bold)</h3>
+                        <h2 class="section__title">Alles, was Ihre Praxis <span class="headline-bold">technisch trägt.</span></h2>
+                    </div>
+                    <div class="handout__type-sample">
+                        <h3>H3 — Card / Step</h3>
+                        <h3 class="step__title">Technik planen</h3>
+                    </div>
+                    <div class="handout__type-sample">
+                        <h3>Fließtext</h3>
+                        <p class="section__intro">Die alte Netzwerft-Stärke bleibt erhalten: ein Partner, der Praxissoftware, IT, Telefonie und Security aus einer Hand verbindet.</p>
+                    </div>
+                    <div class="handout__type-sample">
+                        <h3>Eyebrow — H1 Hero (Accent Blue)</h3>
+                        <div class="handout__type-eyebrow-showcase handout__specimen-body handout__specimen-body--dark section--dark">
+                            <span class="hero__eyebrow">Medizin-IT aus einer Hand</span>
+                        </div>
+                    </div>
+                    <div class="handout__type-sample">
+                        <h3>Eyebrow — Section (Primary auf Hell)</h3>
+                        <span class="eyebrow">Kompetenzfelder</span>
+                    </div>
+                </div>
+
+                <dl class="handout__meta-row">
+                    <div class="handout__meta-item"><dt>Headlines</dt><dd>Montserrat</dd></div>
+                    <div class="handout__meta-item"><dt>Light</dt><dd>200 (--headline-weight-thin)</dd></div>
+                    <div class="handout__meta-item"><dt>Bold</dt><dd>700 (.headline-bold)</dd></div>
+                    <div class="handout__meta-item"><dt>H1 Größe</dt><dd>clamp(2.5rem … 4.5rem)</dd></div>
+                    <div class="handout__meta-item"><dt>H2 Größe</dt><dd>clamp(1.85rem … 3.1rem)</dd></div>
+                    <div class="handout__meta-item"><dt>Body</dt><dd>Segoe UI, clamp(1rem … 1.075rem)</dd></div>
+                </dl>
+            </section>
+
+            <!-- 4. Headlinestruktur -->
+            <section class="handout__section" id="headlines" aria-labelledby="hl-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">03 — Headlinestruktur</span>
+                    <h2 id="hl-title">Überschriften-Hierarchie</h2>
+                    <p>
+                        Eyebrow → H2 mit Light/Bold-Split (<code>.headline-bold</code>) → Intro-Absatz.
+                        H1 und H2 nutzen dasselbe Gewichtsprinzip: 200 für den Fließteil, 700 für den Akzent.
+                        Auf dunklen Flächen: weiße Headlines, blaue Eyebrows.
+                    </p>
+                </div>
+                <div class="handout__grid-2">
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Hell (section--white / surface)</div>
+                        <div class="handout__specimen-body handout__specimen-body--surface">
+                            <div class="section__head">
+                                <span class="eyebrow">So arbeiten wir</span>
+                                <h2 class="section__title">So bringen wir Ihre Praxis <span class="headline-bold">sicher an den Start.</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Dunkel (section--dark)</div>
+                        <div class="handout__specimen-body handout__specimen-body--dark section--dark">
+                            <div class="section__head section__head--center">
+                                <span class="eyebrow">Kompetenzfelder</span>
+                                <h2 class="section__title">Alles, was Ihre Praxis <span class="headline-bold">technisch trägt.</span></h2>
+                                <p class="section__intro">Ein Partner für Praxissoftware, IT, Telefonie und Security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Buttons -->
+            <section class="handout__section" id="buttons" aria-labelledby="btn-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">04 — Buttons</span>
+                    <h2 id="btn-title">Button-System</h2>
+                    <p>Pill-Form (<code>border-radius: 999px</code>), kräftige Gewichtung, weiche Hover-Transitions. Größen via <code>.btn--lg</code>.</p>
+                </div>
+                <div class="handout__specimen">
+                    <div class="handout__specimen-label">Varianten auf hellem Grund</div>
+                    <div class="handout__specimen-body">
+                        <div class="handout__btn-row">
+                            <button type="button" class="btn btn--primary">Primary</button>
+                            <button type="button" class="btn btn--primary btn--lg">Primary Large</button>
+                            <button type="button" class="btn btn--accent">Accent</button>
+                            <button type="button" class="btn btn--ghost">Ghost</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="handout__specimen" style="margin-top:1rem">
+                    <div class="handout__specimen-label">Auf dunklem Grund</div>
+                    <div class="handout__specimen-body handout__specimen-body--dark section--dark">
+                        <div class="handout__btn-row">
+                            <button type="button" class="btn btn--light btn--lg">Light CTA</button>
+                            <button type="button" class="btn btn--ghost-light btn--lg">Ghost Light</button>
+                        </div>
+                    </div>
+                </div>
+                <dl class="handout__meta-row">
+                    <div class="handout__meta-item"><dt>Padding</dt><dd>0.95rem × 1.6rem</dd></div>
+                    <div class="handout__meta-item"><dt>Radius</dt><dd>--radius-pill (999px)</dd></div>
+                    <div class="handout__meta-item"><dt>Hover</dt><dd>Transform, Schatten, Farbwechsel</dd></div>
+                </dl>
+            </section>
+
+            <!-- 6. CTA -->
+            <section class="handout__section" id="cta" aria-labelledby="cta-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">05 — CTA-Elemente</span>
+                    <h2 id="cta-title">Call-to-Action</h2>
+                    <p>Wiedererkennbare Primär-CTAs mit Blue/Light-Buttons, ergänzt durch Sticky-Mobile-Bar und Final-CTA-Karte.</p>
+                </div>
+                <div class="handout__specimen">
+                    <div class="handout__specimen-label">Final CTA — Specimen</div>
+                    <div class="handout__specimen-body handout__specimen-body--dark section--dark">
+                        <div class="final-cta__card" style="max-width:640px;margin:0 auto">
+                            <h2 class="section__title" style="font-size:clamp(1.5rem,2vw,2rem);margin:0 0 1rem;text-align:center">Bereit für Praxis-IT mit <span class="headline-bold">weniger Abstimmungsaufwand?</span></h2>
+                            <p style="color:var(--nw-on-dark-soft);margin-bottom:1.5rem;text-align:center">Beantworten Sie 3 kurze Fragen — wir prüfen, wie wir Ihre Praxis unterstützen können.</p>
+                            <div class="cta-actions">
+                                <button type="button" class="btn btn--light btn--lg">Kostenloses Erstgespräch buchen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="handout__capture handout__capture--section" style="margin-top:1.25rem">
+                    <iframe src="index-v3.html#kontakt" title="Final-CTA auf der Startseite" loading="lazy"></iframe>
+                </div>
+            </section>
+
+            <!-- 7. Navigation -->
+            <section class="handout__section" id="navigation" aria-labelledby="nav-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">06 — Navigation</span>
+                    <h2 id="nav-title">Header &amp; Navigation</h2>
+                    <p>Fixed Header mit Glassmorphism (Blur, halbtransparent). Light-Blue-Unterstrich bei Hover. Mobile: Vollbild-Overlay ab 960px.</p>
+                </div>
+                <div class="handout__specimen">
+                    <div class="handout__specimen-label">Desktop-Navigation (Specimen)</div>
+                    <div class="handout__specimen-body handout__specimen-body--surface">
+                        <div class="handout__nav-specimen">
+                            <img src="svg/logo.svg" alt="" width="160" height="43" decoding="async" />
+                            <nav aria-label="Beispiel">
+                                <ul class="site-nav__list">
+                                    <li><a class="site-nav__link" href="#">Leistungen</a></li>
+                                    <li><a class="site-nav__link" href="#">T2med</a></li>
+                                    <li><a class="site-nav__link" href="#">Referenzen</a></li>
+                                </ul>
+                            </nav>
+                            <button type="button" class="btn btn--primary">Erstgespräch buchen</button>
+                        </div>
+                    </div>
+                </div>
+                <dl class="handout__meta-row">
+                    <div class="handout__meta-item"><dt>Position</dt><dd>fixed, z-index 1000</dd></div>
+                    <div class="handout__meta-item"><dt>Breite</dt><dd>90vw, radius-lg</dd></div>
+                    <div class="handout__meta-item"><dt>Hover</dt><dd>Light-Blue-Unterstrich (::after)</dd></div>
+                    <div class="handout__meta-item"><dt>Sticky CTA</dt><dd>Mobile-Bar ab Hero-Ende</dd></div>
+                </dl>
+            </section>
+
+            <!-- 8. Hero -->
+            <section class="handout__section" id="hero" aria-labelledby="hero-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">07 — Hero-Section</span>
+                    <h2 id="hero-title">Hero &amp; 3D-Karussell</h2>
+                    <p>100vh, tiefer Farbverlauf, zentrierte Headline + Primary-CTA, darunter 3D-Panel-Karussell mit Light-Blue-Navigation.</p>
+                </div>
+                <div class="handout__capture handout__capture--hero">
+                    <img
+                        src="Fotos/Screenshot_Hero.png"
+                        alt="Hero-Section der netzwerft Startseite mit 3D-Karussell"
+                        width="1309"
+                        height="1047"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+                <dl class="handout__meta-row">
+                    <div class="handout__meta-item"><dt>Screenshot</dt><dd>1309 × 1047 px · Screenshot_Hero.png</dd></div>
+                    <div class="handout__meta-item"><dt>Höhe</dt><dd>100dvh</dd></div>
+                    <div class="handout__meta-item"><dt>Background</dt><dd>--grad-dark + Lichtebenen</dd></div>
+                    <div class="handout__meta-item"><dt>Karussell</dt><dd>3D-Perspektive, Laufband</dd></div>
+                    <div class="handout__meta-item"><dt>Nav-Punkte</dt><dd>Light-Blue-Verlauf aktiv</dd></div>
+                </dl>
+            </section>
+
+            <!-- 9. Layout -->
+            <section class="handout__section" id="layout" aria-labelledby="layout-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">08 — Grid &amp; Layout</span>
+                    <h2 id="layout-title">Layoutsystem</h2>
+                    <p>Zentrierter Container, responsive Edge-Padding, Section-Rhythmus über <code>--section-py</code>.</p>
+                </div>
+                <div class="handout__grid-2">
+                    <div class="handout__card">
+                        <h3>Container</h3>
+                        <ul>
+                            <li>Max-Breite: <code>1200px</code></li>
+                            <li>Schmal: <code>860px</code> (FAQ, Text)</li>
+                            <li>Edge: <code>clamp(20px … 56px)</code></li>
+                        </ul>
+                    </div>
+                    <div class="handout__card">
+                        <h3>Grids</h3>
+                        <ul>
+                            <li><code>.grid--3</code> — 3 Spalten (Cards, Team)</li>
+                            <li><code>.grid--2</code> — 2 Spalten</li>
+                            <li><code>.steps</code> — Prozess 3-spaltig</li>
+                        </ul>
+                    </div>
+                    <div class="handout__card">
+                        <h3>Section-Padding</h3>
+                        <ul>
+                            <li><code>--section-py</code>: clamp(64px … 128px)</li>
+                            <li>Varianten: white, surface, dark</li>
+                        </ul>
+                    </div>
+                    <div class="handout__card">
+                        <h3>Radius &amp; Schatten</h3>
+                        <ul>
+                            <li>sm 12px · lg 26px · pill 999px</li>
+                            <li>--shadow-card, --shadow-soft</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10. Cards -->
+            <section class="handout__section" id="cards" aria-labelledby="cards-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">09 — Kacheln &amp; Cards</span>
+                    <h2 id="cards-title">Card-Varianten</h2>
+                    <p>Segmentkarten ( dunkel, CTA ), Warum-Box (3 Spalten), Kompetenzfeld-Items (flach), Referenz-Logos (Kategorie-Verläufe).</p>
+                </div>
+                <div class="handout__grid-2">
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Segment-Card</div>
+                        <div class="handout__specimen-body handout__specimen-body--surface">
+                            <article class="segment-card">
+                                <span class="segment-card__num">01</span>
+                                <h3 class="segment-card__title">Praxisgründung / Neubezug</h3>
+                                <p class="segment-card__text">Komplette technische Ausstattung von Anfang an richtig geplant.</p>
+                                <a class="link-arrow stretched-link" href="#">Mehr erfahren
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Warum-Box (Auszug)</div>
+                        <div class="handout__specimen-body handout__specimen-body--flush">
+                            <div class="warum__steps" style="border-radius:0;border:none;box-shadow:none">
+                                <article class="warum__step">
+                                    <span class="warum__step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none"><path d="M8 12h8M8 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                                    </span>
+                                    <h3 class="warum__step-title">Weniger Abstimmung</h3>
+                                    <p class="warum__step-text">Ein Ansprechpartner statt fünf Gewerke.</p>
+                                </article>
+                                <article class="warum__step warum__step--featured">
+                                    <span class="warum__step-icon" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2 5 4-12 2 7h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                                    </span>
+                                    <h3 class="warum__step-title">Stabiler Betrieb</h3>
+                                    <p class="warum__step-text">Support, Monitoring, klare Zuständigkeiten.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="handout__specimen handout__specimen--wide" style="margin-top:1.25rem">
+                    <div class="handout__specimen-label">Kompetenzfelder (Tabs)</div>
+                    <div class="handout__specimen-body handout__specimen-body--dark section--dark services-feature">
+                        <div class="capability-slider handout__capability-demo" data-handout-capability>
+                            <div class="capability-slider__tabs" role="tablist" aria-label="Kompetenzfelder">
+                                <button class="capability-slider__tab" type="button" role="tab" aria-selected="true" data-service-tab="0">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="5" cy="5" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="19" cy="5" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="5" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/><circle cx="19" cy="19" r="2" stroke="currentColor" stroke-width="1.7"/><path d="m6.7 6.7 3.6 3.6m3.4 0 3.6-3.6m0 10.6-3.6-3.6m-3.4 0-3.6 3.6" stroke="currentColor" stroke-width="1.5"/></svg>
+                                    <span class="capability-slider__tab-label">Allround-IT</span>
+                                </button>
+                                <button class="capability-slider__tab" type="button" role="tab" aria-selected="false" data-service-tab="1" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h8M12 17v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m8 10 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <span class="capability-slider__tab-label">Praxisfokus</span>
+                                </button>
+                                <button class="capability-slider__tab" type="button" role="tab" aria-selected="false" data-service-tab="2" tabindex="-1">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                                    <span class="capability-slider__tab-label">Infrastruktur</span>
+                                </button>
+                            </div>
+                            <article class="capability-slider__panel" role="tabpanel" data-service-panel="0">
+                                <div class="capability-slider__panel-inner">
+                                    <div class="capability-slider__summary">
+                                        <p class="capability-slider__eyebrow">Allround-IT</p>
+                                        <h3 class="capability-slider__title">Technik und Betrieb</h3>
+                                        <p class="capability-slider__desc">Hard- und Software, Cloud, Datenschutz und sichere Netze aus einer Hand.</p>
+                                        <div class="capability-slider__nav">
+                                            <button class="capability-slider__nav-btn" type="button" data-capability-prev aria-label="Vorheriges Kompetenzfeld">
+                                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </button>
+                                            <span class="capability-slider__counter">01 / 03</span>
+                                            <button class="capability-slider__nav-btn" type="button" data-capability-next aria-label="Nächstes Kompetenzfeld">
+                                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="capability-slider__grid">
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-111.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">Hardware</span><span class="capability-slider__item-copy">Arbeitsplätze, Server und Netzwerk sauber geplant.</span></span>
+                                        </div>
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-nw-24.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">Sicherheit</span><span class="capability-slider__item-copy">Firewall, Endpoint Protection, VPN und Content Filter.</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="capability-slider__panel" role="tabpanel" data-service-panel="1" hidden>
+                                <div class="capability-slider__panel-inner">
+                                    <div class="capability-slider__summary">
+                                        <p class="capability-slider__eyebrow">Praxisfokus</p>
+                                        <h3 class="capability-slider__title">Software und Medizintechnik</h3>
+                                        <p class="capability-slider__desc">Ausstattung, Praxissoftware und Partnerlösungen für medizinische Workflows.</p>
+                                    </div>
+                                    <div class="capability-slider__grid">
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-34.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">T2Med</span><span class="capability-slider__item-copy">Kernprodukt für moderne Praxisverwaltung.</span></span>
+                                        </div>
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-33.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">MyMedax</span><span class="capability-slider__item-copy">Anamnese und Einwilligungen auf dem iPad.</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="capability-slider__panel" role="tabpanel" data-service-panel="2" hidden>
+                                <div class="capability-slider__panel-inner">
+                                    <div class="capability-slider__summary">
+                                        <p class="capability-slider__eyebrow">Infrastruktur</p>
+                                        <h3 class="capability-slider__title">Räume, Anlagen und Kommunikation</h3>
+                                        <p class="capability-slider__desc">Gebäude- und Medientechnik, Telefonie und elektrische Prüfungen mitgedacht.</p>
+                                    </div>
+                                    <div class="capability-slider__grid">
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-nw-19.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">Telefonanlagen</span><span class="capability-slider__item-copy">Warteschleifen, Fax-to-Mail und PC-gestütztes Wählen.</span></span>
+                                        </div>
+                                        <div class="capability-slider__item">
+                                            <span class="capability-slider__item-icon"><img src="https://leadwerk-web.github.io/DIE-NETZWERFT/images/legacy/icons/icon-nw-20.png" alt="" width="32" height="32" loading="lazy" decoding="async"></span>
+                                            <span><span class="capability-slider__item-title">Videoüberwachung</span><span class="capability-slider__item-copy">Überwachungstechnik inklusive Fernzugriff per App.</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="handout__specimen handout__specimen--wide" style="margin-top:1.25rem">
+                    <div class="handout__specimen-label">Referenz-Laufband</div>
+                    <div class="handout__specimen-body handout__specimen-body--surface handout__specimen-body--flush">
+                        <div class="logo-wall logo-wall--marquee handout__marquee-demo" aria-hidden="true">
+                            <div class="logo-marquee__row">
+                                <div class="logo-marquee__track" style="--marquee-duration:32s">
+                                    <div class="logo-wall__item logo-wall__item--aerzte"><span class="handout__logo-placeholder">Ärzte</span></div>
+                                    <div class="logo-wall__item logo-wall__item--gewerbe"><span class="handout__logo-placeholder">Gewerbe</span></div>
+                                    <div class="logo-wall__item logo-wall__item--zahn"><span class="handout__logo-placeholder">Zahn</span></div>
+                                    <div class="logo-wall__item logo-wall__item--radiologie"><span class="handout__logo-placeholder">Radiologie</span></div>
+                                    <div class="logo-wall__item logo-wall__item--aerzte"><span class="handout__logo-placeholder">Ärzte</span></div>
+                                    <div class="logo-wall__item logo-wall__item--gewerbe"><span class="handout__logo-placeholder">Gewerbe</span></div>
+                                    <div class="logo-wall__item logo-wall__item--zahn"><span class="handout__logo-placeholder">Zahn</span></div>
+                                    <div class="logo-wall__item logo-wall__item--radiologie"><span class="handout__logo-placeholder">Radiologie</span></div>
+                                </div>
+                            </div>
+                            <div class="logo-marquee__row">
+                                <div class="logo-marquee__track" style="--marquee-duration:36s;--marquee-dir:reverse">
+                                    <div class="logo-wall__item logo-wall__item--gewerbe"><span class="handout__logo-placeholder">Gewerbe</span></div>
+                                    <div class="logo-wall__item logo-wall__item--aerzte"><span class="handout__logo-placeholder">Ärzte</span></div>
+                                    <div class="logo-wall__item logo-wall__item--radiologie"><span class="handout__logo-placeholder">Radiologie</span></div>
+                                    <div class="logo-wall__item logo-wall__item--zahn"><span class="handout__logo-placeholder">Zahn</span></div>
+                                    <div class="logo-wall__item logo-wall__item--gewerbe"><span class="handout__logo-placeholder">Gewerbe</span></div>
+                                    <div class="logo-wall__item logo-wall__item--aerzte"><span class="handout__logo-placeholder">Ärzte</span></div>
+                                    <div class="logo-wall__item logo-wall__item--radiologie"><span class="handout__logo-placeholder">Radiologie</span></div>
+                                    <div class="logo-wall__item logo-wall__item--zahn"><span class="handout__logo-placeholder">Zahn</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11. FAQ -->
+            <section class="handout__section" id="faq" aria-labelledby="faq-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">10 — FAQ</span>
+                    <h2 id="faq-title">Accordion / FAQ</h2>
+                    <p>Einzelspaltig, max. 860px. Plus/Minus-Icon in Kreis, sanftes Aufklappen per <code>max-height</code>.</p>
+                </div>
+                <div class="handout__specimen">
+                    <div class="handout__specimen-label">Live-Specimen</div>
+                    <div class="handout__specimen-body">
+                        <div class="faq">
+                            <div class="faq__item">
+                                <button class="faq__trigger" type="button" aria-expanded="true" aria-controls="handout-faq-1" id="handout-faq-1-btn">
+                                    Unterstützt die netzwerft auch Praxisgründungen?
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__panel" id="handout-faq-1" role="region" aria-labelledby="handout-faq-1-btn" style="max-height:120px">
+                                    <div class="faq__panel-inner">
+                                        Ja — von Netzwerk und Telefonie über Praxissoftware bis Security, termingerecht zum Praxisstart.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button class="faq__trigger" type="button" aria-expanded="false" aria-controls="handout-faq-2" id="handout-faq-2-btn">
+                                    Ist die netzwerft T2med-Partner?
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__panel" id="handout-faq-2" role="region" aria-labelledby="handout-faq-2-btn">
+                                    <div class="faq__panel-inner">
+                                        Ja — Einführung, Migration und Betrieb von T2med inklusive Anbindung an Telefonie und IT.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12. Carousel -->
+            <section class="handout__section" id="carousel" aria-labelledby="carousel-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">11 — Karussell</span>
+                    <h2 id="carousel-title">3D-Panel-Slider</h2>
+                    <p>Perspektivisches Karussell mit Glass-Kacheln, Icon + Titel, Light-Blue-Pagination. Kontinuierliches Laufband per Animation.</p>
+                </div>
+                <div class="handout__specimen">
+                    <div class="handout__specimen-label">Pagination &amp; Kachel-Textfeld</div>
+                    <div class="handout__specimen-body handout__specimen-body--hero">
+                        <div style="padding:2rem;text-align:center">
+                            <div class="handout__dots-demo" style="justify-content:center;margin-bottom:1.5rem">
+                                <span class="handout__dot is-active"></span>
+                                <span class="handout__dot"></span>
+                                <span class="handout__dot"></span>
+                                <span class="handout__dot"></span>
+                            </div>
+                            <div style="max-width:420px;margin:0 auto;background:rgba(255,255,255,0.55);backdrop-filter:blur(20px);border-radius:24px;padding:1.65rem 1.6rem;display:flex;gap:1rem;align-items:center;text-align:left">
+                                <img src="Fotos/Icon_Slider.png" alt="" width="52" height="52" style="border-radius:50%" />
+                                <h2 class="nw-karussell__kachel-titel" style="margin:0;font-size:1.5rem">T2med &amp; Praxissoftware</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 13. Weitere UI -->
+            <section class="handout__section" id="weitere" aria-labelledby="weitere-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">12 — Weitere Komponenten</span>
+                    <h2 id="weitere-title">Formulare, Icons, Favicon &amp; Module</h2>
+                </div>
+                <div class="handout__grid-2">
+                    <div class="handout__specimen handout__specimen--wide">
+                        <div class="handout__specimen-label">Favicon</div>
+                        <div class="handout__specimen-body">
+                            <div class="handout__favicon-showcase">
+                                <div class="handout__favicon-preview">
+                                    <img src="svg/Favicon.svg" alt="netzwerft Favicon" width="128" height="128" decoding="async" />
+                                </div>
+                                <div class="handout__favicon-sizes" aria-label="Favicon-Größen">
+                                    <div class="handout__favicon-size">
+                                        <img src="svg/Favicon.svg" alt="" width="16" height="16" decoding="async" />
+                                        <span>16 px</span>
+                                    </div>
+                                    <div class="handout__favicon-size">
+                                        <img src="svg/Favicon.svg" alt="" width="32" height="32" decoding="async" />
+                                        <span>32 px</span>
+                                    </div>
+                                    <div class="handout__favicon-size">
+                                        <img src="svg/Favicon.svg" alt="" width="48" height="48" decoding="async" />
+                                        <span>48 px</span>
+                                    </div>
+                                </div>
+                                <div class="handout__favicon-meta">
+                                    <p>
+                                        <strong>Datei:</strong> <code>svg/Favicon.svg</code> ·
+                                        <strong>Format:</strong> SVG ·
+                                        <strong>Farben:</strong> Primary #004562 &middot; Accent #1E88E5 &middot; Light Blue #64B5F6
+                                    </p>
+                                    <p>
+                                        <strong>Einbindung:</strong>
+                                        <code>&lt;link rel="icon" href="svg/Favicon.svg" type="image/svg+xml" /&gt;</code>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Back-to-Top</div>
+                        <div class="handout__specimen-body handout__specimen-body--surface">
+                            <div class="handout__back-to-top-demo">
+                                <button type="button" class="btn btn--primary btn--lg back-to-top is-visible" aria-label="Nach oben scrollen">
+                                    Nach oben
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                        <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <p class="handout__specimen-note">
+                                Erscheint nach dem Hero (<code>data-back-to-top</code>), scrollt per Lenis nach
+                                <code>#top</code>. Unten rechts in der <code>.sticky-corner</code> —
+                                Stil wie <code>.btn--primary.btn--lg</code>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Prozess-Schritte</div>
+                        <div class="handout__specimen-body">
+                            <div class="step" style="padding-top:0">
+                                <span class="step__num">1</span>
+                                <h3 class="step__title">Projekt verstehen</h3>
+                                <p class="step__text">Bedarf, Region, Timing und Ziele klären.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Funnel / Formular</div>
+                        <div class="handout__specimen-body">
+                            <label class="funnel-step__label" for="demo-plz">PLZ der Praxis</label>
+                            <input class="funnel-input" id="demo-plz" type="text" placeholder="z. B. 76275" />
+                            <div class="funnel-options" style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+                                <button type="button" class="funnel-chip" aria-pressed="true">sofort</button>
+                                <button type="button" class="funnel-chip" aria-pressed="false">1–3 Monate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Trust-Tabs &amp; Legende</div>
+                        <div class="handout__specimen-body handout__specimen-body--surface">
+                            <div class="trust__tabs" role="tablist">
+                                <button class="trust__tab" type="button" aria-selected="true">Alle</button>
+                                <button class="trust__tab" type="button" aria-selected="false">Zahnärzte</button>
+                            </div>
+                            <ul class="trust__legend" style="margin-top:1rem">
+                                <li class="trust__legend-item trust__legend-item--zahn"><span class="trust__legend-swatch"></span>Zahnärzte</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="handout__specimen">
+                        <div class="handout__specimen-label">Statistik-Zeile</div>
+                        <div class="handout__specimen-body">
+                            <div class="stat-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+                                <div class="stat">
+                                    <div class="stat__num">200+</div>
+                                    <div class="stat__label">betreute Arztpraxen</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat__num">3</div>
+                                    <div class="stat__label">Standorte</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14. Footer -->
+            <section class="handout__section" id="footer" aria-labelledby="footer-title">
+                <div class="handout__section-head">
+                    <span class="handout__section-num">13 — Footer</span>
+                    <h2 id="footer-title">Footer-Struktur</h2>
+                    <p>4-spaltig: Brand, Navigation, Leistungen, Kontakt. Dunkler Hintergrund (#061530), invertiertes Logo.</p>
+                </div>
+                <div class="handout__capture handout__capture--section">
+                    <iframe src="index-v3.html#kontakt" title="Footer der Startseite" loading="lazy"></iframe>
+                </div>
+            </section>
+
+            <!-- 15. Fazit -->
+            <section class="handout__summary" id="fazit" aria-labelledby="fazit-title">
+                <h2 id="fazit-title">Designcharakter — Zusammenfassung</h2>
+                <ul>
+                    <li><strong>Vertrauen &amp; Klarheit:</strong> Tiefblaue Flächen, großzügiger Weißraum, präzise Typografie-Hierarchie.</li>
+                    <li><strong>Klarheit &amp; Orientierung:</strong> Blaue CTAs und Eyebrows führen durch die Seite; Light Blue markiert Interaktion und Kategorien.</li>
+                    <li><strong>Praxisnah &amp; premium:</strong> Glass-Effekte, sanfte Scroll-Animationen, 3D-Hero als Markenmoment.</li>
+                    <li><strong>Systemstärke:</strong> Wiederkehrende Section-Heads, einheitliche Buttons, modulare Cards und konsistente Tokens in CSS-Variablen.</li>
+                    <li><strong>Responsive &amp; zugänglich:</strong> Mobile Navigation, semantisches HTML, Fokus-States, reduzierte Motion optional.</li>
+                </ul>
+            </section>
+
+            <p class="handout__footer-note">
+                Design-Handout V3 · abgeleitet von index-v3.html · die netzwerft GmbH · Stand: 2026
+            </p>
+        </main>
+    </div>
+
+    <script>
+        (() => {
+            "use strict";
+            const links = document.querySelectorAll(".handout__nav a");
+            const sections = [...links].map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+
+            const setActive = () => {
+                let current = sections[0]?.id;
+                sections.forEach((sec) => {
+                    const top = sec.getBoundingClientRect().top;
+                    if (top <= 120) current = sec.id;
+                });
+                links.forEach((link) => {
+                    link.classList.toggle("is-active", link.getAttribute("href") === "#" + current);
+                });
+            };
+
+            window.addEventListener("scroll", setActive, { passive: true });
+            setActive();
+
+            document.querySelectorAll(".handout .faq__trigger").forEach((trigger) => {
+                trigger.addEventListener("click", () => {
+                    const expanded = trigger.getAttribute("aria-expanded") === "true";
+                    const panel = document.getElementById(trigger.getAttribute("aria-controls"));
+                    trigger.setAttribute("aria-expanded", String(!expanded));
+                    if (panel) panel.style.maxHeight = expanded ? null : panel.scrollHeight + "px";
+                });
+            });
+
+            document.querySelectorAll("[data-handout-capability]").forEach((slider) => {
+                const tabs = slider.querySelectorAll(".capability-slider__tab");
+                const panels = slider.querySelectorAll(".capability-slider__panel");
+                let active = 0;
+
+                const showPanel = (index) => {
+                    active = (index + panels.length) % panels.length;
+                    tabs.forEach((tab, i) => {
+                        const selected = i === active;
+                        tab.setAttribute("aria-selected", selected ? "true" : "false");
+                        tab.tabIndex = selected ? 0 : -1;
+                    });
+                    panels.forEach((panel, i) => {
+                        panel.hidden = i !== active;
+                    });
+                    const counter = panels[active]?.querySelector(".capability-slider__counter");
+                    if (counter) counter.textContent = String(active + 1).padStart(2, "0") + " / " + String(panels.length).padStart(2, "0");
+                };
+
+                tabs.forEach((tab, i) => {
+                    tab.addEventListener("click", () => showPanel(i));
+                });
+
+                slider.querySelector("[data-capability-prev]")?.addEventListener("click", () => showPanel(active - 1));
+                slider.querySelector("[data-capability-next]")?.addEventListener("click", () => showPanel(active + 1));
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 /* =========================================================
-   die netzwerft GmbH ? Startseite
-   Design-System, Layout & Komponenten
-   CI: #004562 (Prim?r) ? #ffffff ? #111111
-   Dunkelverl?ufe: rgb(0,39,60) / rgb(0,48,71) / rgb(0,69,99) / rgb(0,53,78)
+   die netzwerft GmbH — Startseite V2
+   CI-Primär (verbindlich): #004562
+   Accent: #1E88E5 · Light Blue: #64B5F6
+   Referenz: Ärzte #0F67A4 · Zahn #197DCF · Radiologie #3597EB · Gewerbe #4DA6F0
    ========================================================= */
 
 /* ---------------------------------------------------------
@@ -16,14 +16,14 @@
     --color-black: #111111;
     --color-white: #ffffff;
 
-    --color-accent: #ffb000;
-    --color-accent-soft: #fff2cc;
-    --color-mint: #2dd4bf;
-    --color-mint-mid: #14b8a6;
-    --color-mint-deep: #0d9488;
-    --color-mint-hover: #14b8a6;
-    --color-mint-soft: rgba(45, 212, 191, 0.32);
-    --color-mint-muted: rgba(45, 212, 191, 0.18);
+    --color-accent: #1E88E5;
+    --color-accent-soft: #E3F2FD;
+    --color-mint: #64B5F6;
+    --color-mint-mid: #42A5F5;
+    --color-mint-deep: #2196F3;
+    --color-mint-hover: #42A5F5;
+    --color-mint-soft: rgba(100, 181, 246, 0.32);
+    --color-mint-muted: rgba(100, 181, 246, 0.18);
 
     /* Aliase fuer bestehende Komponenten */
     --nw-primary: var(--color-primary);
@@ -44,9 +44,9 @@
     --nw-mint-hover: var(--color-mint-hover);
     --nw-mint-soft: var(--color-mint-soft);
     --nw-mint-muted: var(--color-mint-muted);
-    --nw-glow: rgba(255, 176, 0, 0.35);
+    --nw-glow: rgba(30, 136, 229, 0.35);
     --nw-icon-bg: var(--color-accent);
-    --nw-icon-color: var(--color-black);
+    --nw-icon-color: var(--color-white);
     --nw-icon-radius: 50%;
 
     /* Helle Flaechen */
@@ -61,12 +61,15 @@
     --nw-on-dark-soft: rgba(255, 255, 255, 0.68);
     --nw-on-dark-muted: rgba(255, 255, 255, 0.5);
 
-    /* Verlaeufe */
+    /* Verlaeufe — dunkle Stopps bewusst klares Blau (weniger Cyan/Grün),
+       Primary #004562 bleibt als Endfarbe verbindlich */
     --grad-dark: linear-gradient(
         158deg,
-        #001c2c 0%,
-        var(--color-primary-dark) 40%,
-        var(--color-primary) 120%
+        #020814 0%,
+        #061530 34%,
+        #0a2448 68%,
+        #0d3a6a 88%,
+        #004562 100%
     );
     --grad-primary: linear-gradient(
         135deg,
@@ -76,30 +79,40 @@
     --grad-accent: linear-gradient(
         135deg,
         var(--color-accent) 0%,
-        #d97800 100%
+        #1565C0 100%
     );
 
-    /* Referenz-Kategorien (CI + Mint) */
-    --ref-aerzte: var(--color-primary-dark);
-    --ref-zahn: var(--color-mint);
-    --ref-radiologie: #00607a;
-    --ref-gewerbe: #ffb000;
+    /* Referenz-Kategorien (vorgegeben) */
+    --ref-aerzte: #0f67a4;
+    --ref-zahn: #197dcf;
+    --ref-radiologie: #3597eb;
+    --ref-gewerbe: #4da6f0;
 
     /* Referenz-Kacheln — Verläufe (158° wie --grad-dark) */
-    --grad-ref-aerzte: var(--grad-dark);
+    --grad-ref-aerzte: linear-gradient(
+        158deg,
+        #0a4a78 0%,
+        #0f67a4 48%,
+        #197dcf 100%
+    );
     --grad-ref-zahn: linear-gradient(
         158deg,
-        var(--color-mint-deep) 0%,
-        var(--color-mint-mid) 48%,
-        var(--color-mint) 100%
+        #0f67a4 0%,
+        #197dcf 48%,
+        #3597eb 100%
     );
     --grad-ref-radiologie: linear-gradient(
         158deg,
-        var(--color-primary-dark) 0%,
-        var(--color-primary) 42%,
-        var(--ref-radiologie) 100%
+        #197dcf 0%,
+        #3597eb 48%,
+        #4da6f0 100%
     );
-    --grad-ref-gewerbe: var(--grad-accent);
+    --grad-ref-gewerbe: linear-gradient(
+        158deg,
+        #3597eb 0%,
+        #4da6f0 52%,
+        #6bb8f5 100%
+    );
 
     /* Typografie ? Montserrat (Headlines), Body-Fallbacks */
     --font-heading: "Montserrat", "Segoe UI", system-ui, sans-serif;
@@ -431,7 +444,7 @@ h2.section__title {
 
 .btn--accent {
     background: var(--grad-accent);
-    color: var(--color-black);
+    color: var(--color-white);
     box-shadow: 0 12px 30px -14px var(--nw-glow);
 }
 
@@ -1340,9 +1353,9 @@ h2.section__title {
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
-    border: 1px solid rgba(255, 176, 0, 0.35);
+    border: 1px solid rgba(30, 136, 229, 0.35);
     border-radius: 50%;
-    background: rgba(255, 176, 0, 0.08);
+    background: rgba(30, 136, 229, 0.08);
     color: var(--nw-accent);
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -1350,8 +1363,8 @@ h2.section__title {
 
 .capability-slider__nav-btn:hover,
 .capability-slider__nav-btn:focus-visible {
-    background: rgba(255, 176, 0, 0.18);
-    border-color: rgba(255, 176, 0, 0.55);
+    background: rgba(30, 136, 229, 0.18);
+    border-color: rgba(30, 136, 229, 0.55);
     outline: none;
 }
 
@@ -1878,7 +1891,7 @@ body.video-lightbox-open {
 .segment-card:hover::before,
 .segment-card:focus-within::before {
     opacity: 1;
-    background: radial-gradient(120% 90% at 100% 0%, rgba(45, 212, 191, 0.32), transparent 58%);
+    background: radial-gradient(120% 90% at 100% 0%, rgba(100, 181, 246, 0.32), transparent 58%);
 }
 
 .segment-card__num {
@@ -2405,7 +2418,7 @@ body.video-lightbox-open {
    16. Footer
    --------------------------------------------------------- */
 .site-footer {
-    background: #041c29;
+    background: #061530;
     color: var(--nw-on-dark-soft);
     padding-block: clamp(3rem, 6vw, 5rem) 2rem;
 }

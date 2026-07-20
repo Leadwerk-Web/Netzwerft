@@ -1,0 +1,440 @@
+/* ============================================================
+   Hero V2 — 100vh + 3D-Panel-Karussell (nw-karussell)
+   Accent: #1E88E5 (statt Ambergold)
+   ============================================================ */
+
+#hero {
+    overflow: hidden;
+}
+
+#hero .nw-karussell,
+#hero .nw-karussell__buehne,
+#hero .nw-karussell__gleis {
+    overflow: visible;
+}
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--nw-on-dark);
+    background: var(--grad-dark);
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--grad-dark);
+}
+
+.hero__blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 90% 70% at 12% 18%,
+            rgba(30, 136, 229, 0.22) 0%,
+            transparent 58%
+        ),
+        radial-gradient(
+            ellipse 55% 45% at 88% 12%,
+            rgba(30, 136, 229, 0.1) 0%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse 80% 55% at 50% 108%,
+            rgba(13, 71, 161, 0.55) 0%,
+            transparent 62%
+        );
+}
+
+.hero__top {
+    position: relative;
+    z-index: 4;
+    flex: 0 0 auto;
+    text-align: center;
+    padding: calc(var(--nav-h, 72px) + clamp(3.5rem, 4vh + 2rem, 5.5rem)) var(--edge, 1.5rem) 1rem;
+    max-width: 52rem;
+    margin: 0 auto;
+}
+
+.hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent, #1E88E5);
+    margin-bottom: 1rem;
+}
+
+.hero__title,
+.hero__title .headline-bold,
+.nw-karussell__kachel-titel {
+    letter-spacing: normal;
+}
+
+.hero__title {
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    font-weight: var(--headline-weight-thin, 200);
+    line-height: 1.1;
+    color: var(--nw-on-dark, #fff);
+}
+
+.hero__title .headline-bold {
+    font-weight: var(--headline-weight-bold, 700);
+}
+
+.hero__actions {
+    margin-top: clamp(1.35rem, 2.5vw, 2.25rem);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* ?? 3D-Panel-Karussell ???????????????????????????????????? */
+
+.nw-karussell {
+    position: relative;
+    z-index: 4;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: calc(-1.75rem - 30px);
+    min-height: 0;
+    padding: 0 0 0.75rem;
+    overflow: hidden;
+    --nw-kachel-radius: 24px;
+    --nw-buehne-h: 720px;
+    --nw-kachel-body-h: clamp(6.75rem, 12vw, 7.5rem);
+}
+
+.nw-karussell__buehne {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    height: var(--nw-buehne-h, 720px);
+    max-height: var(--nw-buehne-h, 720px);
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+    perspective: var(--nw-perspektive, 100em);
+    perspective-origin: 50% 50%;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.nw-karussell__buehne::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 6%;
+    width: min(72vw, 920px);
+    height: clamp(48px, 8vh, 88px);
+    transform: translateX(-50%);
+    background: radial-gradient(
+        ellipse 100% 100% at 50% 50%,
+        rgba(13, 71, 161, 0.14) 0%,
+        rgba(13, 71, 161, 0.05) 42%,
+        transparent 72%
+    );
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(8px);
+}
+
+.nw-karussell__buehne.is-zieht {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.nw-karussell__gleis {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--nw-drehung, 0deg));
+    transition: none;
+    --nw-drehung: 0deg;
+    --nw-step: 60deg;
+    --nw-radius: -556px;
+    --nw-karte-b: 720px;
+    --nw-karte-h: 640px;
+    position: relative;
+    z-index: 1;
+}
+
+.nw-karussell__gleis.is-sprung {
+    transition: none !important;
+}
+
+.nw-karussell__kachel {
+    --nw-index: 0;
+    --nw-opacity: 1;
+
+    grid-area: 1 / 1;
+    width: var(--nw-karte-b, 720px);
+    height: var(--nw-karte-h, 640px);
+    min-width: var(--nw-karte-b, 720px);
+    min-height: var(--nw-karte-h, 640px);
+    max-width: var(--nw-karte-b, 720px);
+    max-height: var(--nw-karte-h, 640px);
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* Position setzt carousel.js (geflachter Frontbogen) */
+    opacity: var(--nw-opacity);
+    pointer-events: auto;
+}
+
+.nw-karussell__gleis.is-animiert .nw-karussell__kachel,
+.nw-karussell__gleis.is-laufband .nw-karussell__kachel {
+    transition: none;
+}
+
+.nw-karussell__kachel:not(.is-verdeckt) {
+    transition: opacity 0.2s ease;
+}
+
+.nw-karussell__kachel.is-fokus {
+    cursor: default;
+}
+
+.nw-karussell__kachel.is-verdeckt {
+    pointer-events: none;
+    opacity: 0 !important;
+}
+
+.nw-karussell__kachel-innen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: var(--nw-kachel-radius, 24px);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    box-shadow:
+        0 2px 6px rgba(13, 71, 161, 0.05),
+        0 22px 48px rgba(13, 71, 161, 0.14),
+        0 48px 88px -20px rgba(21, 101, 192, 0.16);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.nw-karussell__kachel.is-fokus .nw-karussell__kachel-innen {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow:
+        0 4px 10px rgba(13, 71, 161, 0.06),
+        0 32px 64px rgba(21, 101, 192, 0.22),
+        0 56px 110px -18px rgba(21, 101, 192, 0.2),
+        0 0 0 1px rgba(21, 101, 192, 0.08);
+}
+
+.nw-karussell__kachel.is-seite .nw-karussell__kachel-innen {
+    box-shadow:
+        0 2px 8px rgba(13, 71, 161, 0.06),
+        0 18px 42px rgba(13, 71, 161, 0.12),
+        0 36px 72px -24px rgba(21, 101, 192, 0.12);
+}
+
+.nw-karussell__kachel-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background-color: #dce8ef;
+    background-image: url('../Fotos/Slider_hero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nw-karussell__kachel-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(21, 101, 192, 0.28) 0%,
+        rgba(21, 101, 192, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.nw-karussell__kachel.is-fokus .nw-karussell__kachel-media::after {
+    background: linear-gradient(
+        180deg,
+        rgba(21, 101, 192, 0.18) 0%,
+        rgba(21, 101, 192, 0.12) 100%
+    );
+}
+
+.nw-karussell__kachel.is-seite .nw-karussell__kachel-media::after,
+.nw-karussell__kachel.is-seite-aussen .nw-karussell__kachel-media::after {
+    background: linear-gradient(
+        180deg,
+        rgba(21, 101, 192, 0.34) 0%,
+        rgba(21, 101, 192, 0.26) 100%
+    );
+}
+
+.nw-karussell__kachel-symbol {
+    display: none;
+}
+
+.nw-karussell__kachel-symbol svg {
+    width: 100%;
+    height: 100%;
+}
+
+.nw-karussell__kachel-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    min-height: var(--nw-kachel-body-h, 10.25rem);
+    padding: 1.65rem 1.6rem;
+    background: rgba(255, 255, 255, 0.52);
+    backdrop-filter: blur(20px) saturate(175%);
+    -webkit-backdrop-filter: blur(20px) saturate(175%);
+    border-top: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow: 0 -12px 36px rgba(13, 71, 161, 0.1);
+    border-radius: 0 0 var(--nw-kachel-radius, 24px) var(--nw-kachel-radius, 24px);
+}
+
+.nw-karussell__kachel-icon {
+    flex: 0 0 auto;
+    width: clamp(2.5rem, 3.5vw, 3.25rem);
+    height: clamp(2.5rem, 3.5vw, 3.25rem);
+    border-radius: var(--nw-icon-radius, 50%);
+    object-fit: cover;
+}
+
+.nw-karussell__kachel-copy {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nw-karussell__kachel.is-fokus .nw-karussell__kachel-body {
+    background: rgba(255, 255, 255, 0.62);
+    border-top-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 0 -14px 40px rgba(13, 71, 161, 0.12);
+}
+
+.nw-karussell__kachel-titel {
+    margin: 0;
+    font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--nw-ink, #111);
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.nw-karussell__steuerung {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -96px;
+    padding-top: 1.1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.nw-karussell__punkte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    max-width: min(100%, 36rem);
+    padding: 0.35rem 0.5rem;
+}
+
+.nw-karussell__punkt {
+    flex: 0 0 auto;
+    width: 1rem;
+    height: 5px;
+    border: none;
+    padding: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.32);
+    cursor: pointer;
+    transition:
+        width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        background 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.nw-karussell__punkt:hover {
+    opacity: 0.9;
+    background: var(--nw-mint-muted);
+}
+
+.nw-karussell__punkt.is-aktiv,
+.nw-karussell__punkt[aria-selected='true'] {
+    width: 2.75rem;
+    background: linear-gradient(
+        90deg,
+        var(--color-mint-mid) 0%,
+        var(--nw-mint) 100%
+    );
+    opacity: 1;
+}
+
+@media (max-width: 575px) {
+    .hero__top {
+        padding-top: calc(var(--nav-h, 72px) + clamp(2.5rem, 3vh + 1.25rem, 3.5rem));
+        padding-bottom: 0.75rem;
+    }
+
+    .nw-karussell {
+        padding-bottom: 1rem;
+        --nw-kachel-body-h: clamp(5.25rem, 20vw, 6rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nw-karussell__gleis {
+        transition: none;
+    }
+
+    .nw-karussell__kachel {
+        transition: opacity 0.3s ease;
+    }
+}

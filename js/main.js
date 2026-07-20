@@ -243,8 +243,9 @@
     const t2medDesktopQuery = window.matchMedia("(min-width: 901px)");
 
     const initT2medVisualScroll = (section, { overhangEl = null } = {}) => {
+        if (!section) return;
         const visual = section.querySelector(":scope > .t2med__visual");
-        if (!section || !visual) return;
+        if (!visual) return;
 
         let t2medScrollBound = false;
         let unsubscribeScroll = null;
@@ -348,28 +349,96 @@
         overhangEl: document.getElementById("leistungen"),
     });
 
-    /* ---------- Video-Embed: datenschutzfreundlich (Klick-zum-Laden) ---------- */
+    /* ---------- Video-Embed: Lightbox (datenschutzfreundlich) ---------- */
+    const videoLightbox = (() => {
+        let root = document.getElementById("video-lightbox");
+        let stage = null;
+        let closeBtn = null;
+        let lastFocused = null;
+
+        const ensure = () => {
+            if (root) {
+                stage = root.querySelector(".video-lightbox__stage");
+                closeBtn = root.querySelector(".video-lightbox__close");
+                return root;
+            }
+
+            root = document.createElement("div");
+            root.id = "video-lightbox";
+            root.className = "video-lightbox";
+            root.setAttribute("role", "dialog");
+            root.setAttribute("aria-modal", "true");
+            root.setAttribute("aria-label", "Video");
+            root.setAttribute("aria-hidden", "true");
+            root.innerHTML = `
+                <div class="video-lightbox__backdrop" data-video-lightbox-close></div>
+                <div class="video-lightbox__dialog">
+                    <button type="button" class="video-lightbox__close" data-video-lightbox-close aria-label="Video schlie\u00dfen">&times;</button>
+                    <div class="video-lightbox__stage"></div>
+                </div>
+            `;
+            document.body.appendChild(root);
+            stage = root.querySelector(".video-lightbox__stage");
+            closeBtn = root.querySelector(".video-lightbox__close");
+
+            root.querySelectorAll("[data-video-lightbox-close]").forEach((el) => {
+                el.addEventListener("click", close);
+            });
+
+            root.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    e.preventDefault();
+                    close();
+                }
+            });
+
+            return root;
+        };
+
+        const open = ({ id, title }) => {
+            ensure();
+            lastFocused = document.activeElement;
+            stage.innerHTML = "";
+
+            const iframe = document.createElement("iframe");
+            iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+            iframe.title = title || "Video";
+            iframe.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            iframe.setAttribute("loading", "lazy");
+            stage.appendChild(iframe);
+
+            root.classList.add("is-open");
+            root.setAttribute("aria-hidden", "false");
+            document.body.classList.add("video-lightbox-open");
+            closeBtn && closeBtn.focus({ preventScroll: true });
+        };
+
+        const close = () => {
+            if (!root || !root.classList.contains("is-open")) return;
+            root.classList.remove("is-open");
+            root.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("video-lightbox-open");
+            if (stage) stage.innerHTML = "";
+            if (lastFocused && lastFocused.focus) {
+                lastFocused.focus({ preventScroll: true });
+            }
+        };
+
+        return { open, close };
+    })();
+
     document.querySelectorAll(".video-embed").forEach((embed) => {
         const trigger = embed.querySelector(".video-embed__trigger");
         const id = embed.dataset.videoId;
         if (!trigger || !id) return;
 
         trigger.addEventListener("click", () => {
-            const wrap = document.createElement("div");
-            wrap.className = "video-embed__iframe-wrap";
-
-            const iframe = document.createElement("iframe");
-            const params = "autoplay=1&rel=0&modestbranding=1";
-            iframe.src = `https://www.youtube-nocookie.com/embed/${id}?${params}`;
-            iframe.title = embed.dataset.videoTitle || "Video";
-            iframe.allow =
-                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-            iframe.allowFullscreen = true;
-            iframe.setAttribute("loading", "lazy");
-
-            wrap.appendChild(iframe);
-            trigger.replaceWith(wrap);
-            iframe.focus({ preventScroll: true });
+            videoLightbox.open({
+                id,
+                title: embed.dataset.videoTitle || "Video",
+            });
         });
     });
 
