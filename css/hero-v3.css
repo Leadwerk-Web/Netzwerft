@@ -501,7 +501,7 @@
 .hero__marquee-track {
     display: flex;
     width: max-content;
-    animation: hero-marquee 42s linear infinite;
+    animation: hero-marquee 80s linear infinite;
 }
 
 .hero__marquee-list {

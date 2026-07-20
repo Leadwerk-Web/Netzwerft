@@ -157,7 +157,7 @@
         const original = items.map((entry) => logoItemHTML(entry, false)).join("");
         const clone =
             withClone !== false ? items.map((entry) => logoItemHTML(entry, true)).join("") : "";
-        const duration = Math.max(32, items.length * 4);
+        const duration = Math.max(60, items.length * 8);
         const direction = index % 2 === 1 ? "reverse" : "normal";
         return `
             <div class="logo-marquee__row">

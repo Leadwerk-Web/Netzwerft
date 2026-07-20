@@ -2094,7 +2094,7 @@ body.video-lightbox-open {
     gap: var(--logo-tile-gap);
     padding-right: var(--logo-tile-gap);
     width: max-content;
-    animation: logo-marquee-scroll var(--marquee-duration, 48s) linear infinite;
+    animation: logo-marquee-scroll var(--marquee-duration, 80s) linear infinite;
     animation-direction: var(--marquee-dir, normal);
     will-change: transform;
 }
