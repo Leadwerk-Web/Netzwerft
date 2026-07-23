@@ -2,7 +2,7 @@
    die netzwerft GmbH — Startseite V2
    CI-Primär (verbindlich): #004562
    Accent: #1E88E5 · Light Blue: #64B5F6
-   Referenz: Ärzte #0F67A4 · Zahn #197DCF · Radiologie #3597EB · Gewerbe #4DA6F0
+   Referenz: Ärzte #0F67A4 · Zahn #197DCF · Radiologie #3597EB · Gewerbe #7EC4F7
    ========================================================= */
 
 /* ---------------------------------------------------------
@@ -86,7 +86,7 @@
     --ref-aerzte: #0f67a4;
     --ref-zahn: #197dcf;
     --ref-radiologie: #3597eb;
-    --ref-gewerbe: #4da6f0;
+    --ref-gewerbe: #7ec4f7;
 
     /* Referenz-Kacheln — Verläufe (158° wie --grad-dark) */
     --grad-ref-aerzte: linear-gradient(
@@ -104,14 +104,14 @@
     --grad-ref-radiologie: linear-gradient(
         158deg,
         #197dcf 0%,
-        #3597eb 48%,
-        #4da6f0 100%
+        #3597eb 55%,
+        #52a8ef 100%
     );
     --grad-ref-gewerbe: linear-gradient(
         158deg,
-        #3597eb 0%,
-        #4da6f0 52%,
-        #6bb8f5 100%
+        #4da6f0 0%,
+        #7ec4f7 52%,
+        #a6d8fb 100%
     );
 
     /* Typografie ? Montserrat (Headlines), Body-Fallbacks */
@@ -546,17 +546,18 @@ h2.section__title {
     box-sizing: border-box;
     pointer-events: auto;
     border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: saturate(180%) blur(22px);
-    -webkit-backdrop-filter: saturate(180%) blur(22px);
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    box-shadow: var(--shadow-soft);
+    /* Start: frei über dem Hero — ohne Glas/Rahmen */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid transparent;
+    box-shadow: none;
     overflow: visible;
     transition:
-        background-color 0.35s var(--ease-soft),
-        box-shadow 0.35s var(--ease-soft),
-        border-color 0.35s var(--ease-soft),
-        backdrop-filter 0.35s var(--ease-soft);
+        background-color 0.4s var(--ease-soft),
+        box-shadow 0.4s var(--ease-soft),
+        border-color 0.4s var(--ease-soft),
+        backdrop-filter 0.4s var(--ease-soft);
 }
 
 .brand {
@@ -569,7 +570,8 @@ h2.section__title {
     display: block;
     width: clamp(148px, 17vw, 196px);
     height: auto;
-    transition: opacity 0.35s var(--ease-soft);
+    transition: opacity 0.35s var(--ease-soft), filter 0.35s var(--ease-soft);
+    filter: brightness(0) invert(1);
 }
 
 .brand__logo--footer {
@@ -607,12 +609,12 @@ h2.section__title {
     text-align: center;
 }
 
-/* Hauptnavigation: dezente, dunkle Link-Schrift */
+/* Hauptnavigation: hell über dem Hero, dunkler nach Scroll */
 .site-nav__link {
     position: relative;
     display: inline-block;
     max-width: 100%;
-    color: var(--nw-ink);
+    color: rgba(255, 255, 255, 0.92);
     font-weight: 400;
     font-size: clamp(0.82rem, 0.76rem + 0.28vw, 0.96rem);
     letter-spacing: 0.02em;
@@ -623,7 +625,7 @@ h2.section__title {
 
 .site-nav__link:hover,
 .site-nav__link:focus-visible {
-    color: var(--nw-primary);
+    color: #fff;
 }
 
 .site-nav__link::after {
@@ -642,16 +644,20 @@ h2.section__title {
 .site-nav__link:hover::after,
 .site-nav__link:focus-visible::after {
     transform: scaleX(1);
-    background: var(--nw-mint);
+    background: var(--color-accent, #1E88E5);
 }
 
-/* Zustand: gescrollt ? bleibt optisch gleich */
+/* Zustand: gescrollt — Glasleiste wie bisher */
 .site-header.is-scrolled .site-header__inner {
     background: rgba(255, 255, 255, 0.82);
     backdrop-filter: saturate(180%) blur(22px);
     -webkit-backdrop-filter: saturate(180%) blur(22px);
     border-color: rgba(255, 255, 255, 0.65);
     box-shadow: var(--shadow-soft);
+}
+
+.site-header.is-scrolled .brand__logo {
+    filter: none;
 }
 
 .site-header.is-scrolled .brand,
@@ -662,6 +668,11 @@ h2.section__title {
 .site-header.is-scrolled .site-nav__link:hover,
 .site-header.is-scrolled .site-nav__link:focus-visible {
     color: var(--nw-primary);
+}
+
+.site-header.is-scrolled .site-nav__link:hover::after,
+.site-header.is-scrolled .site-nav__link:focus-visible::after {
+    background: var(--nw-mint);
 }
 
 .site-header.is-scrolled .nav-toggle__bar {
@@ -684,10 +695,10 @@ h2.section__title {
 
 .nav-toggle__bar {
     display: block;
-    width: 24px;
+    width: 22px;
     height: 2px;
     margin-inline: auto;
-    background: var(--nw-ink);
+    background: rgba(255, 255, 255, 0.92);
     border-radius: 2px;
     transition: transform 0.3s var(--ease-soft), opacity 0.2s ease, background-color 0.3s ease;
 }
@@ -702,6 +713,27 @@ h2.section__title {
     padding-inline: clamp(0.85rem, 1.2vw, 1.15rem);
 }
 
+/* CTA oben weiß, nach Scroll wieder Primary */
+.site-nav__cta .btn--primary {
+    background: #fff;
+    color: var(--nw-primary);
+    box-shadow: 0 12px 30px -16px rgba(0, 0, 0, 0.5);
+}
+
+.site-nav__cta .btn--primary:hover {
+    box-shadow: 0 18px 44px -14px rgba(0, 0, 0, 0.45), 0 0 0 4px rgba(255, 255, 255, 0.18);
+}
+
+.site-header.is-scrolled .site-nav__cta .btn--primary {
+    background: var(--grad-primary);
+    color: #fff;
+    box-shadow: 0 12px 30px -14px rgba(0, 69, 98, 0.7);
+}
+
+.site-header.is-scrolled .site-nav__cta .btn--primary:hover {
+    box-shadow: 0 18px 40px -12px rgba(0, 69, 98, 0.55), 0 0 0 4px rgba(0, 69, 98, 0.14);
+}
+
 /* Backdrop nur im Mobile-Kontext sichtbar */
 .nav-backdrop {
     display: none;
@@ -712,7 +744,9 @@ h2.section__title {
     .site-header__inner {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
-        background: rgba(255, 255, 255, 0.96);
+        background: transparent;
+        border-color: transparent;
+        box-shadow: none;
         flex-wrap: nowrap;
     }
 
@@ -720,6 +754,16 @@ h2.section__title {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(255, 255, 255, 0.65);
+        box-shadow: var(--shadow-soft);
+    }
+
+    .site-header.is-scrolled .brand__logo {
+        filter: none;
+    }
+
+    .site-header.is-scrolled .nav-toggle__bar {
+        background: var(--nw-ink);
     }
 
     .nav-toggle {
@@ -1222,7 +1266,7 @@ h2.section__title {
 }
 
 /* ---------------------------------------------------------
-   8. Leistungen — Flexipath-Look, Netzwerft-Farben
+   8. Leistungen — Flexipath-Look, netzwerft-Farben
    --------------------------------------------------------- */
 .services-feature {
     background: var(--grad-dark);
@@ -2033,18 +2077,45 @@ body.video-lightbox-open {
     display: flex;
     flex-direction: column;
     gap: var(--logo-tile-gap);
-    width: calc(100% + (2 * var(--edge, 1.5rem)));
-    max-width: none;
-    margin-left: calc(-1 * var(--edge, 1.5rem));
-    margin-right: calc(-1 * var(--edge, 1.5rem));
+    width: 90dvw;
+    max-width: 90dvw;
+    margin-left: calc(50% - 45dvw);
+    margin-right: calc(50% - 45dvw);
+    padding-block: 6px;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 6%,
+        rgba(0, 0, 0, 0.35) 12%,
+        rgba(0, 0, 0, 0.65) 18%,
+        #000 26%,
+        #000 74%,
+        rgba(0, 0, 0, 0.65) 82%,
+        rgba(0, 0, 0, 0.35) 88%,
+        rgba(0, 0, 0, 0.12) 94%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 6%,
+        rgba(0, 0, 0, 0.35) 12%,
+        rgba(0, 0, 0, 0.65) 18%,
+        #000 26%,
+        #000 74%,
+        rgba(0, 0, 0, 0.65) 82%,
+        rgba(0, 0, 0, 0.35) 88%,
+        rgba(0, 0, 0, 0.12) 94%,
+        transparent 100%
+    );
 }
 
 .logo-marquee__row {
     display: flex;
     overflow: hidden;
+    padding-block: 6px;
+    margin-block: -6px;
 }
 
 .logo-marquee__track {
@@ -2135,6 +2206,8 @@ body.video-lightbox-open {
 }
 
 .logo-wall__item:hover {
+    position: relative;
+    z-index: 2;
     transform: translateY(-4px);
     box-shadow: var(--shadow-soft);
 }

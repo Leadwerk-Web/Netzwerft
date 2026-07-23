@@ -1209,7 +1209,7 @@ h2.section__title {
 }
 
 /* ---------------------------------------------------------
-   8. Leistungen — Flexipath-Look, Netzwerft-Farben
+   8. Leistungen — Flexipath-Look, netzwerft-Farben
    --------------------------------------------------------- */
 .services-feature {
     background: var(--grad-dark);
@@ -2020,18 +2020,45 @@ body.video-lightbox-open {
     display: flex;
     flex-direction: column;
     gap: var(--logo-tile-gap);
-    width: calc(100% + (2 * var(--edge, 1.5rem)));
-    max-width: none;
-    margin-left: calc(-1 * var(--edge, 1.5rem));
-    margin-right: calc(-1 * var(--edge, 1.5rem));
+    width: 90dvw;
+    max-width: 90dvw;
+    margin-left: calc(50% - 45dvw);
+    margin-right: calc(50% - 45dvw);
+    padding-block: 6px;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 6%,
+        rgba(0, 0, 0, 0.35) 12%,
+        rgba(0, 0, 0, 0.65) 18%,
+        #000 26%,
+        #000 74%,
+        rgba(0, 0, 0, 0.65) 82%,
+        rgba(0, 0, 0, 0.35) 88%,
+        rgba(0, 0, 0, 0.12) 94%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.12) 6%,
+        rgba(0, 0, 0, 0.35) 12%,
+        rgba(0, 0, 0, 0.65) 18%,
+        #000 26%,
+        #000 74%,
+        rgba(0, 0, 0, 0.65) 82%,
+        rgba(0, 0, 0, 0.35) 88%,
+        rgba(0, 0, 0, 0.12) 94%,
+        transparent 100%
+    );
 }
 
 .logo-marquee__row {
     display: flex;
     overflow: hidden;
+    padding-block: 6px;
+    margin-block: -6px;
 }
 
 .logo-marquee__track {
@@ -2122,6 +2149,8 @@ body.video-lightbox-open {
 }
 
 .logo-wall__item:hover {
+    position: relative;
+    z-index: 2;
     transform: translateY(-4px);
     box-shadow: var(--shadow-soft);
 }

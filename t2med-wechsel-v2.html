@@ -94,7 +94,10 @@
              1. Hero
              ===================================================== -->
         <section class="lp-hero" id="hero" aria-labelledby="lp-hero-title">
-            <div class="lp-hero__bg" aria-hidden="true"></div>
+            <div class="lp-hero__bg" aria-hidden="true">
+                <div class="lp-hero__blur"></div>
+                <canvas class="lp-hero__particles" id="hero-particles"></canvas>
+            </div>
             <div class="container">
                 <div class="lp-hero__content" data-animate>
                     <span class="eyebrow lp-hero__eyebrow">T2med &amp; Praxis-IT im Raum Karlsruhe</span>
@@ -102,7 +105,7 @@
                         Stressfrei zu T2med wechseln &ndash; <span class="headline-bold">mit Praxis-IT aus einer Hand.</span>
                     </h1>
                     <p class="lp-hero__sub">
-                        Die netzwerft begleitet Arztpraxen beim Softwarewechsel, bei IT-Modernisierung,
+                        die netzwerft begleitet Arztpraxen beim Softwarewechsel, bei IT-Modernisierung,
                         Telefonie und laufender Betreuung &ndash; klar geplant, pers&ouml;nlich begleitet und
                         auf den Praxisalltag abgestimmt.
                     </p>
@@ -793,6 +796,7 @@
     <script src="js/lenis.min.js" defer></script>
     <script src="js/scroll-smooth.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/hero-particles.js" defer></script>
     <script>
         // Inline-Vorqualifizierung: Chip-Auswahl (Single-Select je Gruppe)
         (() => {

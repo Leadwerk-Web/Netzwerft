@@ -99,52 +99,120 @@
         return arr;
     }
 
-    /** Ärzte + Gewerbe gleichmäßig im Band verteilen, kleine Kategorien einstreuen */
-    function mixAllReferences(items) {
+    function bucketByCategory(items) {
         const buckets = { aerzte: [], gewerbe: [], zahn: [], radiologie: [] };
         items.forEach((entry) => {
             if (buckets[entry.category]) buckets[entry.category].push(entry);
         });
+        Object.keys(buckets).forEach((key) => shuffleInPlace(buckets[key]));
+        return buckets;
+    }
 
-        shuffleInPlace(buckets.aerzte);
-        shuffleInPlace(buckets.gewerbe);
-        shuffleInPlace(buckets.zahn);
-        shuffleInPlace(buckets.radiologie);
+    /** Seltene Kategorien zuerst, damit sie den meisten Abstand bekommen */
+    function sparseFirst(a, b) {
+        const rank = { radiologie: 0, zahn: 1, gewerbe: 2, aerzte: 3 };
+        return (rank[a.category] ?? 9) - (rank[b.category] ?? 9);
+    }
 
-        const mixed = [];
-        let ai = 0;
-        let gi = 0;
-        const total = buckets.aerzte.length + buckets.gewerbe.length;
+    function minDistanceToCategory(list, index, category) {
+        let min = Infinity;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].category !== category) continue;
+            min = Math.min(min, Math.abs(i - index));
+        }
+        return min;
+    }
 
-        if (total > 0 && buckets.gewerbe.length > 0) {
-            const step = total / buckets.gewerbe.length;
-            let nextG = step * 0.5;
+    /**
+     * Basis (meist Ärzte) mit sparse Items so füllen, dass gleiche Kategorien
+     * möglichst nie nebeneinander liegen und maximal verteilt sind.
+     */
+    function weaveIntoBase(base, sparse) {
+        const result = base.slice();
+        const ordered = sparse.slice().sort(sparseFirst);
 
-            for (let pos = 0; pos < total; pos++) {
-                if (gi < buckets.gewerbe.length && pos >= Math.round(nextG)) {
-                    mixed.push(buckets.gewerbe[gi++]);
-                    nextG += step;
-                } else if (ai < buckets.aerzte.length) {
-                    mixed.push(buckets.aerzte[ai++]);
-                } else if (gi < buckets.gewerbe.length) {
-                    mixed.push(buckets.gewerbe[gi++]);
+        ordered.forEach((entry) => {
+            if (!result.length) {
+                result.push(entry);
+                return;
+            }
+
+            let bestIndex = result.length;
+            let bestScore = -Infinity;
+
+            for (let i = 0; i <= result.length; i++) {
+                const left = result[i - 1];
+                const right = result[i];
+                if (left?.category === entry.category) continue;
+                if (right?.category === entry.category) continue;
+
+                const dist = minDistanceToCategory(result, i, entry.category);
+                // Bevorzuge Mitte der Lücken + Abstand zur eigenen Kategorie
+                const edgePenalty = i === 0 || i === result.length ? 0.25 : 0;
+                const score = dist * 10 + (1 - Math.abs(i - result.length / 2) / (result.length + 1)) - edgePenalty;
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestIndex = i;
                 }
             }
-        } else {
-            mixed.push(...buckets.aerzte, ...buckets.gewerbe);
-        }
 
-        const extras = [...buckets.zahn, ...buckets.radiologie];
-        shuffleInPlace(extras);
-        extras.forEach((entry, i) => {
-            const index = Math.min(
-                mixed.length,
-                Math.round(((i + 1) / (extras.length + 1)) * mixed.length) + i
-            );
-            mixed.splice(index, 0, entry);
+            // Fallback, falls nur noch Nachbarschaft zu eigener Kategorie möglich
+            if (bestScore === -Infinity) {
+                bestIndex = Math.round(result.length / 2);
+            }
+
+            result.splice(bestIndex, 0, entry);
         });
 
-        return mixed;
+        return result;
+    }
+
+    /** Endlosschleife: erste/letzte Kachel derselben Rare-Kategorie vermeiden */
+    function avoidLoopClash(row) {
+        if (row.length < 3) return row;
+        const rare = { radiologie: true, gewerbe: true, zahn: true };
+        const rotated = row.slice();
+        for (let tries = 0; tries < rotated.length; tries++) {
+            const first = rotated[0];
+            const last = rotated[rotated.length - 1];
+            if (!(rare[first.category] && first.category === last.category)) {
+                return rotated;
+            }
+            rotated.push(rotated.shift());
+        }
+        return rotated;
+    }
+
+    /**
+     * Kategorien gleichmäßig auf Zeilen verteilen, innerhalb der Zeile weben.
+     * Verhindert Klumpen durch i % rowCount.
+     */
+    function buildBalancedRows(items, rowCount) {
+        const buckets = bucketByCategory(items);
+        const rows = Array.from({ length: rowCount }, () => ({
+            aerzte: [],
+            gewerbe: [],
+            zahn: [],
+            radiologie: []
+        }));
+
+        // Jede Kategorie round-robin auf Zeilen — so landen beide Radiologien selten in einer Zeile
+        ["aerzte", "gewerbe", "zahn", "radiologie"].forEach((cat) => {
+            buckets[cat].forEach((entry, i) => {
+                rows[i % rowCount][cat].push(entry);
+            });
+        });
+
+        return rows.map((rowBuckets) => {
+            const base = rowBuckets.aerzte;
+            const sparse = [
+                ...rowBuckets.radiologie,
+                ...rowBuckets.zahn,
+                ...rowBuckets.gewerbe
+            ];
+            return avoidLoopClash(weaveIntoBase(base, sparse));
+        });
     }
 
     function logoItemHTML(entry, hidden) {
@@ -191,23 +259,23 @@
         const legend = document.querySelector(".trust__legend");
         if (!wall) return;
 
-        const items =
+        const filtered =
             category === "all"
-                ? mixAllReferences(TRUST_REFERENCES)
+                ? TRUST_REFERENCES
                 : sortReferences(TRUST_REFERENCES.filter((entry) => entry.category === category));
 
         wall.classList.remove("logo-wall--marquee", "logo-wall--grid", "logo-wall--all");
         legend?.classList.toggle("is-hidden", category !== "all");
 
-        if (!items.length) {
+        if (!filtered.length) {
             wall.innerHTML =
                 '<p class="logo-wall__empty">F&uuml;r diese Kategorie sind noch keine Referenzlogos hinterlegt.</p>';
             return;
         }
 
-        if (shouldUseGrid(category, items.length)) {
+        if (shouldUseGrid(category, filtered.length)) {
             wall.classList.add("logo-wall--grid");
-            wall.innerHTML = items.map((entry) => logoItemHTML(entry, false)).join("");
+            wall.innerHTML = filtered.map((entry) => logoItemHTML(entry, false)).join("");
             return;
         }
 
@@ -217,8 +285,12 @@
             wall.classList.add("logo-wall--marquee");
         }
 
-        const rows = splitRows(items, rowCountFor(category, items.length));
-        const withClone = category === "all" || items.length > 10;
+        const rowCount = rowCountFor(category, filtered.length);
+        const rows =
+            category === "all"
+                ? buildBalancedRows(filtered, rowCount)
+                : splitRows(filtered, rowCount);
+        const withClone = category === "all" || filtered.length > 10;
         wall.innerHTML = rows.map((row, i) => buildRow(row, i, withClone)).join("");
     }
 

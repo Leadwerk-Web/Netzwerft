@@ -29,6 +29,9 @@
     var laufbandAktiv = false;
     var laufbandRaf = null;
     var laufbandLetzteZeit = 0;
+    var hoverPause = false;
+    var hoverLeaveTimer = null;
+    var HOVER_LEAVE_MS = 480;
     var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var dragAktiv = false;
@@ -157,10 +160,13 @@
         return slot * ANZEIGE_SCHRITT;
     }
 
-    function kachelTransform(physicalIndex, radius) {
+    function kachelTransform(physicalIndex, radius, isHover) {
         var visual = anzeigeWinkel(physicalIndex);
         var lokal = visual - gesamtDrehung;
-        return 'rotateY(' + lokal + 'deg) translateZ(' + radius + 'px)';
+        // Negativer Radius = nach hinten; Hover holt die Kachel Richtung Kamera
+        var z = radius + (isHover ? 320 : 0);
+        var scale = isHover ? ' scale(1.08)' : '';
+        return 'rotateY(' + lokal + 'deg) translateZ(' + z + 'px)' + scale;
     }
 
     /** Weiches Ein- und Auslaufen f?r fl?ssige Rotation */
@@ -221,7 +227,7 @@
     }
 
     function laufbandStarten() {
-        if (reducedMotion || dragAktiv || animiert || laufbandAktiv) return;
+        if (reducedMotion || dragAktiv || animiert || laufbandAktiv || hoverPause) return;
         laufbandAktiv = true;
         laufbandLetzteZeit = 0;
         gleis.classList.add('is-laufband');
@@ -229,7 +235,7 @@
     }
 
     function laufbandTick(ts) {
-        if (!laufbandAktiv || dragAktiv || animiert) {
+        if (!laufbandAktiv || dragAktiv || animiert || hoverPause) {
             laufbandStoppen();
             return;
         }
@@ -294,8 +300,10 @@
             var visual = anzeigeWinkel(physicalIndex);
             var sichtbar = slotAbs <= SICHTBAR + 0.55;
             var tiefe = Math.cos(visual * Math.PI / 180);
+            var isHover = kachel.classList.contains('is-hover');
+            var isSettle = kachel.classList.contains('is-hover-settle');
 
-            kachel.style.transform = kachelTransform(physicalIndex, radius);
+            kachel.style.transform = kachelTransform(physicalIndex, radius, isHover);
 
             kachel.classList.toggle('is-fokus', slotAbs < 0.45);
             kachel.classList.toggle('is-seite', offset !== 0 && sichtbar);
@@ -305,12 +313,18 @@
             kachel.classList.toggle('is-seite-rechts', sichtbar && offset > 0);
             kachel.classList.toggle('is-verdeckt', !sichtbar);
 
-            kachel.style.zIndex = String(Math.round(Math.max(0, tiefe) * 1000));
+            kachel.style.zIndex = (isHover || isSettle)
+                ? '9999'
+                : String(Math.round(Math.max(0, tiefe) * 1000));
             kachel.setAttribute('aria-hidden', sichtbar ? 'false' : 'true');
             kachel.tabIndex = slotAbs < 0.45 ? 0 : -1;
 
             if (!sichtbar) {
                 kachel.style.setProperty('--nw-opacity', '0');
+            } else if (isHover) {
+                kachel.style.setProperty('--nw-opacity', '1');
+            } else if (root.classList.contains('is-hover-pause')) {
+                kachel.style.setProperty('--nw-opacity', '0.55');
             } else if (slotAbs < 0.5) {
                 kachel.style.setProperty('--nw-opacity', String(Math.max(0.88, 1 - slotAbs * 0.18)));
             } else if (slotAbs < 1.5) {
@@ -540,11 +554,123 @@
 
     kacheln.forEach(function (kachel, i) {
         kachel.style.setProperty('--nw-index', String(i));
-        kachel.addEventListener('click', function () {
+        kachel.addEventListener('click', function (e) {
+            if (e.target && e.target.closest && e.target.closest('.nw-karussell__kachel-link')) {
+                return;
+            }
             if (dragBewegt) return;
             if (Math.abs(slotKontinu(i)) >= 0.45) geheZu(i, { einSchritt: true });
         });
     });
+
+    function kachelUnterPunkt(x, y) {
+        var treffer = [];
+        var i;
+        var kachel;
+        var rect;
+        var z;
+
+        for (i = 0; i < kacheln.length; i++) {
+            kachel = kacheln[i];
+            if (kachel.classList.contains('is-verdeckt')) continue;
+
+            rect = kachel.getBoundingClientRect();
+            if (
+                x < rect.left ||
+                x > rect.right ||
+                y < rect.top ||
+                y > rect.bottom
+            ) {
+                continue;
+            }
+
+            z = parseInt(kachel.style.zIndex, 10);
+            if (isNaN(z)) z = 0;
+
+            treffer.push({
+                kachel: kachel,
+                z: z,
+                area: rect.width * rect.height
+            });
+        }
+
+        if (!treffer.length) return null;
+
+        treffer.sort(function (a, b) {
+            if (b.z !== a.z) return b.z - a.z;
+            return a.area - b.area;
+        });
+
+        return treffer[0].kachel;
+    }
+
+    function hoverLeaveTimerLoeschen() {
+        if (!hoverLeaveTimer) return;
+        clearTimeout(hoverLeaveTimer);
+        hoverLeaveTimer = null;
+    }
+
+    function hoverSettleBeenden() {
+        kacheln.forEach(function (kachel) {
+            kachel.classList.remove('is-hover-settle');
+        });
+    }
+
+    function hoverZielSetzen(ziel) {
+        hoverLeaveTimerLoeschen();
+
+        var vorherHover = null;
+        kacheln.forEach(function (kachel) {
+            if (kachel.classList.contains('is-hover')) vorherHover = kachel;
+            kachel.classList.toggle('is-hover', kachel === ziel);
+            if (ziel && kachel !== ziel) kachel.classList.remove('is-hover-settle');
+        });
+
+        root.classList.toggle('is-hover-pause', !!ziel);
+
+        if (ziel) {
+            hoverSettleBeenden();
+            ziel.classList.remove('is-hover-settle');
+            hoverPause = true;
+            laufbandStoppen();
+            zustandAktualisieren();
+            return;
+        }
+
+        if (vorherHover) {
+            vorherHover.classList.add('is-hover-settle');
+        }
+
+        hoverPause = false;
+        zustandAktualisieren();
+
+        if (!dragAktiv && !animiert) {
+            hoverLeaveTimer = setTimeout(function () {
+                hoverLeaveTimer = null;
+                hoverSettleBeenden();
+                zustandAktualisieren();
+                if (!hoverPause && !dragAktiv && !animiert) {
+                    laufbandStarten();
+                }
+            }, HOVER_LEAVE_MS);
+        }
+    }
+
+    function hoverAusEvent(e) {
+        if (dragAktiv) return;
+        if (e.pointerType && e.pointerType !== 'mouse') return;
+        hoverZielSetzen(kachelUnterPunkt(e.clientX, e.clientY));
+    }
+
+    buehne.addEventListener('pointermove', hoverAusEvent);
+    buehne.addEventListener('mousemove', hoverAusEvent);
+
+    function hoverVerlassen() {
+        hoverZielSetzen(null);
+    }
+
+    buehne.addEventListener('pointerleave', hoverVerlassen);
+    buehne.addEventListener('mouseleave', hoverVerlassen);
 
     buehne.addEventListener('pointerdown', dragStart);
     buehne.addEventListener('pointermove', dragMove);

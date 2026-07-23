@@ -276,28 +276,11 @@
     inset: 0;
     background: linear-gradient(
         180deg,
-        rgba(0, 69, 98, 0.28) 0%,
-        rgba(0, 69, 98, 0.2) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-.nw-karussell__kachel.is-fokus .nw-karussell__kachel-media::after {
-    background: linear-gradient(
-        180deg,
-        rgba(0, 69, 98, 0.18) 0%,
-        rgba(0, 69, 98, 0.12) 100%
-    );
-}
-
-.nw-karussell__kachel.is-seite .nw-karussell__kachel-media::after,
-.nw-karussell__kachel.is-seite-aussen .nw-karussell__kachel-media::after {
-    background: linear-gradient(
-        180deg,
         rgba(0, 69, 98, 0.34) 0%,
         rgba(0, 69, 98, 0.26) 100%
     );
+    pointer-events: none;
+    z-index: 1;
 }
 
 .nw-karussell__kachel-symbol {
