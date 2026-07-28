@@ -12,9 +12,10 @@
 
     /* ---------- Header: Scroll-Zustand ---------- */
     const header = document.querySelector(".site-header");
+    const solidHeader = header?.dataset.solidHeader === "true";
     const setHeaderState = () => {
         if (!header) return;
-        header.classList.toggle("is-scrolled", window.scrollY > 40);
+        header.classList.toggle("is-scrolled", solidHeader || window.scrollY > 40);
     };
     setHeaderState();
     window.addEventListener("scroll", setHeaderState, { passive: true });

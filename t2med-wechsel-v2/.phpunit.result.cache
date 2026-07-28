@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"PackageTest::test_manifest_contains_only_expected_pages":0.005,"PackageTest::test_manifest_checksums_match":0.009,"PackageTest::test_legacy_acm_assets_are_absent":0.002}}

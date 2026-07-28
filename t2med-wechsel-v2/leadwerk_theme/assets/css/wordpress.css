@@ -1,0 +1,158 @@
+@font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("../fonts/montserrat-latin-ext.woff2") format("woff2");
+}
+
+.t2med__visual img {
+    object-position: var(--leadwerk-image-focus, 50% 50%);
+}
+
+.brand__text {
+    color: var(--ink, #004562);
+    font: 700 1.25rem/1 var(--font-heading);
+}
+
+.special-page {
+    position: relative;
+    min-height: 72vh;
+    padding: calc(var(--nav-h) + 64px) 0 96px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #003a54, #006781);
+}
+
+.special-page--legal {
+    color: var(--ink);
+    background: var(--surface, #f4f8fa);
+}
+
+.special-page__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.special-page__card {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: var(--radius-xl);
+    color: #fff;
+    background: rgba(0, 47, 67, .8);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(18px);
+}
+
+.special-page--legal .special-page__card {
+    color: var(--ink);
+    background: #fff;
+}
+
+.special-page__card h1 {
+    margin: .5rem 0 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(2.3rem, 7vw, 5rem);
+    line-height: 1.02;
+}
+
+.special-page:not(.special-page--legal) .special-page__card h1 {
+    color: #fff;
+}
+
+.special-page:not(.special-page--legal) .eyebrow {
+    color: #43d1ef;
+}
+
+.special-page:not(.special-page--legal) .btn--primary {
+    border-color: #31c3df;
+    color: #fff;
+    background: #007a9e;
+}
+
+.special-page--legal .special-page__card h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.special-page__lead {
+    max-width: 720px;
+    margin-bottom: 2rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height: 1.65;
+}
+
+.legal-content {
+    line-height: 1.72;
+}
+
+.legal-content h2 {
+    margin: 2.3rem 0 .7rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+
+.legal-content h3 {
+    margin: 1.7rem 0 .5rem;
+}
+
+.legal-content a {
+    color: #006f9b;
+    text-decoration: underline;
+    text-underline-offset: .18em;
+}
+
+.leadwerk-wpforms .wpforms-container {
+    margin: 1rem 0 0;
+}
+
+.leadwerk-wpforms .wpforms-field-label,
+.leadwerk-wpforms .wpforms-field-sublabel {
+    color: var(--ink, #003047);
+}
+
+.leadwerk-wpforms .leadwerk-privacy-link {
+    color: #006f9b !important;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: .1em;
+    text-underline-offset: .18em;
+}
+
+.leadwerk-wpforms .leadwerk-privacy-link:hover,
+.leadwerk-wpforms .leadwerk-privacy-link:focus-visible {
+    color: #004f73 !important;
+}
+
+.leadwerk-wpforms input,
+.leadwerk-wpforms textarea,
+.leadwerk-wpforms select {
+    border-radius: 10px !important;
+}
+
+.leadwerk-wpforms button[type="submit"] {
+    min-height: 48px !important;
+    padding: 0 24px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    color: #fff !important;
+    background: #006f93 !important;
+}
+
+.modal__dialog {
+    max-height: min(90vh, 900px);
+    overflow-y: auto;
+}
+
+@media (max-width: 700px) {
+    .special-page {
+        padding-top: calc(var(--nav-h) + 30px);
+    }
+
+    .special-page__card {
+        border-radius: var(--radius-lg);
+    }
+}
