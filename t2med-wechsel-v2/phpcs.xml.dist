@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset name="Leadwerk T2med WordPress">
+	<description>WordPress Coding Standards with project-scoped exclusions for documentation and intentional local filesystem work.</description>
+
+	<file>leadwerk-fields</file>
+	<file>leadwerk-wpml-clone</file>
+	<file>leadwerk_importer</file>
+	<file>leadwerk_theme</file>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<rule ref="WordPress">
+		<exclude name="Squiz.Commenting"/>
+		<exclude name="Universal.NamingConventions.NoReservedKeywordParameterNames"/>
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+		<exclude name="WordPress.DB.SlowDBQuery"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
+		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
+		<exclude name="WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents"/>
+	</rule>
+</ruleset>

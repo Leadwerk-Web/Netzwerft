@@ -1,0 +1,52 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "login": true,
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "plugins": [
+    {
+      "resource": "wordpress.org/plugins",
+      "slug": "wpforms-lite"
+    }
+  ],
+  "steps": [
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_LOG": true,
+        "WP_DEBUG_DISPLAY": true,
+        "WP_DISABLE_FATAL_ERROR_HANDLER": true
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginName": "Leadwerk Fields",
+      "pluginPath": "leadwerk-fields/leadwerk-fields.php"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginName": "Leadwerk WPML Clone",
+      "pluginPath": "leadwerk-wpml-clone/leadwerk-wpml-clone.php"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginName": "Leadwerk Importer",
+      "pluginPath": "leadwerk_importer/leadwerk-importer.php"
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "leadwerk_theme"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; wp_set_current_user(1); $result = Leadwerk_Importer::start(false, false); while (isset($result['status']) && 'running' === $result['status']) { $result = Leadwerk_Importer::run_next(); } update_option('leadwerk_playground_smoke_result', $result, false); if (!isset($result['status']) || 'complete' !== $result['status']) { throw new RuntimeException('Leadwerk import smoke test failed: ' . wp_json_encode($result)); }"
+    }
+  ]
+}

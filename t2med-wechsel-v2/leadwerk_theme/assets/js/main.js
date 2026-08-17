@@ -12,9 +12,10 @@
 
     /* ---------- Header: Scroll-Zustand ---------- */
     const header = document.querySelector(".site-header");
+    const solidHeader = header?.dataset.solidHeader === "true";
     const setHeaderState = () => {
         if (!header) return;
-        header.classList.toggle("is-scrolled", window.scrollY > 40);
+        header.classList.toggle("is-scrolled", solidHeader || window.scrollY > 40);
     };
     setHeaderState();
     window.addEventListener("scroll", setHeaderState, { passive: true });
@@ -58,15 +59,6 @@
         nav.querySelectorAll("a, button").forEach((item) => {
             item.addEventListener("click", () => closeMenu());
         });
-
-    // Desktop-Untermenü: Escape schließt Fokus im Nav-Item
-    document.querySelectorAll(".site-nav__item--has-sub").forEach((item) => {
-        item.addEventListener("keydown", (e) => {
-            if (e.key !== "Escape") return;
-            const trigger = item.querySelector(":scope > .site-nav__link");
-            if (trigger) trigger.focus({ preventScroll: true });
-        });
-    });
 
     // Escape schließt Menü; bei Desktop-Breite offen halten
     document.addEventListener("keydown", (e) => {

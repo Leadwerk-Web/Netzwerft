@@ -1,0 +1,77 @@
+.leadwerk-fields {
+    display: grid;
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.leadwerk-field {
+    display: grid;
+    gap: 7px;
+}
+
+.leadwerk-field__label {
+    font-weight: 650;
+}
+
+.leadwerk-field input[type="text"],
+.leadwerk-field input[type="url"],
+.leadwerk-field input[type="email"],
+.leadwerk-field input[type="number"],
+.leadwerk-field textarea,
+.leadwerk-field select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.leadwerk-repeater {
+    display: grid;
+    gap: 10px;
+}
+
+.leadwerk-repeater__rows {
+    display: grid;
+    gap: 12px;
+}
+
+.leadwerk-repeater__row {
+    position: relative;
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+
+.leadwerk-repeater__toolbar {
+    text-align: right;
+}
+
+.leadwerk-image img {
+    display: block;
+    width: auto;
+    max-width: 280px;
+    max-height: 180px;
+    margin: 0 0 8px;
+    border-radius: 4px;
+}
+
+.leadwerk-page-reference {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) minmax(180px, 1fr);
+    gap: 8px;
+}
+
+.leadwerk-options {
+    padding: 20px;
+    border: 1px solid #c3c4c7;
+    background: #fff;
+}
+
+@media (max-width: 782px) {
+    .leadwerk-page-reference {
+        grid-template-columns: 1fr;
+    }
+}
+
