@@ -495,3 +495,197 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* ---------------------------------------------------------
+   Entwicklung / Orientierung — horizontaler Pfad + Wechselpanel
+   --------------------------------------------------------- */
+.about-path {
+    display: grid;
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.about-path__nav {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.about-path__nav::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 1.15rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nw-mint), var(--nw-mint-muted));
+    pointer-events: none;
+}
+
+.about-path__stop {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: center;
+}
+
+.about-path__stop:focus-visible {
+    outline: 2px solid var(--nw-mint);
+    outline-offset: 4px;
+    border-radius: var(--radius-lg);
+}
+
+.about-path__marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 999px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--nw-primary);
+    background: var(--nw-white);
+    border: 2px solid var(--nw-line-strong, var(--nw-line));
+    box-shadow: var(--shadow-soft);
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.about-path__stop.is-active .about-path__marker,
+.about-path__stop:hover .about-path__marker {
+    color: #fff;
+    background: var(--grad-primary);
+    border-color: transparent;
+    transform: scale(1.08);
+}
+
+.about-path__name {
+    font-family: var(--font-heading);
+    font-weight: 650;
+    font-size: 0.92rem;
+    line-height: 1.25;
+    color: var(--nw-ink-soft);
+}
+
+.about-path__stop.is-active .about-path__name {
+    color: var(--nw-primary);
+}
+
+.about-path__stage {
+    position: relative;
+    min-height: 16.5rem;
+}
+
+.about-path__panel {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--radius-xl);
+    background: var(--nw-white);
+    border: 1px solid var(--nw-line);
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition:
+        opacity 0.4s var(--ease-soft),
+        transform 0.4s var(--ease-soft),
+        visibility 0.4s;
+}
+
+.about-path__panel.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.about-path__kicker {
+    display: inline-block;
+    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.about-path__title {
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.65rem);
+    line-height: 1.25;
+    color: var(--nw-ink);
+}
+
+.about-path__text {
+    margin: 0 0 1.1rem;
+    max-width: 40rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.about-path__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-path__tags li {
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: var(--nw-surface);
+    border: 1px solid var(--nw-line);
+    font-size: 0.82rem;
+    color: var(--nw-ink-soft);
+}
+
+@media (max-width: 760px) {
+    .about-path__nav {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 0.35rem;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .about-path__nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .about-path__nav::before {
+        display: none;
+    }
+
+    .about-path__stop {
+        flex: 0 0 auto;
+        min-width: 6.5rem;
+        padding: 0.35rem;
+    }
+
+    .about-path__stage {
+        min-height: 18rem;
+    }
+}

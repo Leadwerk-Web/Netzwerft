@@ -1,0 +1,240 @@
+/* =========================================================
+   Wissen — Übersicht, Beitragsvorschau, Artikel
+   ========================================================= */
+
+.wissen-masthead {
+    position: relative;
+    padding: calc(5.75rem + env(safe-area-inset-top, 0px)) 0 clamp(2.5rem, 5vw, 3.5rem);
+    background: var(--grad-dark);
+    color: #fff;
+    overflow: hidden;
+}
+
+.wissen-masthead .eyebrow {
+    color: var(--nw-mint);
+}
+
+.wissen-masthead__title {
+    margin: 0 0 0.85rem;
+    max-width: 22ch;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: clamp(1.85rem, 1.35rem + 2vw, 2.75rem);
+    line-height: 1.15;
+}
+
+.wissen-masthead__intro {
+    margin: 0;
+    max-width: 38rem;
+    color: var(--nw-on-dark-soft);
+    font-size: 1.05rem;
+    line-height: 1.55;
+}
+
+.wissen-masthead__crumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.55rem;
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.88rem;
+    color: var(--nw-on-dark-muted);
+}
+
+.wissen-masthead__crumb a {
+    color: var(--nw-on-dark-soft);
+    text-decoration: none;
+}
+
+.wissen-masthead__crumb a:hover,
+.wissen-masthead__crumb a:focus-visible {
+    color: #fff;
+}
+
+.wissen-masthead__crumb [aria-current="page"] {
+    color: var(--nw-on-dark);
+}
+
+.wissen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.35rem);
+}
+
+.wissen-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--nw-line);
+    background: var(--nw-white);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: transform 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft),
+        border-color 0.3s ease;
+}
+
+.wissen-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--nw-line-strong);
+}
+
+.wissen-card__link {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: inherit;
+    text-decoration: none;
+}
+
+.wissen-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--nw-surface);
+}
+
+.wissen-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s var(--ease-soft);
+}
+
+.wissen-card:hover .wissen-card__media img {
+    transform: scale(1.04);
+}
+
+.wissen-card__badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: var(--radius-pill);
+    background: rgba(0, 39, 60, 0.78);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.wissen-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.55rem;
+    padding: 1.15rem 1.2rem 1.3rem;
+}
+
+.wissen-card__meta {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.wissen-card__title {
+    margin: 0;
+    font-size: 1.12rem;
+    line-height: 1.3;
+    color: var(--nw-ink);
+}
+
+.wissen-card__text {
+    margin: 0;
+    flex: 1;
+    color: var(--nw-ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.wissen-card__more {
+    margin-top: 0.35rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--nw-primary);
+}
+
+.wissen-preview__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.wissen-article {
+    max-width: 42rem;
+    margin: 0 auto;
+}
+
+.wissen-article__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0 0 1.25rem;
+    font-size: 0.9rem;
+    color: var(--nw-ink-muted);
+}
+
+.wissen-article__meta strong {
+    color: var(--nw-accent);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.wissen-article__note {
+    margin: 0 0 1.75rem;
+    padding: 1rem 1.15rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--nw-line);
+    border-left: 3px solid var(--nw-primary);
+    background: var(--nw-surface);
+    color: var(--nw-ink-soft);
+    line-height: 1.55;
+}
+
+.wissen-article__lead {
+    margin: 0 0 1.5rem;
+    font-size: 1.12rem;
+    line-height: 1.55;
+    color: var(--nw-ink);
+}
+
+.wissen-article h2 {
+    margin: 1.75rem 0 0.75rem;
+    font-size: 1.2rem;
+}
+
+.wissen-article ul {
+    margin: 0 0 1.5rem;
+    padding-left: 1.15rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.55;
+}
+
+.wissen-article li + li {
+    margin-top: 0.45rem;
+}
+
+.wissen-article__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--nw-line);
+}
+
+@media (max-width: 900px) {
+    .wissen-grid {
+        grid-template-columns: 1fr;
+        max-width: 26rem;
+        margin-inline: auto;
+    }
+}

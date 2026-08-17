@@ -208,103 +208,6 @@
 }
 
 /* ---------------------------------------------------------
-   Timeline — Was muss wann entschieden werden
-   --------------------------------------------------------- */
-.pg-timeline {
-    display: grid;
-    gap: 0;
-    position: relative;
-}
-
-.pg-timeline::before {
-    content: "";
-    position: absolute;
-    left: 1.15rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--nw-mint), var(--nw-mint-muted), transparent);
-    pointer-events: none;
-}
-
-.pg-timeline__item {
-    position: relative;
-    display: grid;
-    grid-template-columns: 2.4rem 1fr;
-    gap: 1rem;
-    padding: 0 0 clamp(1.5rem, 3vw, 2rem);
-}
-
-.pg-timeline__item:last-child {
-    padding-bottom: 0;
-}
-
-.pg-timeline__marker {
-    position: relative;
-    z-index: 1;
-    width: 2.35rem;
-    height: 2.35rem;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
-    color: #fff;
-    background: var(--grad-primary);
-    box-shadow: 0 10px 22px -12px rgba(0, 69, 98, 0.7);
-}
-
-.pg-timeline__body {
-    padding: 1.2rem 1.35rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--nw-line);
-    background: var(--nw-white);
-    box-shadow: var(--shadow-soft);
-}
-
-.pg-timeline__phase {
-    display: inline-block;
-    margin-bottom: 0.45rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--nw-accent);
-}
-
-.pg-timeline__title {
-    margin: 0 0 0.55rem;
-    font-size: 1.2rem;
-}
-
-.pg-timeline__text {
-    margin: 0 0 0.9rem;
-    color: var(--nw-ink-soft);
-    line-height: 1.55;
-}
-
-.pg-timeline__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.pg-timeline__tags li {
-    padding: 0.3rem 0.65rem;
-    border-radius: 999px;
-    background: var(--nw-surface);
-    border: 1px solid var(--nw-line);
-    font-size: 0.82rem;
-    color: var(--nw-ink-soft);
-}
-
-/* ---------------------------------------------------------
    Checklisten-Teaser
    --------------------------------------------------------- */
 .pg-checklist {
@@ -505,10 +408,6 @@
 
     .lp-steps--6 {
         grid-template-columns: 1fr;
-    }
-
-    .pg-timeline::before {
-        left: 1rem;
     }
 
     .pg-planning__visual {

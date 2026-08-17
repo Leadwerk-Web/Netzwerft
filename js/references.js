@@ -295,8 +295,14 @@
     }
 
     function initTrustReferences() {
+        const wall = document.getElementById("logo-wall");
+        if (!wall) return;
+
         const tabs = document.querySelectorAll(".trust__tab");
-        if (!tabs.length) return;
+        if (!tabs.length) {
+            renderTrustLogos("all");
+            return;
+        }
 
         tabs.forEach((tab) => {
             tab.addEventListener("click", () => {
