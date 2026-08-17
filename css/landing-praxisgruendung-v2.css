@@ -1,0 +1,536 @@
+/* =========================================================
+   Praxisgründung & Neubezug Landing — V2
+   Baut auf landing-t2med-v2.css / styles-v2.css auf
+   Accent #007A9E · Light Blue #D7F4FA · Primary #004562
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Hero — Neugruendung_hero (T2med-Visual-Pattern)
+   --------------------------------------------------------- */
+.lp-hero--pg .pg-hero-visual {
+    top: auto;
+    bottom: -10%;
+    height: 88%;
+    aspect-ratio: 1672 / 941;
+    width: auto;
+    max-width: min(58vw, 42rem);
+    z-index: 1;
+}
+
+.lp-hero--pg .pg-hero-visual img {
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: center right;
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+    .lp-hero--pg .pg-hero-visual {
+        animation: lp-hero-visual-in 2.8s cubic-bezier(0.16, 0.84, 0.24, 1) 0.35s both;
+    }
+}
+
+.lp-hero--pg .lp-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .lp-hero--pg .pg-hero-visual {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        animation: none;
+        transform: none;
+        height: auto;
+        width: 100%;
+        max-width: min(100%, 28rem);
+        aspect-ratio: 1672 / 941;
+        margin: 2.5rem auto 0;
+        overflow: visible;
+        pointer-events: auto;
+    }
+
+    .lp-hero--pg .pg-hero-visual img {
+        position: static;
+        width: 100%;
+        height: auto;
+        transform: none;
+        will-change: auto;
+    }
+}
+
+/* ---------------------------------------------------------
+   Leistungs-Bento (8 Karten, 1 Feature)
+   --------------------------------------------------------- */
+.pg-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+
+.pg-bento .card {
+    margin: 0;
+}
+
+.pg-bento .card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    color: var(--nw-accent);
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.pg-bento .card__link:hover {
+    color: #fff;
+}
+
+.pg-bento .card__link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.section--dark .pg-bento .card__text a {
+    color: var(--nw-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.section--dark .pg-bento .card__text a:hover {
+    color: #fff;
+}
+
+/* Bei 3er-Raster: Verbindungslinie am Zeilenende unterdrücken */
+.lp-steps--6 .step:nth-child(3n)::after {
+    display: none;
+}
+
+/* ---------------------------------------------------------
+   Planung mit Gewerken — Split + Foto + Callout-Kachel
+   --------------------------------------------------------- */
+.pg-planning {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+}
+
+.pg-planning__visual {
+    position: relative;
+    margin-right: clamp(0.85rem, 2.8vw, 1.85rem);
+    margin-bottom: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+
+.pg-planning__media {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--nw-line);
+    box-shadow: var(--shadow-soft);
+    aspect-ratio: 4 / 3;
+    background: var(--nw-surface);
+}
+
+.pg-planning__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pg-planning__checklist {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.pg-planning__checklist li {
+    position: relative;
+    padding-left: 1.55rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.5;
+}
+
+.pg-planning__checklist li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--nw-accent);
+    box-shadow: 0 0 0 3px var(--nw-mint-muted);
+}
+
+.pg-planning__callout {
+    position: absolute;
+    z-index: 2;
+    right: clamp(-1.25rem, -3vw, -0.7rem);
+    top: 78%;
+    width: min(90%, 21.5rem);
+    padding: 1.2rem 1.3rem 1.25rem;
+    border-radius: var(--radius-lg);
+    background: var(--nw-accent-soft);
+    border: 1px solid var(--nw-line-strong);
+    box-shadow: var(--shadow-card);
+}
+
+.pg-planning__callout strong {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--nw-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem);
+    line-height: 1.35;
+}
+
+.pg-planning__callout p {
+    margin: 0;
+    color: var(--nw-ink-soft);
+    line-height: 1.55;
+    font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------
+   Prozess — 6 Schritte
+   --------------------------------------------------------- */
+.lp-steps--6 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---------------------------------------------------------
+   Timeline — Was muss wann entschieden werden
+   --------------------------------------------------------- */
+.pg-timeline {
+    display: grid;
+    gap: 0;
+    position: relative;
+}
+
+.pg-timeline::before {
+    content: "";
+    position: absolute;
+    left: 1.15rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--nw-mint), var(--nw-mint-muted), transparent);
+    pointer-events: none;
+}
+
+.pg-timeline__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 1rem;
+    padding: 0 0 clamp(1.5rem, 3vw, 2rem);
+}
+
+.pg-timeline__item:last-child {
+    padding-bottom: 0;
+}
+
+.pg-timeline__marker {
+    position: relative;
+    z-index: 1;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: var(--grad-primary);
+    box-shadow: 0 10px 22px -12px rgba(0, 69, 98, 0.7);
+}
+
+.pg-timeline__body {
+    padding: 1.2rem 1.35rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--nw-line);
+    background: var(--nw-white);
+    box-shadow: var(--shadow-soft);
+}
+
+.pg-timeline__phase {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.pg-timeline__title {
+    margin: 0 0 0.55rem;
+    font-size: 1.2rem;
+}
+
+.pg-timeline__text {
+    margin: 0 0 0.9rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.55;
+}
+
+.pg-timeline__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pg-timeline__tags li {
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--nw-surface);
+    border: 1px solid var(--nw-line);
+    font-size: 0.82rem;
+    color: var(--nw-ink-soft);
+}
+
+/* ---------------------------------------------------------
+   Checklisten-Teaser
+   --------------------------------------------------------- */
+.pg-checklist {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.pg-checklist__preview {
+    margin: 1.4rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.pg-checklist__preview li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    color: var(--nw-on-dark-soft);
+    line-height: 1.45;
+}
+
+.pg-checklist__preview svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+    color: var(--nw-accent);
+}
+
+.pg-checklist__panel {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: var(--radius-xl);
+    background: var(--nw-surface-card);
+    border: 1px solid var(--nw-line);
+    box-shadow: var(--shadow-card);
+}
+
+.pg-checklist__panel-label {
+    display: block;
+    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.pg-checklist__panel h3 {
+    margin: 0 0 0.7rem;
+    color: var(--nw-ink);
+    font-size: clamp(1.2rem, 1.05rem + 0.4vw, 1.4rem);
+}
+
+.pg-checklist__panel p {
+    margin: 0 0 1.35rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.55;
+}
+
+.pg-checklist__panel .btn {
+    margin-bottom: 20px;
+}
+
+.pg-checklist__note {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--nw-ink-muted);
+}
+
+/* ---------------------------------------------------------
+   Case-/Trust-Placeholder (ohne erfundene Referenzen)
+   --------------------------------------------------------- */
+.pg-case {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: stretch;
+    margin-top: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.pg-case__visual {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--nw-line);
+    min-height: 16rem;
+    background: var(--nw-surface);
+}
+
+.pg-case__visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pg-case__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--nw-line);
+    background: var(--nw-white);
+    box-shadow: var(--shadow-soft);
+}
+
+.pg-case__eyebrow {
+    display: block;
+    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.pg-case__title {
+    margin: 0 0 0.7rem;
+    font-size: clamp(1.2rem, 1rem + 0.55vw, 1.5rem);
+}
+
+.pg-case__text {
+    margin: 0;
+    color: var(--nw-ink-soft);
+    line-height: 1.6;
+}
+
+.pg-case__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pg-case__meta li {
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: var(--nw-surface);
+    border: 1px solid var(--nw-line);
+    font-size: 0.82rem;
+    color: var(--nw-ink-soft);
+}
+
+.pg-case__meta a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 650;
+}
+
+.pg-case__meta a:hover {
+    color: var(--nw-primary);
+}
+
+/* ---------------------------------------------------------
+   Responsiv
+   --------------------------------------------------------- */
+@media (max-width: 1100px) {
+    .pg-bento {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 980px) {
+    .pg-planning,
+    .pg-checklist,
+    .pg-case {
+        grid-template-columns: 1fr;
+    }
+
+    .pg-planning__visual {
+        margin-right: 0.85rem;
+        margin-bottom: 2.75rem;
+        max-width: 36rem;
+    }
+
+    .pg-planning__callout {
+        right: -0.55rem;
+        top: 80%;
+        width: min(92%, 21rem);
+    }
+
+    .lp-steps--6 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .pg-bento {
+        grid-template-columns: 1fr;
+    }
+
+    .lp-steps--6 {
+        grid-template-columns: 1fr;
+    }
+
+    .pg-timeline::before {
+        left: 1rem;
+    }
+
+    .pg-planning__visual {
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .pg-planning__callout {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        margin-top: -1.75rem;
+    }
+
+    .lp-hero--pg .lp-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .lp-hero--pg .lp-hero__actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

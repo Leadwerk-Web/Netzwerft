@@ -129,7 +129,14 @@
 
             <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
                 <ul class="site-nav__list">
-                    <li><a class="site-nav__link" href="#leistungen">Leistungen</a></li>
+                    <li class="site-nav__item site-nav__item--has-sub">
+                        <a class="site-nav__link" href="#leistungen">Leistungen</a>
+                        <ul class="site-nav__sub" aria-label="Leistungen">
+                            <li>
+                                <a class="site-nav__sub-link" href="praxisgruendung-it.html">Praxisgr&uuml;ndung &amp; Neubezug</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a class="site-nav__link" href="#praxis-it">Praxis-IT</a></li>
                     <li><a class="site-nav__link" href="#t2med">T2med</a></li>
                     <li><a class="site-nav__link" href="#referenzen">Referenzen</a></li>
@@ -644,8 +651,7 @@
                         <p class="segment-card__text">
                             Komplette technische Ausstattung von Anfang an richtig geplant.
                         </p>
-                        <!-- TODO: Zielseite /praxisgruendung-it/ anlegen. -->
-                        <a class="link-arrow stretched-link" href="#kontakt" data-cta="segment-gruendung">
+                        <a class="link-arrow stretched-link" href="praxisgruendung-it.html" data-cta="segment-gruendung">
                             Mehr erfahren
                             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </a>
@@ -715,7 +721,7 @@
 
                 <div class="stat-row">
                     <div class="stat" data-animate>
-                        <div class="stat__num">200+</div>
+                        <div class="stat__num">300+</div>
                         <div class="stat__label">betreute Arztpraxen</div>
                     </div>
                     <div class="stat" data-animate>
@@ -822,6 +828,8 @@
                                 Ja. Wir planen und realisieren die komplette technische Ausstattung einer
                                 neuen Praxis &ndash; von Netzwerk und Telefonie &uuml;ber Praxissoftware bis Security &ndash;
                                 aufeinander abgestimmt und termingerecht zum Praxisstart.
+                                Mehr dazu auf der Seite
+                                <a href="praxisgruendung-it.html">Praxisgr&uuml;ndung &amp; Neubezug</a>.
                             </div>
                         </div>
                     </div>
@@ -962,6 +970,7 @@
                     <h3>Leistungen</h3>
                     <ul class="footer__list">
                         <!-- TODO: Zielseiten anlegen bzw. auf bestehende Pfade mappen. -->
+                        <li><a href="praxisgruendung-it.html">Praxisgr&uuml;ndung &amp; Neubezug</a></li>
                         <li><a href="#t2med">T2med Karlsruhe</a></li>
                         <li><a href="#praxis-it">Praxis-IT Karlsruhe</a></li>
                         <li><a href="#leistungen">Telefonie &amp; TK</a></li>
