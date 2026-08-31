@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <title>Wissen | Praxisgr&uuml;ndung &amp; Praxis-IT | die netzwerft</title>
-    <meta name="description" content="Beitr&auml;ge zu Praxisgr&uuml;ndung, Netzwerk und Praxissoftware: Orientierung f&uuml;r Arztpraxen rund um Medizin-IT von der netzwerft." />
+    <title>Wissen | Praxisgr&uuml;ndung, Software &amp; Medizin-IT | die netzwerft</title>
+    <meta name="description" content="Wissen f&uuml;r Arztpraxen: Beitr&auml;ge zu Praxisgr&uuml;ndung, Praxis&uuml;bernahme, Praxissoftware und Medizin-IT von der netzwerft." />
     <meta name="theme-color" content="#004562" />
     <link rel="canonical" href="https://dienetzwerft.de/wissen/" />
     <meta name="robots" content="index, follow" />
@@ -13,14 +13,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="die netzwerft GmbH" />
-    <meta property="og:title" content="Wissen | Praxisgr&uuml;ndung &amp; Praxis-IT | die netzwerft" />
-    <meta property="og:description" content="Beitr&auml;ge zu Praxisgr&uuml;ndung, Netzwerk und Praxissoftware f&uuml;r Arztpraxen." />
+    <meta property="og:title" content="Wissen | Praxisgr&uuml;ndung, Software &amp; Medizin-IT | die netzwerft" />
+    <meta property="og:description" content="Beitr&auml;ge zu Praxisgr&uuml;ndung, Praxis&uuml;bernahme, Praxissoftware und Medizin-IT f&uuml;r Arztpraxen." />
     <meta property="og:url" content="https://dienetzwerft.de/wissen/" />
-    <meta property="og:image" content="https://dienetzwerft.de/Fotos/Neugruendung_hero.png" />
+    <meta property="og:image" content="https://dienetzwerft.de/Fotos/Hero-v2/hero-kachel-ti-kim.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Wissen | die netzwerft" />
-    <meta name="twitter:description" content="Beitr&auml;ge zu Praxisgr&uuml;ndung und Praxis-IT." />
+    <meta name="twitter:description" content="Orientierung zu Praxisgr&uuml;ndung, Praxissoftware und Medizin-IT." />
 
     <link rel="icon" href="svg/Favicon.svg" type="image/svg+xml" />
 
@@ -30,7 +30,43 @@
 
     <link rel="stylesheet" href="css/styles-v2.css" />
     <link rel="stylesheet" href="css/landing-t2med-v2.css" />
+    <link rel="stylesheet" href="css/landing-praxisgruendung-v2.css" />
     <link rel="stylesheet" href="css/wissen-v2.css" />
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Wissen",
+        "description": "Beiträge zu Praxisgründung, Praxisübernahme, Praxissoftware und Medizin-IT für Arztpraxen.",
+        "url": "https://dienetzwerft.de/wissen/",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "die netzwerft GmbH",
+            "url": "https://dienetzwerft.de/"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Startseite",
+                "item": "https://dienetzwerft.de/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Wissen",
+                "item": "https://dienetzwerft.de/wissen/"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body class="lp">
@@ -84,105 +120,306 @@
     <main id="hauptinhalt">
         <span id="top"></span>
 
-        <header class="wissen-masthead">
-            <div class="container" data-animate>
-                <span class="eyebrow">Wissen</span>
-                <h1 class="wissen-masthead__title">
-                    Orientierung f&uuml;r <span class="headline-bold">Praxisgr&uuml;ndung &amp; Praxis-IT.</span>
-                </h1>
-                <p class="wissen-masthead__intro">
-                    Kurze Beitr&auml;ge zu den Themen, die vor dem Praxisstart oft unklar bleiben:
-                    Checkliste, Netzwerk und Praxissoftware. Aktuell drei Platzhalter zum Thema Praxisgr&uuml;ndung.
-                </p>
+        <section class="lp-hero lp-hero--pg lp-hero--wissen" id="hero" aria-labelledby="wissen-hero-title">
+            <div class="lp-hero__bg" aria-hidden="true">
+                <div class="lp-hero__blur"></div>
+                <canvas class="lp-hero__particles" id="hero-particles"></canvas>
             </div>
-        </header>
-
-        <section class="section section--white" aria-labelledby="wissen-list-title">
             <div class="container">
-                <div class="section__head" data-animate>
-                    <span class="eyebrow">Praxisgr&uuml;ndung</span>
-                    <h2 class="section__title" id="wissen-list-title">
-                        Drei Einstiege, bevor es <span class="headline-bold">ernst wird.</span>
-                    </h2>
-                    <p class="section__intro">
-                        Die Beitr&auml;ge sind Platzhalter und werden sp&auml;ter mit ausgearbeitetem Inhalt ersetzt.
+                <div class="lp-hero__content" data-animate>
+                    <span class="eyebrow lp-hero__eyebrow">Wissen</span>
+                    <h1 class="lp-hero__title" id="wissen-hero-title">
+                        Praxis-IT erkl&auml;rt. <span class="headline-bold">Damit Entscheidungen leichter fallen.</span>
+                    </h1>
+                    <p class="lp-hero__sub">
+                        Beitr&auml;ge zu Praxisgr&uuml;ndung, &Uuml;bernahme, Praxissoftware und Medizin-IT.
+                        Kurz, praxisnah und ohne Fachchinesisch &ndash; f&uuml;r den Alltag in der Arztpraxis.
+                    </p>
+
+                    <div class="lp-hero__actions">
+                        <a class="btn btn--light btn--lg" href="#beitraege">
+                            Beitr&auml;ge entdecken
+                        </a>
+                        <button class="btn btn--ghost-light btn--lg" type="button" data-cta="wissen-hero" data-conversion="appointment_start">
+                            Kostenloses Erstgespr&auml;ch vereinbaren
+                        </button>
+                    </div>
+
+                    <p class="lp-hero__trust">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.2 7.7 8 9 4.8-1.3 8-4.5 8-9V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Vier Themenbereiche, an denen Praxen im Alltag oft h&auml;ngen bleiben.
                     </p>
                 </div>
+            </div>
 
-                <div class="wissen-grid">
-                    <article class="wissen-card" data-animate>
-                        <a class="wissen-card__link" href="wissen-it-checkliste-praxisgruendung.html">
-                            <div class="wissen-card__media">
-                                <img src="Fotos/Neugruendung_hero.png" alt="" width="1200" height="675" loading="lazy" decoding="async" />
-                                <span class="wissen-card__badge">Platzhalter</span>
-                            </div>
-                            <div class="wissen-card__body">
-                                <span class="wissen-card__meta">Praxisgr&uuml;ndung</span>
-                                <h3 class="wissen-card__title">IT-Checkliste vor der Praxisgr&uuml;ndung</h3>
-                                <p class="wissen-card__text">
-                                    Was Sie technisch kl&auml;ren sollten, bevor Handwerker, Gewerke und Termine ineinandergreifen.
-                                </p>
-                                <span class="wissen-card__more">Beitrag lesen</span>
-                            </div>
-                        </a>
-                    </article>
+            <figure class="t2med__visual pg-hero-visual">
+                <img
+                    src="Fotos/Hero-v2/hero-kachel-ti-kim.jpg"
+                    alt="Medizin-IT in der Praxis: Telematik, Software und Arbeitspl&auml;tze"
+                    width="1200"
+                    height="900"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </figure>
+        </section>
 
-                    <article class="wissen-card" data-animate>
-                        <a class="wissen-card__link" href="wissen-netzwerk-praxisneubau.html">
-                            <div class="wissen-card__media">
-                                <img src="Fotos/Hero-v2/hero-kachel-praxis-it.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
-                                <span class="wissen-card__badge">Platzhalter</span>
-                            </div>
-                            <div class="wissen-card__body">
-                                <span class="wissen-card__meta">Praxisgr&uuml;ndung</span>
-                                <h3 class="wissen-card__title">Netzwerk und Arbeitspl&auml;tze im Praxisneubau</h3>
-                                <p class="wissen-card__text">
-                                    Verkabelung, WLAN und Arbeitspl&auml;tze so planen, dass der Praxisalltag von Tag eins funktioniert.
-                                </p>
-                                <span class="wissen-card__more">Beitrag lesen</span>
-                            </div>
-                        </a>
-                    </article>
+        <section class="section section--white" id="beitraege" aria-labelledby="wissen-list-title">
+            <div class="container">
+                <div class="wissen-hub" data-wissen-hub>
+                    <div class="wissen-featured" data-wissen-featured data-animate>
+                        <p class="wissen-featured__kicker">Aktuelle Beitr&auml;ge</p>
 
-                    <article class="wissen-card" data-animate>
-                        <a class="wissen-card__link" href="wissen-praxissoftware-zum-start.html">
-                            <div class="wissen-card__media">
-                                <img src="Fotos/Hero-v2/hero-kachel-sicherheit.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
-                                <span class="wissen-card__badge">Platzhalter</span>
-                            </div>
-                            <div class="wissen-card__body">
-                                <span class="wissen-card__meta">Praxisgr&uuml;ndung</span>
-                                <h3 class="wissen-card__title">Praxissoftware und TI zum Praxisstart</h3>
-                                <p class="wissen-card__text">
-                                    Software, TI und KIM so vorbereiten, dass der Start nicht an der Technik h&auml;ngen bleibt.
-                                </p>
-                                <span class="wissen-card__more">Beitrag lesen</span>
-                            </div>
-                        </a>
-                    </article>
-                </div>
+                        <div class="wissen-featured__grid">
+                            <article class="wissen-post wissen-post--lead">
+                                <a class="wissen-post__link" href="wissen-it-checkliste-praxisgruendung.html">
+                                    <div class="wissen-post__media">
+                                        <img src="Fotos/Neugruendung_hero.png" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+                                    </div>
+                                    <div class="wissen-post__body">
+                                        <div class="wissen-post__meta">
+                                            <span>Platzhalter</span>
+                                            <span class="wissen-tag">Praxisgr&uuml;ndung</span>
+                                        </div>
+                                        <h3 class="wissen-post__title">Praxisgr&uuml;ndungs-Checkliste</h3>
+                                        <p class="wissen-post__excerpt">Was Sie technisch kl&auml;ren sollten, bevor Handwerker, Gewerke und Termine ineinandergreifen.</p>
+                                    </div>
+                                </a>
+                            </article>
 
-                <div class="wissen-preview__actions" data-animate>
-                    <a class="btn btn--primary btn--lg" href="praxisgruendung-it.html">
-                        Zur Leistungsseite Praxisgr&uuml;ndung
-                    </a>
+                            <div class="wissen-featured__side">
+                                <article class="wissen-post wissen-post--side">
+                                    <a class="wissen-post__link" href="wissen-it-praxisuebernahme.html">
+                                        <div class="wissen-post__media">
+                                            <img src="Fotos/Hero-v2/hero-kachel-praxis-it.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                        </div>
+                                        <div class="wissen-post__body">
+                                            <div class="wissen-post__meta">
+                                                <span>Platzhalter</span>
+                                                <span class="wissen-tag">Praxis&uuml;bernahme</span>
+                                            </div>
+                                            <h3 class="wissen-post__title">IT bei Praxis&uuml;bernahme</h3>
+                                            <p class="wissen-post__excerpt">Bestand pr&uuml;fen, Zug&auml;nge neu ordnen und den &Uuml;bergang so planen, dass der Betrieb weiterl&auml;uft.</p>
+                                        </div>
+                                    </a>
+                                </article>
+
+                                <article class="wissen-post wissen-post--side">
+                                    <a class="wissen-post__link" href="wissen-praxissoftware-wechseln.html">
+                                        <div class="wissen-post__media">
+                                            <img src="Fotos/Wechsel.png" alt="" width="1012" height="941" loading="lazy" decoding="async" />
+                                        </div>
+                                        <div class="wissen-post__body">
+                                            <div class="wissen-post__meta">
+                                                <span>Platzhalter</span>
+                                                <span class="wissen-tag">Praxissoftware</span>
+                                            </div>
+                                            <h3 class="wissen-post__title">Praxissoftware wechseln</h3>
+                                            <p class="wissen-post__excerpt">Wann ein Wechsel sinnvoll ist, wie Migration und Schulung ablaufen und worauf Praxen achten sollten.</p>
+                                        </div>
+                                    </a>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wissen-toolbar">
+                        <h2 class="wissen-toolbar__title" id="wissen-list-title">Alle Beitr&auml;ge</h2>
+                        <nav class="wissen-toolbar__nav" aria-label="Wissen nach Thema filtern">
+                            <a class="wissen-chip is-active" href="#beitraege" data-wissen-cat="all" aria-current="true">Alle</a>
+                            <a class="wissen-chip" href="#praxisgruendung" data-wissen-cat="praxisgruendung">Praxisgr&uuml;ndung</a>
+                            <a class="wissen-chip" href="#praxisuebernahme" data-wissen-cat="praxisuebernahme">Praxis&uuml;bernahme</a>
+                            <a class="wissen-chip" href="#praxissoftware" data-wissen-cat="praxissoftware">Praxissoftware</a>
+                            <a class="wissen-chip" href="#medizin-it" data-wissen-cat="medizin-it">Medizin-IT</a>
+                        </nav>
+                        <label class="wissen-search">
+                            <span class="visually-hidden">Beitr&auml;ge suchen</span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                            <input type="search" name="q" placeholder="Beitrag finden" autocomplete="off" data-wissen-search />
+                        </label>
+                    </div>
+
+                    <div class="wissen-feed" data-wissen-feed>
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxisgruendung" data-in-featured data-wissen-search="praxisgr&uuml;ndung checkliste start" id="praxisgruendung">
+                            <a class="wissen-post__link" href="wissen-it-checkliste-praxisgruendung.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Neugruendung_hero.png" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxisgr&uuml;ndung</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">Praxisgr&uuml;ndungs-Checkliste</h3>
+                                    <p class="wissen-post__excerpt">Was Sie technisch kl&auml;ren sollten, bevor Handwerker, Gewerke und Termine ineinandergreifen.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxisuebernahme" data-in-featured data-wissen-search="praxis&uuml;bernahme it bestand &uuml;bergang" id="praxisuebernahme">
+                            <a class="wissen-post__link" href="wissen-it-praxisuebernahme.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-praxis-it.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxis&uuml;bernahme</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">IT bei Praxis&uuml;bernahme</h3>
+                                    <p class="wissen-post__excerpt">Bestand pr&uuml;fen, Zug&auml;nge neu ordnen und den technischen &Uuml;bergang so planen, dass der Betrieb weiterl&auml;uft.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxissoftware" data-in-featured data-wissen-search="praxissoftware wechseln migration t2med">
+                            <a class="wissen-post__link" href="wissen-praxissoftware-wechseln.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Wechsel.png" alt="" width="1012" height="941" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxissoftware</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">Praxissoftware wechseln</h3>
+                                    <p class="wissen-post__excerpt">Wann ein Wechsel sinnvoll ist, wie Migration und Schulung ablaufen und worauf Praxen achten sollten.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxissoftware" data-wissen-search="pvs support software ticket" id="praxissoftware">
+                            <a class="wissen-post__link" href="wissen-pvs-support.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-support.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxissoftware</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">Schlechter PVS-Support</h3>
+                                    <p class="wissen-post__excerpt">Woran Praxen merken, dass der Software-Support nicht mehr tr&auml;gt, und welche Optionen dann bleiben.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxissoftware" data-wissen-search="langsame praxissoftware wartezeit hardware">
+                            <a class="wissen-post__link" href="wissen-langsame-praxissoftware.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-t2med.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxissoftware</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">Langsame Praxissoftware</h3>
+                                    <p class="wissen-post__excerpt">Typische Ursachen f&uuml;r Wartezeiten am Rechner und was sich pr&uuml;fen l&auml;sst, bevor ein Wechsel n&ouml;tig wird.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="praxissoftware" data-wissen-search="kosten zusatzmodule lizenz pvs">
+                            <a class="wissen-post__link" href="wissen-kosten-zusatzmodule.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-website.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Praxissoftware</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">Kosten &amp; Zusatzmodule</h3>
+                                    <p class="wissen-post__excerpt">Lizenzen, Module und Folgekosten so einordnen, dass die Software zur Praxis passt.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="medizin-it" data-wissen-search="ti telematikinfrastruktur konnektor" id="medizin-it">
+                            <a class="wissen-post__link" href="wissen-ti.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-ti-kim.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Medizin-IT</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">TI &ndash; Telematikinfrastruktur</h3>
+                                    <p class="wissen-post__excerpt">Was Praxen f&uuml;r die Anbindung brauchen, welche Komponenten zusammengeh&ouml;ren und wo es im Alltag hakt.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="medizin-it" data-wissen-search="kim kommunikation medizinwesen">
+                            <a class="wissen-post__link" href="wissen-kim.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/T2med-Web-Screens/Messenger 04.2026_mockUp_web.webp" alt="" width="1200" height="675" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Medizin-IT</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">KIM &ndash; Kommunikation im Medizinwesen</h3>
+                                    <p class="wissen-post__excerpt">Einrichtung, Nutzung und typische Stolpersteine, damit KIM im Praxisalltag zuverl&auml;ssig l&auml;uft.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="medizin-it" data-wissen-search="kbv vorgaben abrechnung">
+                            <a class="wissen-post__link" href="wissen-kbv.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-telefonie.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Medizin-IT</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">KBV-Vorgaben und Praxis-IT</h3>
+                                    <p class="wissen-post__excerpt">Welche Vorgaben die IT in der Praxis betreffen und wie sich Fristen, Schnittstellen und Abl&auml;ufe einordnen lassen.</p>
+                                </div>
+                            </a>
+                        </article>
+
+                        <article class="wissen-post wissen-post--card" data-wissen-group="medizin-it" data-wissen-search="dsgvo datenschutz praxis">
+                            <a class="wissen-post__link" href="wissen-dsgvo.html">
+                                <div class="wissen-post__media">
+                                    <img src="Fotos/Hero-v2/hero-kachel-sicherheit.jpg" alt="" width="1200" height="900" loading="lazy" decoding="async" />
+                                </div>
+                                <div class="wissen-post__body">
+                                    <div class="wissen-post__meta">
+                                        <span>Platzhalter</span>
+                                        <span class="wissen-tag">Medizin-IT</span>
+                                    </div>
+                                    <h3 class="wissen-post__title">DSGVO in der Arztpraxis</h3>
+                                    <p class="wissen-post__excerpt">Datenschutz, Zugriffe und technische Ma&szlig;nahmen so aufsetzen, dass Patientendaten gesch&uuml;tzt bleiben.</p>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <p class="wissen-empty" data-wissen-empty hidden>Keine Beitr&auml;ge zu dieser Suche. Anderen Begriff oder ein Thema oben w&auml;hlen.</p>
                 </div>
             </div>
         </section>
 
+
         <section class="section final-cta" id="kontakt" aria-labelledby="wissen-final-title">
             <div class="container">
                 <div class="final-cta__card" data-animate>
-                    <h2 id="wissen-final-title">Fragen zur Praxisgr&uuml;ndung? <span class="headline-bold">Sprechen wir dar&uuml;ber.</span></h2>
+                    <h2 id="wissen-final-title">Fragen zur Praxis-IT? <span class="headline-bold">Sprechen wir dar&uuml;ber.</span></h2>
                     <p>
-                        Ob Checkliste, Netzwerk oder Software: Im Erstgespr&auml;ch kl&auml;ren wir, was f&uuml;r Ihren Start wirklich z&auml;hlt.
+                        Ob Gr&uuml;ndung, &Uuml;bernahme, Softwarewechsel oder TI: Im Erstgespr&auml;ch kl&auml;ren wir, was f&uuml;r Ihre Praxis wirklich z&auml;hlt.
                     </p>
                     <div class="cta-actions">
                         <button class="btn btn--light btn--lg" type="button" data-cta="wissen-final" data-conversion="appointment_start">
                             Kostenloses Erstgespr&auml;ch vereinbaren
                         </button>
-                        <a class="btn btn--ghost-light btn--lg" href="praxisgruendung-it.html">
-                            Praxisgr&uuml;ndung IT ansehen
+                        <a class="btn btn--ghost-light btn--lg" href="index-v2.html#leistungen">
+                            Leistungen ansehen
                         </a>
                     </div>
                     <p class="cta-note">
@@ -207,9 +444,11 @@
                 <nav class="footer__col" aria-label="Navigation Footer">
                     <h3>Wissen</h3>
                     <ul class="footer__list">
-                        <li><a href="wissen-it-checkliste-praxisgruendung.html">IT-Checkliste</a></li>
-                        <li><a href="wissen-netzwerk-praxisneubau.html">Netzwerk im Neubau</a></li>
-                        <li><a href="wissen-praxissoftware-zum-start.html">Praxissoftware zum Start</a></li>
+                        <li><a href="wissen.html">Alle Beitr&auml;ge</a></li>
+                        <li><a href="wissen.html#praxisgruendung">Praxisgr&uuml;ndung</a></li>
+                        <li><a href="wissen.html#praxisuebernahme">Praxis&uuml;bernahme</a></li>
+                        <li><a href="wissen.html#praxissoftware">Praxissoftware</a></li>
+                        <li><a href="wissen.html#medizin-it">Medizin-IT</a></li>
                     </ul>
                 </nav>
 
@@ -219,9 +458,9 @@
                         <li><a href="index-v2.html">Zur Hauptseite</a></li>
                         <li><a href="praxisgruendung-it.html">Praxisgr&uuml;ndung</a></li>
                         <li><a href="praxisuebernahme-it.html">Praxis&uuml;bernahme</a></li>
+                        <li><a href="praxissoftware-wechsel.html">Praxissoftware wechseln</a></li>
                         <li><a href="ueber-uns.html">&Uuml;ber uns</a></li>
                         <li><a href="t2med-wechsel-v2.html">T2med Wechsel</a></li>
-                        <li><a href="index-v2.html#referenzen">Referenzen</a></li>
                     </ul>
                 </nav>
 
@@ -307,5 +546,6 @@
     <script src="js/lenis.min.js" defer></script>
     <script src="js/scroll-smooth.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script src="js/hero-particles.js" defer></script>
 </body>
 </html>

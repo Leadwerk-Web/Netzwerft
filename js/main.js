@@ -529,6 +529,93 @@
         });
     }
 
+    /* ---------- Wissen-Hub: Filter, Suche, Featured ---------- */
+    const wissenHub = document.querySelector("[data-wissen-hub]");
+    if (wissenHub) {
+        const cats = [...wissenHub.querySelectorAll("[data-wissen-cat]")];
+        const featured = wissenHub.querySelector("[data-wissen-featured]");
+        const feedItems = [...wissenHub.querySelectorAll("[data-wissen-feed] [data-wissen-group]")];
+        const search = wissenHub.querySelector("[data-wissen-search]");
+        const empty = wissenHub.querySelector("[data-wissen-empty]");
+        const valid = new Set(["all", ...feedItems.map((item) => item.getAttribute("data-wissen-group"))]);
+
+        const apply = (cat, { updateHash = true } = {}) => {
+            const next = valid.has(cat) ? cat : "all";
+            const query = (search && search.value.trim().toLowerCase()) || "";
+            const showFeatured = next === "all" && !query;
+
+            cats.forEach((el) => {
+                const active = el.getAttribute("data-wissen-cat") === next;
+                el.classList.toggle("is-active", active);
+                if (active) el.setAttribute("aria-current", "true");
+                else el.removeAttribute("aria-current");
+            });
+
+            if (featured) featured.hidden = !showFeatured;
+
+            let visible = 0;
+            feedItems.forEach((item) => {
+                const group = item.getAttribute("data-wissen-group");
+                const haystack = (item.textContent || "").toLowerCase();
+                const catOk = next === "all" || group === next;
+                const queryOk = !query || haystack.includes(query);
+                const hideDup = showFeatured && item.hasAttribute("data-in-featured");
+                const show = catOk && queryOk && !hideDup;
+                item.hidden = !show;
+                if (show) visible += 1;
+            });
+
+            if (empty) empty.hidden = visible > 0 || showFeatured;
+
+            if (updateHash && history.replaceState) {
+                history.replaceState(null, "", next === "all" ? "#beitraege" : `#${next}`);
+            }
+        };
+
+        const fromHash = () => {
+            const raw = (location.hash || "").replace("#", "");
+            if (!raw || raw === "beitraege") return "all";
+            return valid.has(raw) ? raw : "all";
+        };
+
+        apply(fromHash(), { updateHash: false });
+
+        const initial = fromHash();
+        if (initial !== "all") {
+            const target = document.getElementById("wissen-list-title") || document.getElementById("beitraege");
+            if (target) {
+                requestAnimationFrame(() => {
+                    target.scrollIntoView({ behavior: "auto", block: "start" });
+                });
+            }
+        }
+
+        cats.forEach((el) => {
+            el.addEventListener("click", (e) => {
+                e.preventDefault();
+                apply(el.getAttribute("data-wissen-cat"));
+                const target = document.getElementById("wissen-list-title") || document.getElementById("beitraege");
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: prefersReduced ? "auto" : "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+
+        if (search) {
+            search.addEventListener("input", () => {
+                const active = cats.find((chip) => chip.classList.contains("is-active"));
+                apply(active ? active.getAttribute("data-wissen-cat") : fromHash(), {
+                    updateHash: false,
+                });
+            });
+        }
+
+        window.addEventListener("hashchange", () => apply(fromHash(), { updateHash: false }));
+    }
+
     /* ---------- Footer-Jahr ---------- */
     const yearEl = document.getElementById("footer-year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());
