@@ -1,0 +1,218 @@
+/* =========================================================
+   Praxissoftware wechseln Landing — V2
+   Nutzt landing-t2med / praxisgruendung / praxisuebernahme.
+   Nur minimale Seitendifferenzierung (Hero-Motiv).
+   ========================================================= */
+
+/* Hero: Wechsel.png rechts (nahezu quadratisch) */
+.lp-hero--psw .pg-hero-visual {
+    aspect-ratio: 1012 / 941;
+    max-width: min(48vw, 36rem);
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+    overflow: hidden;
+}
+
+.lp-hero--psw .pg-hero-visual img {
+    object-fit: contain;
+    object-position: center right;
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+}
+
+@media (max-width: 900px) {
+    .lp-hero--psw .pg-hero-visual {
+        aspect-ratio: 1012 / 941;
+        max-width: min(100%, 26rem);
+    }
+}
+
+/* pg-planning ohne Media: Callout zentriert nutzen - entfernt */
+
+/* Checkliste auf dunklem Hintergrund lesbar */
+.section--dark .pg-planning__checklist li {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.section--dark .pg-planning__checklist li::before {
+    background: var(--nw-accent);
+    box-shadow: 0 0 0 3px rgba(0, 122, 158, 0.28);
+}
+
+/* pg-checklist Preview: auf hellem Grund dunkle Schrift */
+.section--surface .pg-checklist__preview li,
+.section--white .pg-checklist__preview li {
+    color: var(--nw-ink);
+}
+
+/* 7 Fehler: offenes Nummernraster */
+.psw-mistakes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.5rem, 4vw, 3rem);
+    max-width: 56rem;
+    margin-inline: auto;
+}
+
+.psw-mistakes__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.15rem 0.95rem;
+    align-items: start;
+    margin: 0;
+}
+
+.psw-mistakes__num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.25;
+    color: var(--nw-accent);
+    letter-spacing: 0.02em;
+}
+
+.psw-mistakes__body h3 {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.02rem, 1.5vw, 1.12rem);
+    line-height: 1.25;
+}
+
+.psw-mistakes__body p {
+    margin: 0;
+    color: var(--nw-ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.section--dark .psw-mistakes__body h3 {
+    color: #fff;
+}
+
+.section--dark .psw-mistakes__body p {
+    color: var(--nw-on-dark-soft);
+}
+
+.section--dark .psw-mistakes__num {
+    color: var(--nw-accent);
+}
+
+@media (max-width: 700px) {
+    .psw-mistakes {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: none;
+    }
+}
+
+/* Kosten: drei Erzählebenen als Kacheln */
+.psw-cost-story {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.psw-cost-story__item {
+    margin: 0;
+    height: 100%;
+    padding: clamp(1.5rem, 2.5vw, 2.15rem);
+    background: var(--nw-surface-card);
+    border: 1px solid var(--nw-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition:
+        transform 0.4s var(--ease-soft),
+        box-shadow 0.4s var(--ease-soft),
+        border-color 0.3s ease;
+}
+
+.psw-cost-story__item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--nw-line-strong);
+}
+
+.psw-cost-story__num {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--nw-accent);
+}
+
+.psw-cost-story__item h3 {
+    margin: 0 0 0.55rem;
+    font-size: clamp(1.08rem, 1rem + 0.35vw, 1.22rem);
+    line-height: 1.25;
+}
+
+.psw-cost-story__item p {
+    margin: 0;
+    color: var(--nw-ink-soft);
+    font-size: 0.96rem;
+    line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+    .psw-cost-story {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 36rem;
+    }
+}
+
+.psw-cost-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) auto;
+    gap: clamp(1.35rem, 3vw, 2.5rem);
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: clamp(1.6rem, 3.2vw, 2.4rem) clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: var(--radius-xl);
+    background: var(--grad-dark);
+    color: var(--nw-on-dark);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.psw-cost-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(70% 120% at 85% 20%, rgba(58, 166, 204, 0.22), transparent 58%);
+    pointer-events: none;
+}
+
+.psw-cost-cta .eyebrow {
+    color: var(--nw-accent);
+}
+
+.psw-cost-cta .section__title {
+    margin-bottom: 0.55rem;
+    color: #fff;
+}
+
+.psw-cost-cta .section__intro {
+    margin: 0;
+    max-width: none;
+    color: var(--nw-on-dark-soft);
+}
+
+.psw-cost-cta__action {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 800px) {
+    .psw-cost-cta {
+        grid-template-columns: 1fr;
+        gap: 1.35rem;
+    }
+
+    .psw-cost-cta__action {
+        justify-content: flex-start;
+    }
+}

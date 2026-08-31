@@ -310,6 +310,11 @@
     color: var(--nw-on-dark-soft);
 }
 
+.po-software__card:hover h3,
+.po-software__card:focus-within h3 {
+    color: #fff;
+}
+
 .po-software__card:hover p,
 .po-software__card:focus-within p {
     color: var(--nw-on-dark-soft);
@@ -328,6 +333,10 @@
 
     .po-software__card:hover .po-software__num {
         color: var(--nw-accent);
+    }
+
+    .po-software__card:hover h3 {
+        color: var(--nw-ink);
     }
 
     .po-software__card:hover p {
