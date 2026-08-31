@@ -106,9 +106,9 @@
     color: #fff;
 }
 
-/* Bei 3er-Raster: Verbindungslinie am Zeilenende unterdrücken */
+/* Bei 3er-Raster: Linie am Zeilenende innerhalb der Kachel halten */
 .lp-steps--6 .step:nth-child(3n)::after {
-    display: none;
+    width: calc(100% - 58px - 1rem);
 }
 
 /* ---------------------------------------------------------

@@ -321,8 +321,8 @@
 
 .wissen-featured__side {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.15rem;
     min-height: 0;
 }
 
@@ -561,7 +561,7 @@
 
     .wissen-featured__side {
         grid-template-rows: none;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
     .wissen-toolbar {
