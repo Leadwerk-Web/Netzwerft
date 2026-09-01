@@ -1,4 +1,4 @@
-import { cp, lstat, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, lstat, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
@@ -11,14 +11,15 @@ if (!/^[A-Za-z0-9_.-]{1,100}$/u.test(repositoryName)) {
 }
 
 const basePath = `/${repositoryName}/`;
-const sourcePages = [
-  't2med-wechsel-v2.html',
-  'danke.html',
-  'impressum.html',
-  'datenschutz.html',
-  '404.html',
-];
+const sourcePages = (await readdir(root, { withFileTypes: true }))
+  .filter((entry) => entry.isFile() && /^[A-Za-z0-9][A-Za-z0-9._-]*\.html$/u.test(entry.name))
+  .map((entry) => entry.name)
+  .sort();
 const assetRoots = ['css', 'js', 'fonts', 'Fotos', 'svg'];
+
+if (!sourcePages.includes('index-v2.html')) {
+  throw new Error('The general Netzwerft homepage index-v2.html is missing.');
+}
 
 function prepareHtml(source, { routeDepth = 0 } = {}) {
   let html = source.replace(
@@ -95,7 +96,7 @@ for (const page of sourcePages) {
   await writeFile(path.join(output, page), prepareHtml(source), 'utf8');
 }
 
-const home = await readFile(path.join(root, 't2med-wechsel-v2.html'), 'utf8');
+const home = await readFile(path.join(root, 'index-v2.html'), 'utf8');
 await writeFile(path.join(output, 'index.html'), prepareHtml(home), 'utf8');
 
 for (const route of ['danke', 'impressum', 'datenschutz']) {
@@ -107,9 +108,15 @@ for (const route of ['danke', 'impressum', 'datenschutz']) {
 
 await writeFile(path.join(output, '.nojekyll'), '', 'utf8');
 
-const rendered = await Promise.all([
-  'index.html', 'danke/index.html', 'impressum/index.html', 'datenschutz/index.html', '404.html',
-].map((file) => readFile(path.join(output, file), 'utf8')));
+const renderedFiles = [
+  ...sourcePages,
+  'danke/index.html',
+  'impressum/index.html',
+  'datenschutz/index.html',
+];
+const rendered = await Promise.all(
+  [...new Set(renderedFiles)].map((file) => readFile(path.join(output, file), 'utf8')),
+);
 const escapedRepositoryName = repositoryName.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
 const escapedRootRelative = new RegExp(
   `\\b(?:href|src|poster|action)=(['"])\\/(?!\\/|${escapedRepositoryName}/)`,
