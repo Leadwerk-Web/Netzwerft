@@ -568,7 +568,7 @@
 }
 
 .about-culture__card--mute {
-    background: var(--nw-surface);
+    background: var(--nw-white);
 }
 
 .about-culture__card--lead {
@@ -598,11 +598,6 @@
     color: #fff;
 }
 
-.about-culture__card--lead p,
-.about-culture__card--lead .about-culture__list li {
-    color: var(--nw-on-dark-soft);
-}
-
 .about-culture__card--lead .about-culture__list li::before {
     background: var(--nw-mint);
 }
@@ -626,6 +621,14 @@
     margin: 0;
     color: var(--nw-ink-soft);
     line-height: 1.6;
+}
+
+.about-culture__card--lead p {
+    color: #fff;
+}
+
+.about-culture__card--lead .about-culture__list li {
+    color: var(--nw-on-dark-soft);
 }
 
 .about-culture__list {
