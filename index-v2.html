@@ -95,8 +95,8 @@
                     },
                     {
                         "@type": "Question",
-                        "name": "Unterst\u00fctzt die netzwerft bei TI, KIM, Datenschutz und Security?",
-                        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wir k\u00fcmmern uns um Telematikinfrastruktur (TI), KIM, IT-Sicherheit und Datenschutz nach den Anforderungen f\u00fcr Arztpraxen." }
+                        "name": "Unterst\u00fctzt die netzwerft bei TI, KIM und IT-Sicherheit?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wir k\u00fcmmern uns um Telematikinfrastruktur (TI), KIM und IT-Sicherheit nach den Anforderungen f\u00fcr Arztpraxen." }
                     },
                     {
                         "@type": "Question",
@@ -266,8 +266,24 @@
                                 <div class="nw-karussell__kachel-body">
                                     <img class="nw-karussell__kachel-icon" src="Fotos/Icon_Slider.png" alt="" width="56" height="56" decoding="async">
                                     <div class="nw-karussell__kachel-copy">
-                                    <h2 class="nw-karussell__kachel-titel">IT-Sicherheit &amp; Datenschutz</h2>
+                                    <h2 class="nw-karussell__kachel-titel">IT-Sicherheit</h2>
                                     <p class="nw-karussell__kachel-text">Firewall, Endpoint Protection und Zugriffe so geregelt, dass Patientendaten gesch&uuml;tzt bleiben.</p>
+                                    <a class="nw-karussell__kachel-link" href="#leistungen">Mehr erfahren <svg class="nw-karussell__kachel-link-icon" viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="nw-karussell__kachel" data-nw-kachel>
+                            <div class="nw-karussell__kachel-innen">
+                                <div class="nw-karussell__kachel-media nw-karussell__kachel-media--optimierung" aria-hidden="true">
+                                    <span class="nw-karussell__kachel-symbol"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18l6-6 4 4 6-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                </div>
+                                <div class="nw-karussell__kachel-body">
+                                    <img class="nw-karussell__kachel-icon" src="Fotos/Icon_Slider.png" alt="" width="56" height="56" decoding="async">
+                                    <div class="nw-karussell__kachel-copy">
+                                    <h2 class="nw-karussell__kachel-titel">Optimierung</h2>
+                                    <p class="nw-karussell__kachel-text">Unsere Praxis-Berater optimieren Ihre Abl&auml;ufe.</p>
                                     <a class="nw-karussell__kachel-link" href="#leistungen">Mehr erfahren <svg class="nw-karussell__kachel-link-icon" viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                                     </div>
                                 </div>
@@ -475,7 +491,7 @@
                             <div class="capability-slider__summary">
                                 <p class="capability-slider__eyebrow">Allround-IT</p>
                                 <h3 class="capability-slider__title">Technik und Betrieb</h3>
-                                <p class="capability-slider__desc">Hard- und Software, Cloud, Datenschutz und sichere Netze aus einer Hand.</p>
+                                <p class="capability-slider__desc">Hard- und Software, Cloud und sichere Netze aus einer Hand.</p>
                                 <div class="capability-slider__nav">
                                     <button class="capability-slider__nav-btn" type="button" data-capability-prev aria-label="Vorheriges Kompetenzfeld">
                                         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -879,13 +895,13 @@
 
                     <div class="faq__item">
                         <button class="faq__trigger" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">
-                            Unterst&uuml;tzt die netzwerft bei TI, KIM, Datenschutz und Security?
+                            Unterst&uuml;tzt die netzwerft bei TI, KIM und IT-Sicherheit?
                             <span class="faq__icon" aria-hidden="true"></span>
                         </button>
                         <div class="faq__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn">
                             <div class="faq__panel-inner">
-                                Ja. Wir k&uuml;mmern uns um Telematikinfrastruktur (TI), KIM, IT-Sicherheit und
-                                Datenschutz nach den Anforderungen f&uuml;r Arztpraxen.
+                                Ja. Wir k&uuml;mmern uns um Telematikinfrastruktur (TI), KIM und IT-Sicherheit
+                                nach den Anforderungen f&uuml;r Arztpraxen.
                             </div>
                         </div>
                     </div>
@@ -1077,6 +1093,11 @@
                 </div>
 
                 <!-- TODO: Absenden mit echtem Terminbuchungstool / Formular-Backend verbinden. -->
+                <div class="funnel-step" data-funnel-conditional="Softwarewechsel,Praxis&uuml;bernahme" hidden>
+                    <label class="funnel-step__label" for="pvs-1">Welche Praxisverwaltungssoftware ist aktuell im Einsatz?</label>
+                    <input class="funnel-input" id="pvs-1" name="pvs" type="text" autocomplete="off" placeholder="z. B. medatixx, CGM, Quincy, T2med" />
+                </div>
+
                 <button type="button" class="btn btn--primary btn--lg btn--block" data-cta="funnel-submit">
                     Passenden Termin vorschlagen
                 </button>

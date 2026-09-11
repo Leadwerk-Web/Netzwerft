@@ -616,6 +616,27 @@
         window.addEventListener("hashchange", () => apply(fromHash(), { updateHash: false }));
     }
 
+    /* ---------- Funnel: bedingte Felder (z. B. Praxisverwaltungssoftware) ---------- */
+    if (document.querySelector("[data-funnel-conditional]")) {
+        const updateConditional = (form) => {
+            const pressed = Array.from(form.querySelectorAll('.funnel-chip[aria-pressed="true"]'))
+                .map((c) => c.textContent.trim().toLowerCase());
+            form.querySelectorAll("[data-funnel-conditional]").forEach((step) => {
+                const keys = step.getAttribute("data-funnel-conditional").split(",")
+                    .map((k) => k.trim().toLowerCase()).filter(Boolean);
+                const show = pressed.some((t) => keys.some((k) => t.includes(k)));
+                step.hidden = !show;
+                if (!show) step.querySelectorAll("input, textarea").forEach((el) => { el.value = ""; });
+            });
+        };
+        // Laeuft nach den Chip-Handlern (Bubbling), sieht also den neuen aria-pressed-Stand
+        document.addEventListener("click", (e) => {
+            const chip = e.target.closest(".funnel-chip");
+            const form = chip && chip.closest("form");
+            if (form) updateConditional(form);
+        });
+    }
+
     /* ---------- Footer-Jahr ---------- */
     const yearEl = document.getElementById("footer-year");
     if (yearEl) yearEl.textContent = String(new Date().getFullYear());

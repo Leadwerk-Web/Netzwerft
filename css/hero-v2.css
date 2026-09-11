@@ -327,6 +327,10 @@
     background-image: url('../Fotos/Hero-v2/hero-kachel-website.jpg');
 }
 
+.nw-karussell__kachel-media--optimierung {
+    background-image: url('../Fotos/Hero-v2/hero-kachel-support.jpg'); /* Platzhalter, eigenes Motiv folgt */
+}
+
 .nw-karussell__kachel-media::after {
     content: '';
     position: absolute;

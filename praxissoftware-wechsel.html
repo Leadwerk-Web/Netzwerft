@@ -1045,6 +1045,11 @@
                             </div>
                         </div>
 
+                        <div class="funnel-step" data-funnel-conditional="Andere Praxissoftware,Mehrere Systeme" hidden>
+                            <label class="funnel-step__label" for="pvs-1">Welche Praxisverwaltungssoftware ist aktuell im Einsatz?</label>
+                            <input class="funnel-input" id="pvs-1" name="pvs" type="text" autocomplete="off" placeholder="z. B. medatixx, CGM, Quincy, T2med" />
+                        </div>
+
                         <button type="button" class="btn btn--light btn--lg btn--block" data-cta="psw-qualify-submit" data-conversion="appointment_start">
                             Softwarewechsel besprechen
                         </button>
@@ -1187,6 +1192,11 @@
                         <button type="button" class="funnel-chip" aria-pressed="false">6&ndash;12 Monate</button>
                         <button type="button" class="funnel-chip" aria-pressed="false">noch offen / Orientierung</button>
                     </div>
+                </div>
+
+                <div class="funnel-step" data-funnel-conditional="Andere Praxissoftware,Mehrere Systeme" hidden>
+                    <label class="funnel-step__label" for="pvs-2">Welche Praxisverwaltungssoftware ist aktuell im Einsatz?</label>
+                    <input class="funnel-input" id="pvs-2" name="pvs" type="text" autocomplete="off" placeholder="z. B. medatixx, CGM, Quincy, T2med" />
                 </div>
 
                 <button type="button" class="btn btn--primary btn--lg btn--block" data-cta="psw-funnel-submit">
