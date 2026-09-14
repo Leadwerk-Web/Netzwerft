@@ -618,3 +618,7 @@
         margin-inline: auto;
     }
 }
+
+
+/* Responsive-Korrekturen 15.09.2026: Mindestschriftgröße 12 px */
+.wissen-tag { font-size: 0.75rem; }

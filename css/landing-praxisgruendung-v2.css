@@ -433,3 +433,24 @@
         justify-content: center;
     }
 }
+
+
+/* ---------------------------------------------------------
+   Responsive-Korrekturen 15.09.2026
+   --------------------------------------------------------- */
+/* Hero-Grafik der Landingpages: höhenbasierte Box mit max-width schnitt das Bild am
+   rechten Rand ab. Jetzt breitenbasiert, Bild vollständig sichtbar. */
+@media (min-width: 901px) {
+    .lp-hero--pg .pg-hero-visual {
+        height: auto;
+        aspect-ratio: auto;
+        width: min(50vw, 42rem);
+        max-width: none;
+        bottom: -6%;
+    }
+    .lp-hero--pg .pg-hero-visual img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+}

@@ -573,3 +573,19 @@
         transition: opacity 0.3s ease;
     }
 }
+
+
+/* ---------------------------------------------------------
+   Responsive-Korrekturen 15.09.2026
+   --------------------------------------------------------- */
+/* Kacheltitel im Hero-Karussell wurden auf dem Desktop mitten im Wort abgeschnitten
+   („Praxissoftwar“). Kleinere Schrift, drei Zeilen, Umbruch innerhalb langer Wörter. */
+.nw-karussell__kachel-titel {
+    font-size: clamp(1.15rem, 1.45vw, 1.45rem);
+    -webkit-line-clamp: 3;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+/* Karussell-Punkte sind 5 px hoch: größere Trefferfläche ohne sichtbare Änderung. */
+.nw-karussell__punkt { position: relative; }
+.nw-karussell__punkt::before { content: ""; position: absolute; inset: -14px -4px; }

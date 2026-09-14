@@ -2953,3 +2953,43 @@ body.video-lightbox-open {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* ---------------------------------------------------------
+   Responsive-Korrekturen 15.09.2026
+   --------------------------------------------------------- */
+/* Lange Wörter in Überschriften (z. B. Telematikinfrastruktur) laufen auf
+   schmalen Viewports nicht mehr aus dem Bild. */
+h1, h2, h3, .hero__title, .section__title { overflow-wrap: break-word; }
+@media (max-width: 520px) {
+    h1, h2, .hero__title, .section__title, .headline-bold { hyphens: auto; overflow-wrap: anywhere; }
+}
+/* T2med-Mockup (Startseite, T2med-Seite): auf dem Desktop war das 16:9-Bild in
+   einer quadratischen Box mit Höhe 100 %, dadurch lief das rechte Drittel aus dem
+   Viewport. Jetzt breitenbasiert, komplett sichtbar, weiter rechtsbündig. */
+@media (min-width: 901px) {
+    body figure.t2med__visual:not(.pg-hero-visual) {
+        aspect-ratio: auto;
+        width: min(50vw, 52rem);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    body figure.t2med__visual:not(.pg-hero-visual) img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: right center;
+    }
+    /* Im Hero der T2med-Seite sitzt das Mockup unten, sonst kollidiert es mit der Headline. */
+    .lp-hero figure.t2med__visual:not(.pg-hero-visual) {
+        width: min(46vw, 46rem);
+        align-items: flex-end;
+    }
+}
+/* Tap-Ziele im Footer auf Mobil mindestens 44 px hoch. */
+@media (max-width: 640px) {
+    .footer__list a, .footer__legal a { display: inline-block; padding-block: 0.55rem; }
+}
