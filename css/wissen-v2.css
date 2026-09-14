@@ -622,3 +622,102 @@
 
 /* Responsive-Korrekturen 15.09.2026: Mindestschriftgröße 12 px */
 .wissen-tag { font-size: 0.75rem; }
+
+/* === Wissen-Artikel 2026-09 === */
+/* Artikel-Layout für ausgearbeitete Wissen-Beiträge (September 2026) */
+.wissen-masthead--article .container { max-width: min(var(--container), 68rem); }
+.wissen-masthead__intro { max-width: 60ch; margin: 0.75rem 0 0; font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem); line-height: 1.55; color: rgba(255, 255, 255, 0.85); }
+.wissen-byline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; margin-top: 1.25rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.78); }
+.wissen-byline__author { display: inline-flex; align-items: center; gap: 0.55rem; color: #fff; font-weight: 600; }
+.wissen-byline__avatar { display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--color-accent, #1E88E5); color: #fff; font-weight: 800; font-size: 0.95rem; }
+.wissen-byline__avatar--lg { width: 3rem; height: 3rem; font-size: 1.4rem; flex: 0 0 auto; }
+
+.wissen-article-section .container { max-width: min(var(--container), 68rem); }
+.wissen-article__hero { margin: calc(-1 * clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(1.75rem, 3vw, 2.75rem); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); position: relative; z-index: 2; }
+.wissen-article__hero img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.wissen-layout { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.wissen-layout > *, .wissen-side > * { min-width: 0; }
+.wissen-side { position: sticky; top: 6rem; display: grid; gap: 1rem; }
+@media (min-width: 901px) { .wissen-masthead--article { padding-top: calc(7.5rem + env(safe-area-inset-top, 0px)); } }
+.wissen-toc { padding: 1.1rem 1.2rem; border-radius: var(--radius-lg); background: var(--nw-surface, #f5f7fa); border: 1px solid var(--nw-line, #e6ebf0); }
+.wissen-toc__title { margin: 0 0 0.6rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nw-primary, #004562); }
+.wissen-toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; }
+.wissen-toc li { counter-increment: toc; }
+.wissen-toc li + li { margin-top: 0.35rem; }
+.wissen-toc a { display: flex; gap: 0.6rem; padding: 0.3rem 0; font-size: 0.92rem; line-height: 1.4; color: var(--nw-ink-soft, #333); text-decoration: none; }
+.wissen-toc a::before { content: counter(toc, decimal-leading-zero); font-size: 0.75rem; font-weight: 700; color: var(--color-accent, #1E88E5); padding-top: 0.15rem; }
+.wissen-toc a:hover { color: var(--nw-primary, #004562); }
+.wissen-side__cta { padding: 1.2rem; border-radius: var(--radius-lg); background: var(--nw-primary, #004562); color: #fff; }
+.wissen-side__cta p { margin: 0 0 0.75rem; font-size: 0.92rem; line-height: 1.5; opacity: 0.92; }
+.wissen-side__cta-title { font-weight: 700; font-size: 1.02rem; opacity: 1 !important; }
+.wissen-side__cta .btn { width: 100%; }
+
+.wissen-article--full { max-width: 46rem; margin: 0; font-size: 1.04rem; line-height: 1.7; color: var(--nw-ink-soft, #2b2b2b); }
+.wissen-article--full p { margin: 0 0 1.15rem; }
+.wissen-article--full h2 { margin: 2.4rem 0 0.9rem; font-size: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem); line-height: 1.25; color: var(--nw-ink, #111); scroll-margin-top: 6rem; }
+.wissen-article--full h3 { margin: 1.6rem 0 0.6rem; font-size: 1.12rem; color: var(--nw-ink, #111); }
+.wissen-article--full ul, .wissen-article--full ol { margin: 0 0 1.25rem; padding-left: 1.3rem; }
+.wissen-article--full li + li { margin-top: 0.4rem; }
+.wissen-article--full a { color: var(--nw-primary, #004562); text-decoration: underline; text-underline-offset: 0.15em; }
+.wissen-article--full a:hover { color: var(--color-accent, #1E88E5); }
+.wissen-article--full strong { color: var(--nw-ink, #111); }
+
+.wissen-keyfacts { margin: 0 0 1.75rem; padding: 1.15rem 1.35rem; border-radius: var(--radius-lg); background: var(--color-accent-soft, #E3F2FD); border-left: 4px solid var(--color-accent, #1E88E5); }
+.wissen-keyfacts__title { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nw-primary, #004562); }
+.wissen-keyfacts ul { margin: 0; padding-left: 1.15rem; }
+
+.wissen-callout { margin: 1.5rem 0; padding: 1.1rem 1.3rem; border-radius: var(--radius-lg); background: var(--nw-surface, #f5f7fa); border: 1px solid var(--nw-line, #e6ebf0); }
+.wissen-callout--tipp { border-left: 4px solid var(--color-mint-deep, #2196F3); }
+.wissen-callout--achtung { border-left: 4px solid #f0a500; }
+.wissen-callout > strong { display: block; margin-bottom: 0.35rem; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nw-primary, #004562); }
+.wissen-callout p:last-child { margin-bottom: 0; }
+
+.wissen-table-wrap { overflow-x: auto; margin: 1.25rem 0 1.75rem; -webkit-overflow-scrolling: touch; }
+.wissen-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; min-width: 34rem; }
+.wissen-table th, .wissen-table td { padding: 0.7rem 0.85rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--nw-line, #e6ebf0); }
+.wissen-table th { background: var(--nw-surface, #f5f7fa); font-weight: 700; color: var(--nw-ink, #111); }
+
+.wissen-faq { margin-top: 2.5rem; }
+.wissen-faq__item { border: 1px solid var(--nw-line, #e6ebf0); border-radius: var(--radius); background: #fff; margin-bottom: 0.65rem; overflow: hidden; }
+.wissen-faq__item summary { list-style: none; cursor: pointer; padding: 0.95rem 3rem 0.95rem 1.15rem; font-weight: 700; color: var(--nw-ink, #111); position: relative; line-height: 1.4; }
+.wissen-faq__item summary::-webkit-details-marker { display: none; }
+.wissen-faq__item summary::after { content: ""; position: absolute; right: 1.1rem; top: 50%; width: 0.6rem; height: 0.6rem; border-right: 2px solid var(--color-accent, #1E88E5); border-bottom: 2px solid var(--color-accent, #1E88E5); transform: translateY(-70%) rotate(45deg); transition: transform 0.2s ease; }
+.wissen-faq__item[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.wissen-faq__item[open] summary { border-bottom: 1px solid var(--nw-line, #e6ebf0); }
+.wissen-faq__answer { padding: 0.9rem 1.15rem 1.1rem; }
+.wissen-faq__answer p { margin: 0; }
+
+.wissen-cta { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 1.5rem; align-items: center; margin: 2.75rem 0 2rem; padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: var(--radius-xl); background: linear-gradient(135deg, var(--color-primary-dark, #00273c), var(--color-primary, #004562)); color: #fff; }
+.wissen-cta .eyebrow { color: var(--color-mint, #64B5F6); }
+.wissen-cta h2 { margin: 0.35rem 0 0.6rem; color: #fff; font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem); }
+.wissen-cta p { margin: 0; opacity: 0.9; }
+.wissen-cta__actions { display: grid; gap: 0.6rem; }
+.wissen-cta__actions .btn--ghost { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+
+.wissen-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--nw-ink-muted, #666); }
+.wissen-tags ul { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+.wissen-tags a { display: inline-block; padding: 0.3rem 0.7rem; border-radius: 999px; background: var(--nw-surface, #f5f7fa); border: 1px solid var(--nw-line, #e6ebf0); font-size: 0.82rem; text-decoration: none; color: var(--nw-primary, #004562); }
+.wissen-tags a:hover { background: var(--color-accent-soft, #E3F2FD); }
+
+.wissen-author { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem 1.3rem; border-radius: var(--radius-lg); background: var(--nw-surface, #f5f7fa); border: 1px solid var(--nw-line, #e6ebf0); font-size: 0.95rem; }
+.wissen-author p { margin: 0; }
+.wissen-author__name { font-weight: 700; color: var(--nw-ink, #111); margin-bottom: 0.2rem !important; }
+
+.wissen-related { margin-top: clamp(2.5rem, 5vw, 4rem); padding-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--nw-line, #e6ebf0); }
+.wissen-related h2 { margin: 0 0 1.25rem; font-size: clamp(1.3rem, 1.2rem + 0.5vw, 1.6rem); }
+.wissen-related__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.wissen-related .wissen-post__media img { aspect-ratio: 16 / 9; }
+
+@media (max-width: 1024px) {
+    .wissen-layout { grid-template-columns: minmax(0, 1fr); }
+    .wissen-side { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wissen-article--full { max-width: 46rem; }
+}
+@media (max-width: 720px) {
+    .wissen-side { grid-template-columns: minmax(0, 1fr); }
+    .wissen-cta { grid-template-columns: 1fr; }
+    .wissen-related__grid { grid-template-columns: 1fr; }
+    .wissen-article__hero { margin-top: -1.5rem; border-radius: var(--radius); }
+    .wissen-article--full { font-size: 1rem; }
+}

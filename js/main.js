@@ -614,6 +614,13 @@
         }
 
         window.addEventListener("hashchange", () => apply(fromHash(), { updateHash: false }));
+
+        // Themen-Links aus den Beiträgen (wissen.html?q=Begriff) füllen die Suche vor
+        const qParam = new URLSearchParams(window.location.search).get("q");
+        if (qParam && search) {
+            search.value = qParam;
+            search.dispatchEvent(new Event("input", { bubbles: true }));
+        }
     }
 
     /* ---------- Funnel: bedingte Felder (z. B. Praxisverwaltungssoftware) ---------- */
