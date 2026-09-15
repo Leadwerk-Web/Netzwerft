@@ -54,20 +54,68 @@
     var KARTE_H = 640;
     var KACHEL_GAP = 24;
     var SICHTBAR = 2;
-    /* Max. gleichm??iger Schritt f?r 5 Kacheln: 2 * Schritt < 90? (Vorderseite + kein ?berlappen) */
-    var ANZEIGE_SCHRITT = 36;
+    /* Winkel zwischen zwei sichtbaren Kacheln. 15.09.2026 von 36 auf 28 Grad: die Aussenkacheln
+       standen bei 72 Grad und ihr Text war perspektivisch auf ein Drittel gestaucht (Kommentar
+       Simon Fuss, 03.09.). Bei 56 Grad bleibt der Text lesbar, 2 * Schritt < 90 gilt weiterhin. */
+    var ANZEIGE_SCHRITT = 28;
+    /* Mindestabstand der aeussersten sichtbaren Kachel zum Rand des Karussells (px) */
+    var SEITENRAND = 24;
+    /* Ab dieser Breite muessen alle fuenf Kacheln vollstaendig ins Bild passen, zwischen 900 px
+       und dieser Breite nur die drei mittleren. */
+    var VOLLBILD_AB = 1280;
+    /* Ab dieser Breite gilt die Desktop-Logik (Breite deckeln, Reserve unter der Buehne),
+       entspricht dem Umbruch der Seite bei 900 px. */
+    var DESKTOP_AB = 900;
+    var PERSPEKTIVE = '140em';
 
     function buehneOverhead() {
         var tiltExtra = Math.max(0, ANZEIGE_SCHRITT - 40);
         return Math.round(52 + tiltExtra * 5);
     }
 
+    /* Freier Platz fuer die Buehne: Hoehe des Karussell-Containers (der Flex-Rest des Hero unter
+       Ueberschrift und Button) abzueglich Innenabstand und Punkte-Leiste samt ihrem Rand.
+       Bis 15.09.2026 wurde hier steuerung.offsetTop genommen, das haengt aber von der Buehnenhoehe
+       ab, die dieses Skript selbst setzt: die Kacheln schrumpften mit jedem Resize-Event. */
     function heroFreiraumHoehe() {
+        var rootCs = window.getComputedStyle(root);
+        var frei = root.clientHeight
+            - (parseFloat(rootCs.paddingTop) || 0)
+            - (parseFloat(rootCs.paddingBottom) || 0);
         var steuerung = root.querySelector('.nw-karussell__steuerung');
         if (steuerung) {
-            return Math.max(0, steuerung.offsetTop);
+            var sCs = window.getComputedStyle(steuerung);
+            frei -= steuerung.offsetHeight
+                + (parseFloat(sCs.marginTop) || 0)
+                + (parseFloat(sCs.marginBottom) || 0);
         }
-        return Math.max(0, root.clientHeight);
+        return Math.max(0, frei);
+    }
+
+    function perspektivePx() {
+        var p = parseFloat(window.getComputedStyle(buehne).perspective);
+        if (!p || isNaN(p)) {
+            p = parseFloat(PERSPEKTIVE) * 16;
+        }
+        return p;
+    }
+
+    /* Projizierter Abstand der aeusseren Kante der Kachel in Slot `slot` von der Bildmitte,
+       inklusive Perspektive. Kachelmitte nach rotateY(a) translateZ(-R): x = -R sin a,
+       z = -R cos a; die Kante liegt eine halbe Kachelbreite entlang der gedrehten x-Achse. */
+    function projizierteHalbbreite(karteB, gap, slot) {
+        var p = perspektivePx();
+        var R = -radiusBerechnen(karteB, gap);
+        var a = slot * ANZEIGE_SCHRITT * Math.PI / 180;
+        var halb = karteB / 2;
+        var max = 0;
+        [1, -1].forEach(function (s) {
+            var x = -R * Math.sin(a) + s * halb * Math.cos(a);
+            var z = -R * Math.cos(a) - s * halb * Math.sin(a);
+            var f = p / (p - z);
+            max = Math.max(max, Math.abs(x * f));
+        });
+        return max;
     }
 
     function kartenMasseBerechnen() {
@@ -76,13 +124,38 @@
         var freiraum = heroFreiraumHoehe();
         var scale = 1;
 
-        if (freiraum != null && freiraum > 0 && freiraum < idealBuehne) {
-            scale = freiraum / idealBuehne;
+        /* Die Punkte-Leiste ueberlappt die Buehne unten (negativer margin-top) und der freie Platz
+           enthaelt diesen Ueberlapp. Die Aussenkacheln wachsen perspektivisch bis fast zur vollen
+           Kachelhoehe, deshalb bleibt die untere Haelfte des Ueberhangs plus Reserve unbenutzt,
+           sonst verschwinden ihre Unterkanten hinter dem Rand des Karussells. */
+        var breite = root.clientWidth || window.innerWidth || 0;
+        var desktop = breite >= DESKTOP_AB;
+        /* Auf Handy und Tablet darf die Buehne wie bisher bis unter die Punkte reichen, sonst
+           werden die Kacheln dort zu klein; die Aussenkacheln sind dort ohnehin angeschnitten. */
+        var nutzbar = desktop ? freiraum - overhead / 2 - 8 : freiraum;
+
+        if (nutzbar > 0 && nutzbar < idealBuehne) {
+            /* Der Ueberhang ist fix und wird nicht mitskaliert, deshalb vorher abziehen.
+               Sonst ist die Buehne bei jedem scale < 1 hoeher als der freie Platz. */
+            scale = Math.max(0, nutzbar - overhead) / KARTE_H;
         }
 
-        scale = Math.max(0.45, Math.min(1, scale));
+        /* Breite deckeln: auf grossen Bildschirmen muessen alle fuenf Kacheln ins Bild,
+           darunter mindestens die drei mittleren. */
+        if (desktop) {
+            var slot = breite >= VOLLBILD_AB ? SICHTBAR : 1;
+            var maxHalb = breite / 2 - SEITENRAND;
+            for (var i = 0; i < 5; i++) {
+                var halb = projizierteHalbbreite(KARTE_B * scale, KACHEL_GAP * scale, slot);
+                if (halb <= maxHalb) break;
+                scale *= maxHalb / halb;
+            }
+        }
+
+        scale = Math.max(0.3, Math.min(1, scale));
 
         return {
+            scale: scale,
             karteB: Math.round(KARTE_B * scale),
             karteH: Math.round(KARTE_H * scale),
             buehneH: Math.round(KARTE_H * scale + overhead),
@@ -283,7 +356,10 @@
         gleis.style.setProperty('--nw-karte-b', masse.karteB + 'px');
         gleis.style.setProperty('--nw-karte-h', masse.karteH + 'px');
         root.style.setProperty('--nw-buehne-h', masse.buehneH + 'px');
-        buehne.style.setProperty('--nw-perspektive', '120em');
+        /* Textleiste und Titel skalieren mit der Kachel (CSS liest --nw-scale), sonst frisst die
+           Leiste bei kleinen Kacheln die halbe Kachel. */
+        root.style.setProperty('--nw-scale', String(Math.round(masse.scale * 1000) / 1000));
+        buehne.style.setProperty('--nw-perspektive', PERSPEKTIVE);
     }
 
     function zustandAktualisieren() {
@@ -330,7 +406,7 @@
             } else if (slotAbs < 1.5) {
                 kachel.style.setProperty('--nw-opacity', String(Math.max(0.78, 0.94 - (slotAbs - 0.5) * 0.12)));
             } else {
-                kachel.style.setProperty('--nw-opacity', '0.8');
+                kachel.style.setProperty('--nw-opacity', '0.86');
             }
         });
     }
@@ -691,6 +767,14 @@
         geometrieAnwenden();
         zustandAktualisieren();
     });
+
+    /* Webfonts aendern die Hoehe der Hero-Ueberschrift und damit den freien Platz */
+    if (document.fonts && document.fonts.ready && typeof document.fonts.ready.then === 'function') {
+        document.fonts.ready.then(function () {
+            geometrieAnwenden();
+            zustandAktualisieren();
+        });
+    }
 
     geometrieAnwenden();
     punkteBauen();
