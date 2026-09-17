@@ -2,11 +2,21 @@
     "use strict";
 
     const form = document.getElementById("lp-qualify-form");
+    const softwareStep = form?.querySelector("[data-prequal-software-step]");
+    const softwareInput = form?.querySelector("[data-prequal-software]");
+    const updateSoftwareStep = (label) => {
+        const visible = label === "Softwarewechsel / T2med" || label === "Praxisübernahme";
+        softwareStep?.toggleAttribute("hidden", !visible);
+        if (!visible && softwareInput) softwareInput.value = "";
+    };
     form?.querySelectorAll("[data-funnel-group]").forEach((group) => {
         group.querySelectorAll(".funnel-chip").forEach((chip) => {
             chip.addEventListener("click", () => {
                 group.querySelectorAll(".funnel-chip").forEach((item) => item.setAttribute("aria-pressed", "false"));
                 chip.setAttribute("aria-pressed", "true");
+                if (group.getAttribute("aria-labelledby") === "lp-q1-label") {
+                    updateSoftwareStep(chip.textContent.trim());
+                }
             });
         });
     });

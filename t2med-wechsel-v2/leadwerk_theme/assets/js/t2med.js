@@ -1,7 +1,21 @@
 (() => {
     "use strict";
     const config = window.leadwerkT2med || {};
-    const values = { situation: "", location: "", start: "", scope: "", source: "" };
+    const values = { situation: "", location: "", start: "", scope: "", current_software: "", source: "" };
+    const softwareStep = document.querySelector("[data-prequal-software-step]");
+    const softwareInput = document.querySelector("[data-prequal-software]");
+
+    const situationNeedsSoftware = (value) =>
+        /Softwarewechsel|Praxisübernahme/i.test(value || "");
+
+    const toggleSoftwareStep = (situation) => {
+        const show = situationNeedsSoftware(situation);
+        if (softwareStep) softwareStep.hidden = !show;
+        if (!show) {
+            if (softwareInput) softwareInput.value = "";
+            values.current_software = "";
+        }
+    };
 
     const painRoot = document.querySelector("[data-pain-focus]");
     if (painRoot) {
@@ -62,6 +76,7 @@
     const transfer = (source) => {
         values.source = source || "t2med-landingpage";
         setRadio("situation", values.situation);
+        setText("current_software", values.current_software);
         setText("location", values.location);
         setRadio("start", values.start);
         setRadio("scope", values.scope);
@@ -74,6 +89,9 @@
                 group.querySelectorAll(".funnel-chip").forEach((item) => item.setAttribute("aria-pressed", "false"));
                 chip.setAttribute("aria-pressed", "true");
                 values[group.dataset.prequalGroup] = chip.dataset.value || chip.textContent.trim();
+                if (group.dataset.prequalGroup === "situation") {
+                    toggleSoftwareStep(values.situation);
+                }
             });
         });
     });
@@ -81,6 +99,10 @@
     const location = document.querySelector("[data-prequal-location]");
     location?.addEventListener("input", () => {
         values.location = location.value.trim();
+    });
+
+    softwareInput?.addEventListener("input", () => {
+        values.current_software = softwareInput.value.trim();
     });
 
     document.querySelectorAll("[data-conversion='appointment_start']").forEach((button) => {

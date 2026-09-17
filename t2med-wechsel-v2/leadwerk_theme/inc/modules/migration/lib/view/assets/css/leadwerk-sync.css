@@ -1,0 +1,113 @@
+.leadwerk-sync__inline-form,
+.leadwerk-sync__direction {
+	display: grid;
+	align-items: end;
+	grid-template-columns: minmax(260px, 1fr) auto;
+	gap: 16px;
+}
+
+.leadwerk-sync__available-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 12px;
+	font-weight: 600;
+}
+
+.leadwerk-sync__inline-form label,
+.leadwerk-sync__direction label {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	font-weight: 600;
+}
+
+.leadwerk-sync input[type="text"],
+.leadwerk-sync input[type="url"],
+.leadwerk-sync select {
+	width: 100%;
+	min-height: 40px;
+}
+
+.leadwerk-dashboard__grid--sync { align-items: start; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.leadwerk-dashboard__metrics--sync { grid-template-columns: fit-content(220px) fit-content(200px) fit-content(260px) minmax(360px, 1fr); }
+.leadwerk-dashboard__metrics--sync .leadwerk-metric { min-width: 0; }
+.leadwerk-metric--identity { min-height: 140px; padding: 18px 20px; }
+.leadwerk-metric--identity > strong { margin: 8px 0 6px; font-size: 18px; line-height: 1.2; }
+.leadwerk-metric__identity-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.leadwerk-metric__identity-header > span:first-child { color: var(--lw-muted); font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+.leadwerk-metric__identity-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: auto 0 0; }
+.leadwerk-metric__identity-values div { min-width: 0; }
+.leadwerk-metric__identity-values dt { margin-bottom: 2px; color: var(--lw-muted); font-size: 10px; font-weight: 600; text-transform: uppercase; }
+.leadwerk-metric__identity-values dd { margin: 0; }
+.leadwerk-metric__identity-values code { display: block; overflow: hidden; padding: 2px 4px; text-overflow: ellipsis; white-space: nowrap; }
+.leadwerk-panel--compact { padding: 18px 20px; }
+.leadwerk-panel--compact .leadwerk-panel__header { gap: 14px; margin-bottom: 14px; }
+.leadwerk-panel--compact .leadwerk-status-list > div { padding: 9px 0; }
+.leadwerk-panel--compact .leadwerk-feature-list { margin-bottom: 10px; }
+.leadwerk-panel--compact .leadwerk-feature-list li { margin: 7px 0; }
+.leadwerk-sync__direction { align-items: center; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); }
+.leadwerk-sync__direction > .dashicons { width: 34px; height: 34px; padding: 7px; border-radius: 50%; color: #fff; background: var(--lw-brand); }
+.leadwerk-dashboard__grid--sync-actions .leadwerk-sync__direction { align-items: end; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 10px; }
+.leadwerk-dashboard__grid--sync-actions .leadwerk-table td,
+.leadwerk-dashboard__grid--sync-actions .leadwerk-table th { padding: 8px 6px; }
+.leadwerk-dashboard__grid--sync-actions .leadwerk-settings__footer { margin-top: 14px; }
+.leadwerk-sync__history { padding: 0; overflow: hidden; }
+.leadwerk-sync__history-summary { align-items: center; margin: 0; padding: 18px 20px; cursor: pointer; list-style: none; }
+.leadwerk-sync__history-summary::-webkit-details-marker { display: none; }
+.leadwerk-sync__history-summary::after { width: 9px; height: 9px; border-right: 2px solid var(--lw-muted); border-bottom: 2px solid var(--lw-muted); content: ""; transform: rotate(45deg); transition: transform .18s ease; }
+.leadwerk-sync__history[open] .leadwerk-sync__history-summary::after { transform: rotate(225deg); }
+.leadwerk-sync__history[open] .leadwerk-sync__history-summary { border-bottom: 1px solid var(--lw-line); }
+.leadwerk-sync__history-meta { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.leadwerk-sync__history-body { padding: 12px 20px 18px; }
+.leadwerk-sync__history-scroll > .leadwerk-table-wrap { max-height: 340px; overflow: auto; }
+.leadwerk-sync__history-scroll .leadwerk-table thead th { position: sticky; z-index: 1; top: 0; background: #fff; }
+.leadwerk-sync__check { display: block; margin-top: 14px; }
+.leadwerk-sync__promotion { margin-top: 18px; padding: 17px; border: 1px solid #b8e0d1; border-radius: 10px; background: #f1fbf7; }
+.leadwerk-sync__promotion h3 { margin: 0 0 5px; }
+.leadwerk-sync__promotion p { margin: 0 0 14px; color: var(--lw-muted); }
+.leadwerk-sync__promotion form { display: grid; align-items: end; grid-template-columns: minmax(220px, 1fr) auto; gap: 12px; }
+.leadwerk-sync__promotion label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+.leadwerk-sync .leadwerk-state-dot.is-offline { background: var(--lw-critical); }
+.leadwerk-sync code { font-size: 11px; word-break: break-all; }
+.leadwerk-sync__hub-admin h3 { margin-top: 28px; }
+.leadwerk-sync__hub-admin td:last-child form { margin: 0; text-align: right; }
+.leadwerk-badge--approved,
+.leadwerk-badge--complete,
+.leadwerk-badge--ready { color: #05603f; background: #e8f7f0; }
+.leadwerk-badge--failed,
+.leadwerk-badge--canceled { color: #912018; background: #ffebe9; }
+.leadwerk-badge--transferring,
+.leadwerk-badge--receiving,
+.leadwerk-badge--verifying,
+.leadwerk-badge--preparing_import,
+.leadwerk-badge--importing,
+.leadwerk-badge--finalizing { color: #3448a0; background: #eef0ff; }
+.leadwerk-badge--queued,
+.leadwerk-badge--running,
+.leadwerk-badge--waiting_runtime { color: #704900; background: #fff4d6; }
+.leadwerk-sync-progress { display: grid; min-width: 190px; gap: 5px; }
+.leadwerk-sync-progress progress { width: 100%; height: 9px; overflow: hidden; accent-color: var(--lw-brand); }
+.leadwerk-sync-progress small { color: var(--lw-muted); white-space: nowrap; }
+[data-leadwerk-poll-status] { transition: color .2s ease, background-color .2s ease; }
+
+@media screen and (max-width: 1100px) {
+	.leadwerk-dashboard__grid--sync { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.leadwerk-dashboard__metrics--sync { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 900px) {
+	.leadwerk-dashboard__grid--sync { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 782px) {
+	.leadwerk-dashboard__metrics--sync { grid-template-columns: 1fr; }
+	.leadwerk-sync__inline-form,
+	.leadwerk-sync__promotion form { grid-template-columns: 1fr; }
+	.leadwerk-sync__direction,
+	.leadwerk-dashboard__grid--sync-actions .leadwerk-sync__direction { grid-template-columns: 1fr; }
+	.leadwerk-sync__direction > .dashicons,
+	.leadwerk-dashboard__grid--sync-actions .leadwerk-sync__direction > .dashicons { margin: 0 auto; transform: rotate(90deg); }
+	.leadwerk-sync__history-summary { align-items: flex-start; }
+	.leadwerk-sync__history-meta { margin-left: 0; }
+}

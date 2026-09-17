@@ -4,7 +4,7 @@
  *
  * @package Leadwerk_T2med
  */
-$solid_header = ! is_front_page();
+$solid_header = ! leadwerk_theme_is_front_page();
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

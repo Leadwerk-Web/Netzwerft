@@ -2825,6 +2825,33 @@ body.video-lightbox-open {
     transition: transform 0.35s var(--ease-soft);
 }
 
+@media (min-width: 901px) {
+    .modal {
+        padding: 1rem;
+    }
+
+    .modal__dialog {
+        width: min(1080px, calc(100vw - 2rem));
+        max-height: calc(100dvh - 2rem);
+        padding: clamp(1.25rem, 1.8vw, 1.75rem) clamp(2rem, 3.2vw, 3.5rem);
+    }
+
+    #funnel-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem 2.5rem;
+    }
+
+    #funnel-form .funnel-step {
+        margin-bottom: 0;
+    }
+
+    #funnel-form .funnel-step:first-child,
+    #funnel-form > .btn {
+        grid-column: 1 / -1;
+    }
+}
+
 .modal.is-open .modal__dialog {
     transform: translateY(0) scale(1);
 }

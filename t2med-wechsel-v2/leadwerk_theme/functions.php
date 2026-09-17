@@ -9,9 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LEADWERK_THEME_VERSION', '2.0.4' );
+define( 'LEADWERK_THEME_VERSION', '3.0.8' );
 define( 'LEADWERK_THEME_DIR', get_template_directory() );
 define( 'LEADWERK_THEME_URI', get_template_directory_uri() );
+
+require_once LEADWERK_THEME_DIR . '/inc/leadwerk-suite.php';
+
+/** Treat the published /en/ counterpart as the landing page as well. */
+function leadwerk_theme_is_front_page() {
+	return is_front_page() || ( class_exists( 'Leadwerk_Translation_Router' ) && Leadwerk_Translation_Router::is_front_request() );
+}
 
 function leadwerk_theme_setup() {
 	add_theme_support( 'title-tag' );
@@ -47,9 +54,53 @@ function leadwerk_theme_assets() {
 		)
 	);
 
+	$inline_css   = '';
 	$source_field = absint( is_array( $field_map ) ? ( $field_map['source'] ?? 0 ) : 0 );
 	if ( $form_id && $source_field ) {
-		wp_add_inline_style( 'leadwerk-wordpress', '#wpforms-' . $form_id . '-field_' . $source_field . '-container{display:none!important}' );
+		$inline_css .= '#wpforms-' . $form_id . '-field_' . $source_field . '-container{display:none!important}';
+	}
+
+	if ( $form_id && is_array( $field_map ) ) {
+		$desktop_columns = array(
+			'situation'        => '1',
+			'start'            => '2',
+			'current_software' => '1 / -1',
+			'location'         => '1',
+			'scope'            => '2',
+			'name'             => '1',
+			'email'            => '2',
+			'phone'            => '1',
+			'practice'         => '2',
+			'message'          => '1',
+			'consent'          => '2',
+		);
+		$desktop_rows    = array(
+			'situation' => '1',
+			'start'     => '1',
+		);
+		$grid_css        = '';
+		foreach ( $desktop_columns as $field_key => $column ) {
+			$field_id = absint( $field_map[ $field_key ] ?? 0 );
+			if ( ! $field_id ) {
+				continue;
+			}
+			$grid_css .= '#wpforms-' . $form_id . '-field_' . $field_id . '-container{grid-column:' . $column;
+			if ( isset( $desktop_rows[ $field_key ] ) ) {
+				$grid_css .= ';grid-row:' . $desktop_rows[ $field_key ];
+			}
+			$grid_css .= '}';
+		}
+		$software_field = absint( $field_map['current_software'] ?? 0 );
+		if ( $software_field ) {
+			$grid_css .= '#wpforms-' . $form_id . '-field_' . $software_field . '-container.wpforms-conditional-hide{display:none!important}';
+		}
+		if ( $grid_css ) {
+			$inline_css .= '@media (min-width:901px){' . $grid_css . '}';
+		}
+	}
+
+	if ( $inline_css ) {
+		wp_add_inline_style( 'leadwerk-wordpress', $inline_css );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'leadwerk_theme_assets' );
@@ -148,7 +199,7 @@ function leadwerk_theme_icon( $key ) {
 
 function leadwerk_theme_head_meta() {
 	$post_id   = get_queried_object_id();
-	$is_home   = is_front_page();
+	$is_home   = leadwerk_theme_is_front_page();
 	$title     = $is_home ? leadwerk_theme_field( 'seo_title', $post_id, get_bloginfo( 'name' ) ) : wp_get_document_title();
 	$desc      = $is_home ? leadwerk_theme_field( 'seo_description', $post_id, get_bloginfo( 'description' ) ) : '';
 	$canonical = is_404() ? '' : ( $is_home ? home_url( '/' ) : get_permalink( $post_id ) );
@@ -212,7 +263,7 @@ function leadwerk_theme_robots( $robots ) {
 add_filter( 'wp_robots', 'leadwerk_theme_robots' );
 
 function leadwerk_theme_document_title( $title ) {
-	if ( is_front_page() ) {
+	if ( leadwerk_theme_is_front_page() ) {
 		return (string) leadwerk_theme_field( 'seo_title', get_queried_object_id(), $title );
 	}
 	if ( is_404() ) {
@@ -225,13 +276,13 @@ function leadwerk_theme_document_title( $title ) {
 add_filter( 'pre_get_document_title', 'leadwerk_theme_document_title' );
 
 function leadwerk_theme_wpseo_title( $title ) {
-	return ( is_front_page() || is_404() ) ? leadwerk_theme_document_title( $title ) : $title;
+	return ( leadwerk_theme_is_front_page() || is_404() ) ? leadwerk_theme_document_title( $title ) : $title;
 }
 add_filter( 'wpseo_title', 'leadwerk_theme_wpseo_title', 20 );
 add_filter( 'wpseo_opengraph_title', 'leadwerk_theme_wpseo_title', 20 );
 
 function leadwerk_theme_wpseo_description( $description ) {
-	if ( is_front_page() ) {
+	if ( leadwerk_theme_is_front_page() ) {
 		return (string) leadwerk_theme_field( 'seo_description', get_queried_object_id(), $description );
 	}
 	return $description;
@@ -243,17 +294,17 @@ function leadwerk_theme_wpseo_canonical( $canonical ) {
 	if ( is_404() ) {
 		return false;
 	}
-	return is_front_page() ? home_url( '/' ) : $canonical;
+	return leadwerk_theme_is_front_page() ? Leadwerk_Translation_API::public_url( get_queried_object_id() ) : $canonical;
 }
 add_filter( 'wpseo_canonical', 'leadwerk_theme_wpseo_canonical', 20 );
 
 function leadwerk_theme_wpseo_og_url( $url ) {
-	return is_front_page() ? home_url( '/' ) : $url;
+	return leadwerk_theme_is_front_page() ? Leadwerk_Translation_API::public_url( get_queried_object_id() ) : $url;
 }
 add_filter( 'wpseo_opengraph_url', 'leadwerk_theme_wpseo_og_url', 20 );
 
 function leadwerk_theme_wpseo_og_image( $image ) {
-	if ( ! is_front_page() ) {
+	if ( ! leadwerk_theme_is_front_page() ) {
 		return $image;
 	}
 	$image_id  = absint( leadwerk_theme_field( 'og_image', get_queried_object_id(), 0 ) );
@@ -263,7 +314,7 @@ function leadwerk_theme_wpseo_og_image( $image ) {
 add_filter( 'wpseo_opengraph_image', 'leadwerk_theme_wpseo_og_image', 20 );
 
 function leadwerk_theme_wpseo_add_og_image( $image_container ) {
-	if ( ! is_front_page() || ! is_object( $image_container ) || ! method_exists( $image_container, 'add_image' ) ) {
+	if ( ! leadwerk_theme_is_front_page() || ! is_object( $image_container ) || ! method_exists( $image_container, 'add_image' ) ) {
 		return;
 	}
 	$image_id  = absint( leadwerk_theme_field( 'og_image', get_queried_object_id(), 0 ) );

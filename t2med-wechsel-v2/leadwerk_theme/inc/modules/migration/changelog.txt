@@ -1,0 +1,386 @@
+Leadwerk Migration & Backup
+===========================
+
+1.5.13 - 2026-09-02
+-------------------
+
+Fixed
+
+* Keep WP Mail SMTP out of the SQL dump and restore it from a base64 sidecar after import, so `wp_` prefix replacement cannot corrupt the Sodium key or encrypted password.
+* Apply the source sidecar when it is usable, otherwise restore the destination snapshot taken at import start. Do not treat a still-readable host/user as success when the ciphertext is garbage.
+
+1.5.12 - 2026-09-02
+-------------------
+
+Fixed
+
+* Keep WP Mail SMTP option names, serialized settings and the Sodium encryption key byte-identical during import so backup/restore no longer blanks the mailer.
+* Repair `{prefix}mail_smtp*` leftovers from older archives and restore the destination SMTP snapshot only when the imported copy is unusable.
+
+1.5.11 - 2026-08-21
+-------------------
+
+Changed
+
+* Stop creating Site Families during activation, heartbeat, export or any other background operation; Family creation now requires the explicit Site Sync administrator button.
+* Register intact publisher-signed Family-less installations as bounded, expiring Hub “Available target” environments.
+* Let Hub administrators reveal and select available targets, then atomically assign the target to the source Family while creating the peer-to-peer job.
+* Preserve normal Family-scoped visibility outside Hub so unrelated administrators cannot enumerate or claim available WordPress targets.
+* Force `blog_public=1` after a full-site import into a live target, preventing a local or staging noindex flag from reaching production.
+
+Security
+
+* Require official Ed25519 release attestation, per-IP/global throttling, a 1,000-target cap and seven-day offline expiry for the Family-less registry.
+* Keep cross-Family targets blocked; only the central Hub administrator can assign an unclaimed environment.
+
+1.5.10 - 2026-08-21
+-------------------
+
+Fixed
+
+* Keep importing and finalizing targets inside the active-job watchdog.
+* Store secrets-free, job-bound import continuations and re-dispatch a dropped loopback only after a five-minute stale window.
+* Recover a legacy stalled import once from its verified local archive when no continuation snapshot is available.
+
+1.5.9 - 2026-08-21
+------------------
+
+Fixed
+
+* Continue direct-push source batches while Hub reports the active transfer as receiving, eliminating the 64 MiB stall.
+* Release the Site Sync worker token at PHP shutdown so importer exits cannot leave a 30-minute stale lock.
+* Make verified final-chunk progress idempotent when the target importer advances the Hub job concurrently.
+
+1.5.8 - 2026-08-14
+------------------
+
+Security
+
+* Prevent empty WordPress restore targets from creating or registering unrelated Site Families.
+* Require meaningful project content before automatic Zone Zero family origination, with an explicit wp-config override for legitimate configuration-only origins.
+* Preserve empty-target environment isolation so a trusted full-site restore adopts the source family while retaining a unique destination environment credential.
+* Discard local-only provisional identities left by older versions on still-empty, never-enrolled targets while preserving approved and inherited families.
+
+1.5.7 - 2026-08-14
+------------------
+
+Changed
+
+* Remove the Preflight and target protection explanation from the Site Sync interface while retaining version, heartbeat, destination-backup and archive-verification enforcement.
+
+1.5.6 - 2026-08-14
+------------------
+
+Changed
+
+* Remove the redundant Zero-touch Hub connection panel and move Site Family identity into a content-sized four-card metrics row.
+* Preserve the staging-to-live promotion control as a separate conditional panel.
+
+1.5.5 - 2026-08-14
+------------------
+
+Fixed
+
+* Ensure the higher-specificity compact source/target layout stacks at the WordPress mobile breakpoint without horizontal overflow.
+
+1.5.4 - 2026-08-14
+------------------
+
+Changed
+
+* Move WP-Cron guidance and transfer preflight/target-protection details into compact disclosure controls, retaining the full safety information while shortening the default page.
+
+1.5.3 - 2026-08-14
+------------------
+
+Changed
+
+* Arrange Site Family identity, Zero-touch Hub connection, environments and full-site synchronization as compact equal two-column panels on desktop.
+* Keep source and target selectors side by side in the half-width transfer panel and use a single column on narrow screens.
+* Collapse automatic update history by default, open it for active work and keep long synchronization/runtime tables inside a bounded scrolling region.
+
+1.5.2 - 2026-08-14
+------------------
+
+Changed
+
+* Display Site Sync settings only on the configured Hub WordPress installation.
+* Reject direct settings submissions from local, staging and ordinary live family members.
+* Continue identifying the configured Hub by URL when Hub Mode is temporarily disabled, so its settings remain recoverable.
+
+1.5.1 - 2026-08-14
+------------------
+
+Changed
+
+* Start full-site synchronization through authenticated AJAX without reloading the Site Sync page or changing its scroll position.
+* Display inline progress, success and error feedback, then refresh the synchronization job table immediately.
+* Retain the nonce-protected admin-post submission as a no-JavaScript fallback.
+
+1.5.0 - 2026-08-14
+------------------
+
+Security
+
+* Removed Hub archive upload, download and fallback routes; full-site backup bytes now move peer-to-peer only.
+* Existing unfinished Hub relay jobs fail closed during the schema upgrade and their job-scoped legacy archives are deleted.
+* New Site Family creation requires a timestamped, nonce-bound HMAC enrollment proof using a key kept outside the plugin and database.
+* Public registration is throttled globally and per source IP before password hashing or database insertion.
+* Hub registry growth is bounded to 5,000 families and 16 environments per family.
+* Browser and REST export/backup entry points now require `manage_options` instead of the editor-level `export` capability.
+* Incorporated upstream All-in-One WP Migration 7.109 and the 7.108 multisite import capability correction.
+
+1.4.7 - 2026-08-14
+------------------
+
+Security
+
+* Hub REST responses now emit X-Robots-Tag noindex, nofollow and noarchive headers.
+* WordPress robots.txt now disallows pretty and query-style Hub REST paths in a dedicated valid user-agent group without hiding normal Leadwerk website pages.
+* Hub API responses now emit no-store cache headers.
+
+1.4.4 - 2026-08-14
+------------------
+
+Changed
+
+- Active synchronization/runtime tables now refresh every second through AJAX.
+- Hub receives archive verification, import preparation, WordPress pipeline and finalization messages.
+- Canceled synchronization jobs remain visible for one hour, then their Hub rows and local partial state are removed.
+- Site Sync releases its worker lock before the asynchronous importer takes over.
+
+1.4.3 - 2026-08-14
+------------------
+
+Fixed
+
+* Automatic release cooldowns now match the failed target version; an older failed publication cannot block a newer signed build.
+* Site Sync panel text now reports the one-minute watchdog used by current workers.
+
+1.4.2 - 2026-08-14
+------------------
+
+Changed
+
+* Direct peer chunks increased from 2 MB to 8 MB, with up to eight chunks handled by each worker batch.
+* The periodic active-job watchdog now runs every minute while immediate signed wakes remain the primary trigger.
+* Verified Site Sync imports continue through the asynchronous pipeline after transfer completion.
+
+Fixed
+
+* A worker event that lost an overlapping lock now schedules a replacement event instead of being silently consumed.
+
+1.4.1 - 2026-08-14
+------------------
+
+Added
+
+* Family-scoped detection of the highest WordPress core version and automatic upgrade commands for lower sibling environments.
+* Exact target-version verification on the heartbeat after the official WordPress Core Upgrader finishes.
+
+Security
+
+* WordPress automation never downgrades, does not cross Site Family boundaries and runs only after the target reports the current signed Migration worker.
+
+1.4.0 - 2026-08-14
+------------------
+
+Added
+
+* Direct Site Family archive transfer with local-to-public push and public-to-local pull paths.
+* Short-lived, job-scoped peer capabilities issued by Hub after the target safety backup is ready.
+* Publisher-signed automatic Migration release publication, Hub self-update and global family rollout.
+
+Changed
+
+* Hub is now the authenticated control plane and connectivity fallback instead of the default archive data path.
+* Manual runtime reconciliation controls were removed; WordPress and PHP remain explicit compatibility gates.
+
+Security
+
+* Migration releases require matching SHA-256 metadata, a deterministic file-tree hash and a valid Ed25519 publisher signature before Hub or an environment installs them.
+* Direct transfers preserve target rollback backups, archive SHA-256 verification, scoped family identity and automatic fallback behavior.
+
+1.3.5 - 2026-08-14
+------------------
+
+Added
+
+* Authenticated AJAX live updates for Synchronization jobs, Runtime update jobs, environment heartbeat state and Hub registry tables.
+* Source-upload and target-download progress meters with live byte totals and percentages.
+* A combined, family-scoped `/hub/status` snapshot that replaces three polling requests with one signed request.
+
+Changed
+
+* Active work refreshes every three seconds, idle panels every ten seconds and hidden tabs pause polling until visible again.
+* Environment selection controls update when a sibling environment registers or changes runtime metadata.
+
+Security
+
+* The WordPress AJAX endpoint requires `manage_options` and a dedicated nonce, returns only allowlisted display fields and never exposes family or environment secrets.
+
+1.3.4 - 2026-08-14
+------------------
+
+Added
+
+* Event-driven workers: Hub sends a signed wake event when a sync job, relay download or runtime reconciliation becomes actionable.
+* Immediate single-run follow-up workers for partial transfer and running runtime-update batches.
+
+Security
+
+* Wake events use the destination environment secret, HMAC-SHA256, a five-minute timestamp window, single-use nonces and strict subject identifiers.
+* Public wake delivery is HTTPS-only and SSRF-safe; `.local` initiators wake themselves because they cannot accept public inbound traffic.
+* The existing five-minute worker remains enabled as a recovery fallback when an event cannot be delivered.
+
+1.3.3 - 2026-08-14
+------------------
+
+Added
+
+* Automatic cleanup of the source-created Site Sync backup after the target import is confirmed complete by Hub.
+
+Security
+
+* Cleanup is job-bound, resolves only a valid direct backup filename and requires an integrity manifest marked with `source=sync`.
+* Failed and canceled jobs retain their source recovery archives; deletion failures remain retryable on the next worker heartbeat.
+
+1.3.2 - 2026-08-14
+------------------
+
+Fixed
+
+* Runtime plugin delivery no longer assumes the selected private-root parent accepts a new subdirectory.
+* The worker now selects and probes the first private writable candidate from existing runtime storage, private root, backup storage or OS temporary storage.
+* Every fallback still passes the same outside-web-root security check before package bytes are written.
+
+1.3.1 - 2026-08-14
+------------------
+
+Changed
+
+* Site Sync now compares the PHP major.minor compatibility branch instead of the complete patch version.
+* PHP 8.4.2 and 8.4.67 may synchronize; PHP 8.3.5 and 8.1.34 remain blocked.
+* Local preflight, Hub job creation/retry, runtime reconciliation and the destination's final pre-import gate use the same rule.
+
+1.3.0 - 2026-08-13
+------------------
+
+Added
+
+* Site-Family-scoped runtime reconciliation commands, visible to every active sibling environment.
+* Authenticated Hub publication and chunk delivery of the current Leadwerk Migration release with an exact SHA-256 manifest.
+* Exact, upgrade-only WordPress core reconciliation through the official core updater.
+* Optional HMAC-authenticated hosting webhook and provider filter for PHP runtime update requests.
+* Family-wide sync and runtime job cancel/retry controls with complete transfer/update history.
+
+Changed
+
+* Runtime reconciliation executes in strict plugin → WordPress → PHP order before a sync can pass its existing exact-version gates.
+* A runtime mutation and full-site transfer cannot run in the same worker request.
+* Targets older than 1.3.0 report a one-time manual bootstrap requirement; subsequent plugin releases can update automatically through Hub.
+* PHP mismatch remains fail-closed unless the hosting platform confirms the requested runtime switch.
+
+1.2.0 - 2026-08-13
+------------------
+
+Added
+
+* Backup-independent Site Family identity creation during plugin bootstrap.
+* Zero-touch Hub enrollment: cryptographic family and environment secrets automatically activate valid registry entries during heartbeat registration.
+* Direction-independent orchestration so any family member can start a full-site sync between any two local, staging or live siblings.
+* Safe family adoption for fresh auto-initialized WordPress restores, with a newly rotated destination environment credential.
+
+Changed
+
+* Removed manual Site Family approval, environment registration, environment approval and per-transfer source/target approval steps.
+* Removed the typed live-target confirmation; the initiating sync button, destructive target warning, exact-version gates and automatic destination safety backup remain.
+* Full-site scope is now documented explicitly: database, uploads, plugins, themes and MU plugins transfer; core/PHP/wp-config/DNS/SSL/hosting configuration do not.
+* Hub registry actions are emergency revoke/reactivate controls rather than an enrollment workflow.
+
+1.1.1 - 2026-08-13
+------------------
+
+Added
+
+* A private physical-installation marker that is intentionally excluded from WordPress exports and distinguishes a domain rename from a cloned database.
+* A nonce-protected `PROMOTE LIVE` action for custom staging domains that cannot be classified automatically.
+
+Changed
+
+* When the same staging installation receives a normal customer domain, its environment ID, credential and sync history are preserved while the Hub record changes to live.
+* A separately restored or cloned WordPress installation still rotates to a unique environment ID and requires one-time Hub enrollment.
+
+1.1.0 - 2026-08-13
+------------------
+
+Added
+
+* Site Sync panel for full WordPress transfers between local, staging and live environments through signed outbound Hub requests.
+* Zone Zero Site Family identity, per-environment IDs and secrets, one-time central enrollment, Hub registry and private resumable archive relay.
+* Five-minute heartbeats with a 15-minute offline threshold; `.local` hosts are detected as local and hosts containing `myrdbx.io` as staging.
+* Automatic target safety backup, SHA-256 transfer verification, resumable two-megabyte chunks and expiring relay files.
+
+Changed
+
+* Sync requests no longer require approval from both environments. A live target still requires an explicit `SYNC LIVE` confirmation on the initiating screen.
+* At release 1.1.0, WordPress, PHP and Leadwerk Migration versions had to match exactly before sync and target import. Version 1.3.1 later relaxed only PHP patch-level equality.
+* Destination identity, Site Sync settings, sync state and safety-backup manifests survive the source database replacement.
+
+1.0.2 - 2026-08-13
+------------------
+
+Added
+
+* A fail-closed import check that requires the WordPress version recorded in the backup to match the destination WordPress version exactly.
+* Explicit import errors for missing source-version metadata and source/destination version mismatches.
+
+Changed
+
+* WordPress version validation now runs immediately after package metadata extraction and before CRC checks, confirmation, content extraction, or database changes.
+* The normalized completion flag remains bound to signed continuation tickets, preventing completion-state tampering between pipeline requests.
+
+1.0.0 - 2026-07-22
+------------------
+
+First independent Leadwerk release, derived from All-in-One WP Migration 7.107 under GPLv3.
+
+Added
+
+* Leadwerk-only PHP, hook, option, AJAX, REST, asset, and file namespaces so the fork can be audited independently.
+* Operations dashboard with fourteen migration readiness checks and a 0–100 score.
+* SHA-256 manifests, sidecars, path containment, timing-safe verification, and integrity status UI.
+* Local hourly/daily/weekly/monthly automation with site-timezone scheduling.
+* Atomic option-backed worker locking with progress heartbeats, bounded activity history, count retention, and email notifications.
+* Authenticated nonce-protected backup and runtime-log streaming with HTTP Range support for backups.
+* AES-256-GCM v3 archive encryption with PBKDF2-SHA256 key derivation, random salts, unique per-chunk nonces, path- and position-bound AAD, and a final keyed manifest covering every preceding archive byte.
+* REST API under `leadwerk/v1` with capability enforcement and scoped expiring import-poll tokens.
+* Purpose-bound credentials, user/action nonces, and signed expiring pipeline continuation tickets bound to a single job and import source.
+* Fail-closed local restore verification that copies SHA-256-verified bytes into the private job workspace before destructive stages.
+* Job-scoped restore markers so browser password and confirm prompts keep using the verified private copy after a reload.
+* REST encrypted imports that require a password acknowledgement and a separate destructive confirmation.
+* Early and late browser cancel authorization that works before the first status write and refuses terminal jobs.
+* WP-CLI commands for backup/export, list, verify, health, and scheduler operations.
+
+Changed
+
+* Moved default backups and temporary migration data to separate randomized private directories. A writable non-web parent is preferred, an operating-system temporary fallback is reported, and paths detected below web roots fail closed.
+* Persisted the validating document root with the private path so WP-CLI/system cron reuse the web-proven durable volume and cannot permanently demote it to the temporary directory.
+* Strengthened the internal secret to 256 bits and disabled autoload for sensitive state.
+* Enabled TLS certificate verification for loopback export/import requests.
+* Replaced predictable job IDs with cryptographically random 128-bit identifiers.
+* Retained read compatibility for legacy archives, including AES-CBC, while ensuring new encrypted exports use only the authenticated v3 format; unauthenticated legacy imports now show a distinct warning and require explicit destructive confirmation.
+* Replaced the upstream navigation and schedules preview with an operational Leadwerk interface.
+* Limited bundled destination/source buttons to functionality included in this package.
+
+Removed from active wiring
+
+* Upstream commercial updater hooks and marketing panels.
+* Public unauthenticated backup management routes.
+* Direct backup URLs and public log access.
+* Placeholder premium reset and schedule menu entries.
+
+Compatibility and attribution
+
+* The `.wpress` archive pipeline remains GPL-compatible with its upstream base.
+* Upstream and third-party copyright/license notices are preserved in `NOTICE.md` and source headers.

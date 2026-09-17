@@ -60,7 +60,7 @@ $email   = leadwerk_theme_option( 'company_email', 'info@dienetzwerft.de' );
 <div class="sticky-corner" aria-label="Schnellaktionen">
 	<button type="button" class="btn btn--primary btn--lg back-to-top" data-back-to-top aria-label="Nach oben scrollen" hidden>Nach oben</button>
 </div>
-<?php if ( is_front_page() ) : ?>
+<?php if ( leadwerk_theme_is_front_page() ) : ?>
 	<div class="sticky-cta" data-sticky-cta>
 		<button class="btn btn--primary" type="button" data-cta="lp-sticky-mobile" data-conversion="appointment_start"><?php echo esc_html( leadwerk_theme_field( 'qualify_cta_label', get_queried_object_id(), 'T2med-Wechsel vorprüfen lassen' ) ); ?></button>
 	</div>

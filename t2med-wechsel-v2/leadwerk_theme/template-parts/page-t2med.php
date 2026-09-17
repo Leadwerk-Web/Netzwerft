@@ -224,6 +224,10 @@ $heading          = static function ( $normal, $bold ) {
 							<?php endforeach; ?>
 						</div>
 					</div>
+					<div class="funnel-step" data-prequal-software-step hidden>
+						<label class="funnel-step__label" for="lp-q1-software"><?php echo esc_html( $field( 'qualify_software_label', 'Welche Praxisverwaltungssoftware ist aktuell im Einsatz?' ) ); ?></label>
+						<input class="funnel-input" id="lp-q1-software" data-prequal-software type="text" autocomplete="off" placeholder="<?php echo esc_attr( $field( 'qualify_software_holder', 'z. B. Medistar, CGM, isynet, tomedo' ) ); ?>">
+					</div>
 					<div class="funnel-step">
 						<label class="funnel-step__label" for="lp-q2-plz"><?php echo esc_html( $field( 'qualify_location_label' ) ); ?></label>
 						<input class="funnel-input" id="lp-q2-plz" data-prequal-location type="text" autocomplete="postal-code" placeholder="<?php echo esc_attr( $field( 'qualify_location_holder' ) ); ?>">

@@ -147,6 +147,62 @@
     overflow-y: auto;
 }
 
+@media (min-width: 901px) {
+    .modal__dialog {
+        max-height: calc(100dvh - 2rem);
+    }
+
+    .leadwerk-wpforms .wpforms-container {
+        margin-top: .55rem;
+        margin-bottom: 0;
+    }
+
+    .leadwerk-wpforms .wpforms-field-container {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(1.5rem, 3vw, 3rem);
+        row-gap: .4rem;
+        align-items: start;
+    }
+
+    .leadwerk-wpforms .wpforms-field {
+        min-width: 0;
+        padding: .2rem 0 !important;
+    }
+
+    .leadwerk-wpforms .wpforms-field-label {
+        margin-bottom: .4rem !important;
+    }
+
+    .leadwerk-wpforms .wpforms-field input:not([type="checkbox"]):not([type="radio"]),
+    .leadwerk-wpforms .wpforms-field textarea,
+    .leadwerk-wpforms .wpforms-field select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .leadwerk-wpforms .wpforms-field textarea {
+        min-height: 88px !important;
+        height: 88px !important;
+        resize: vertical;
+    }
+
+    .leadwerk-wpforms .wpforms-submit-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: .55rem;
+        padding: 0;
+    }
+
+    .leadwerk-wpforms button[type="submit"] {
+        min-width: min(100%, 280px);
+    }
+
+    .modal__sub {
+        margin-bottom: .75rem;
+    }
+}
+
 @media (max-width: 700px) {
     .special-page {
         padding-top: calc(var(--nav-h) + 30px);
