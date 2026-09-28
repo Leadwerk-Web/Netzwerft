@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 964 494" width="964" height="494">
+  <title>netzwerft Kerngeschäft Iconset</title>
+  <defs>
+    <linearGradient id="kg-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Zeichenflaeche">
+    <rect width="964" height="494" fill="#FFFFFF"/>
+  </g>
+  <g id="allround-it">
+    <text x="75" y="44" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#1E88E5">ALLROUND-IT</text>
+    <line x1="75" y1="53" x2="889" y2="53" stroke="#004562" stroke-width="1" opacity="0.15"/>
+    <g id="hardware">
+      <g transform="translate(75 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="15" y="19" width="24" height="17" rx="2.5" fill="#FFFFFF" opacity="0.16"/>
+        <rect x="42" y="20.5" width="7" height="22.5" rx="2" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="15" y="19" width="24" height="17" rx="2.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="42" y="20.5" width="7" height="22.5" rx="2" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 36.5V42M22 43.5h10" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="45.5" cy="37.5" r="1.7" fill="#7DD3FC"/>
+        <path d="M44.5 25.5h2" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="107" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Hardware</text>
+    </g>
+    <g id="cloudservice">
+      <g transform="translate(225 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M 39.7 41.8 H 27.8 a 9.8 9.8 0 1 1 9.39 -12.6 h 2.51 a 6.3 6.3 0 1 1 0 12.6 Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M 39.7 41.8 H 27.8 a 9.8 9.8 0 1 1 9.39 -12.6 h 2.51 a 6.3 6.3 0 1 1 0 12.6 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M32 38.5V30.5M28.5 34 32 30.5 35.5 34" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="257" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Cloudservice</text>
+    </g>
+    <g id="software">
+      <g transform="translate(375 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="16" y="18.5" width="32" height="27" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="16" y="18.5" width="32" height="27" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 25.5h32M26.5 30.5 22 35l4.5 4.5M37.5 30.5 42 35l-4.5 4.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="20.5" cy="22" r="1.3" fill="#7DD3FC"/>
+        <circle cx="24.5" cy="22" r="1.3" fill="#7DD3FC"/>
+        <path d="M33.5 29.5 30.5 40.5" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="407" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Software</text>
+    </g>
+    <g id="multimedia">
+      <g transform="translate(525 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M17.5 28.5a1.5 1.5 0 0 1 1.5-1.5h4.5L31 21v22l-7.5-6H19a1.5 1.5 0 0 1-1.5-1.5Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M17.5 28.5a1.5 1.5 0 0 1 1.5-1.5h4.5L31 21v22l-7.5-6H19a1.5 1.5 0 0 1-1.5-1.5Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40.5 23a12.5 12.5 0 0 1 0 18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M36 27.5a6.5 6.5 0 0 1 0 9" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="557" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Multimedia</text>
+    </g>
+    <g id="sicherheit">
+      <g transform="translate(675 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M32 17 45 22v9c0 8.5-5.5 14-13 16.5C24.5 45 19 39.5 19 31v-9Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M32 17 45 22v9c0 8.5-5.5 14-13 16.5C24.5 45 19 39.5 19 31v-9Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="m26.5 32 4 4 7.5-8" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="707" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Sicherheit</text>
+    </g>
+    <g id="optimierung">
+      <g transform="translate(825 66)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M18 24h28M18 32h28M18 40h28" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="37" cy="24" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+        <circle cx="25" cy="32" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+        <circle cx="33" cy="40" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+      </g>
+      </g>
+      <text x="857" y="152" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Optimierung</text>
+    </g>
+  </g>
+  <g id="praxisfokus">
+    <text x="75" y="194" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#1E88E5">PRAXISFOKUS</text>
+    <line x1="75" y1="203" x2="889" y2="203" stroke="#004562" stroke-width="1" opacity="0.15"/>
+    <g id="t2med">
+      <g transform="translate(75 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="15.5" y="19.5" width="33" height="25" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="15.5" y="19.5" width="33" height="25" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25.5" cy="27.5" r="3" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.5 40.5a6 6 0 0 1 12 0" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M38.25 27h3.5v3.25H45v3.5h-3.25V37h-3.5v-3.25H35v-3.5h3.25Z" fill="#7DD3FC" stroke="#7DD3FC" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="107" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">T2med</text>
+    </g>
+    <g id="ki-tools">
+      <g transform="translate(225 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="22" y="22" width="20" height="20" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="22" y="22" width="20" height="20" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 17v5M37 17v5M27 42v5M37 42v5M17 27h5M17 37h5M42 27h5M42 37h5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M32 25.5Q32.8 31.2 38.5 32 32.8 32.8 32 38.5 31.2 32.8 25.5 32 31.2 31.2 32 25.5Z" fill="#7DD3FC" stroke="#7DD3FC" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="257" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">KI-Tools</text>
+    </g>
+    <g id="telematikinfrastruktur">
+      <g transform="translate(375 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M20 22h16M28 22v21M44 22v21" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="20" cy="22" r="3.2" fill="#7DD3FC"/>
+        <circle cx="36" cy="22" r="3.2" fill="#7DD3FC"/>
+        <circle cx="28" cy="43" r="3.2" fill="#7DD3FC"/>
+        <circle cx="44" cy="22" r="3.2" fill="#7DD3FC"/>
+        <circle cx="44" cy="43" r="3.2" fill="#7DD3FC"/>
+        <path d="M36 22h8" fill="none" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="407" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Telematikinfrastruktur</text>
+    </g>
+    <g id="wirtschaftlichkeit">
+      <g transform="translate(525 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="19" y="37" width="6" height="8" rx="1.5" fill="#FFFFFF" opacity="0.16"/>
+        <rect x="29" y="32" width="6" height="13" rx="1.5" fill="#FFFFFF" opacity="0.16"/>
+        <rect x="39" y="27" width="6" height="18" rx="1.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="19" y="37" width="6" height="8" rx="1.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="29" y="32" width="6" height="13" rx="1.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="39" y="27" width="6" height="18" rx="1.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="m18 29.5 7-6 6 3 12-9.5M37.5 17H43v5.5" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="557" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Wirtschaftlichkeit</text>
+    </g>
+    <g id="sonografie-roentgen">
+      <g transform="translate(675 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M29.5 15h5a2 2 0 0 1 2 2v5.5l3 5.5a9 9 0 0 1-15 0l3-5.5V17a2 2 0 0 1 2-2Z" fill="#FFFFFF" opacity="0.16"/>
+        <path d="M24.5 35.5 20 42a16 16 0 0 0 24 0l-4.5-6.5a9 9 0 0 1-15 0Z" fill="#7DD3FC" opacity="0.3"/>
+      </g>
+      <g>
+        <path d="M29.5 15h5a2 2 0 0 1 2 2v5.5l3 5.5a9 9 0 0 1-15 0l3-5.5V17a2 2 0 0 1 2-2Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M24.5 35.5 20 42a16 16 0 0 0 24 0l-4.5-6.5a9 9 0 0 1-15 0Z" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="707" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Sonografie &amp; Röntgen</text>
+    </g>
+    <g id="medizintechnik">
+      <g transform="translate(825 216)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M 41.8 34.8 c 2.09 -2.04 4.2 -4.49 4.2 -7.7 A 7.7 7.7 0 0 0 38.3 19.4 c -2.46 0 -4.2 0.7 -6.3 2.8 -2.1 -2.1 -3.84 -2.8 -6.3 -2.8 A 7.7 7.7 0 0 0 18 27.1 c 0 3.22 2.1 5.67 4.2 7.7 l 9.8 9.8 Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M 41.8 34.8 c 2.09 -2.04 4.2 -4.49 4.2 -7.7 A 7.7 7.7 0 0 0 38.3 19.4 c -2.46 0 -4.2 0.7 -6.3 2.8 -2.1 -2.1 -3.84 -2.8 -6.3 -2.8 A 7.7 7.7 0 0 0 18 27.1 c 0 3.22 2.1 5.67 4.2 7.7 l 9.8 9.8 Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M23 31.5h4.5l2.5-4.5 4 9 2.5-4.5H41" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="857" y="302" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Medizintechnik</text>
+    </g>
+  </g>
+  <g id="infrastruktur">
+    <text x="75" y="344" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#1E88E5">INFRASTRUKTUR</text>
+    <line x1="75" y1="353" x2="889" y2="353" stroke="#004562" stroke-width="1" opacity="0.15"/>
+    <g id="videoueberwachung">
+      <g transform="translate(75 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="17" y="20" width="22" height="12" rx="3" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="17" y="20" width="22" height="12" rx="3" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="m39 23.5 6.5-2.5v10L39 28.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M26 32v5.5a2 2 0 0 1-2 2h-6.5M17.5 35v9" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="22.5" cy="26" r="2" fill="#7DD3FC"/>
+      </g>
+      </g>
+      <text x="107" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Videoüberwachung</text>
+    </g>
+    <g id="knx-programmierung">
+      <g transform="translate(225 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M19.5 30 32 19.5 44.5 30v13a2 2 0 0 1-2 2h-21a2 2 0 0 1-2-2Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M19.5 30 32 19.5 44.5 30v13a2 2 0 0 1-2 2h-21a2 2 0 0 1-2-2Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M32 31.5 26.5 39M32 31.5 37.5 39M26.5 39h11" fill="none" stroke="#7DD3FC" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="32" cy="31.5" r="2.6" fill="#7DD3FC"/>
+        <circle cx="26.5" cy="39" r="2.3" fill="#7DD3FC"/>
+        <circle cx="37.5" cy="39" r="2.3" fill="#7DD3FC"/>
+      </g>
+      </g>
+      <text x="257" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">KNX-Programmierung</text>
+    </g>
+    <g id="elektroinstallation">
+      <g transform="translate(375 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M23 23h18v5a9 9 0 0 1-18 0Z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M23 23h18v5a9 9 0 0 1-18 0Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M28 16.5V23M36 16.5V23M32 37v3.5a4.5 4.5 0 0 0 4.5 4.5H41" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M33.2 25.5 29 31.2h3.6l-1.4 4.8 4.4-6h-3.6Z" fill="#7DD3FC" stroke="#7DD3FC" stroke-width="1" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="407" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Elektroinstallation</text>
+    </g>
+    <g id="telefonanlagen">
+      <g transform="translate(525 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <path d="M 45 38.4 v 3.9 a 2.6 2.6 0 0 1 -2.83 2.6 25.73 25.73 0 0 1 -11.22 -3.99 25.35 25.35 0 0 1 -7.8 -7.8 25.73 25.73 0 0 1 -3.99 -11.27 A 2.6 2.6 0 0 1 21.74 19 h 3.9 a 2.6 2.6 0 0 1 2.6 2.24 16.69 16.69 0 0 0 0.91 3.65 2.6 2.6 0 0 1 -0.59 2.74 L 26.92 29.28 a 20.8 20.8 0 0 0 7.8 7.8 l 1.65 -1.65 a 2.6 2.6 0 0 1 2.74 -0.59 16.69 16.69 0 0 0 3.65 0.91 A 2.6 2.6 0 0 1 45 38.4 z" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <path d="M 45 38.4 v 3.9 a 2.6 2.6 0 0 1 -2.83 2.6 25.73 25.73 0 0 1 -11.22 -3.99 25.35 25.35 0 0 1 -7.8 -7.8 25.73 25.73 0 0 1 -3.99 -11.27 A 2.6 2.6 0 0 1 21.74 19 h 3.9 a 2.6 2.6 0 0 1 2.6 2.24 16.69 16.69 0 0 0 0.91 3.65 2.6 2.6 0 0 1 -0.59 2.74 L 26.92 29.28 a 20.8 20.8 0 0 0 7.8 7.8 l 1.65 -1.65 a 2.6 2.6 0 0 1 2.74 -0.59 16.69 16.69 0 0 0 3.65 0.91 A 2.6 2.6 0 0 1 45 38.4 z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <path d="M 34.66 19 a 11.7 11.7 0 0 1 10.4 10.32 M 34.66 24.2 A 6.5 6.5 0 0 1 39.8 29.4" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="557" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Telefonanlagen</text>
+    </g>
+    <g id="medientechnik">
+      <g transform="translate(675 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="16" y="25" width="32" height="15.5" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="16" y="25" width="32" height="15.5" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="38.5" cy="32.75" r="4.25" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.5 30.5h6M21.5 35h6M21 40.5V43M43 40.5V43" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <circle cx="38.5" cy="32.75" r="1.6" fill="#7DD3FC"/>
+        <path d="M38.5 21v-3M33.5 21.8l-1.5-2.3M43.5 21.8l1.5-2.3" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="707" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Medientechnik</text>
+    </g>
+    <g id="elektrische-pruefungen">
+      <g transform="translate(825 366)">
+      <g>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-verlauf)"/>
+        <circle cx="32" cy="32" r="32" fill="url(#kg-glanz)"/>
+        <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+      </g>
+      <g>
+        <rect x="19" y="19.5" width="26" height="27" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+      </g>
+      <g>
+        <rect x="19" y="19.5" width="26" height="27" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g>
+        <rect x="26" y="16" width="12" height="6.5" rx="2" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M34 26.5 26.5 35.5H32L30.5 42.5 37.5 33.5H32Z" fill="#7DD3FC" stroke="#7DD3FC" stroke-width="1.5" stroke-linejoin="round"/>
+      </g>
+      </g>
+      <text x="857" y="452" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#00273C">Elektrische Prüfungen</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>KNX-Programmierung</title>
+  <defs>
+    <linearGradient id="kg-knx-programmierung-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-knx-programmierung-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-knx-programmierung-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-knx-programmierung-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Flaeche">
+    <path d="M19.5 30 32 19.5 44.5 30v13a2 2 0 0 1-2 2h-21a2 2 0 0 1-2-2Z" fill="#FFFFFF" opacity="0.16"/>
+  </g>
+  <g id="Kontur">
+    <path d="M19.5 30 32 19.5 44.5 30v13a2 2 0 0 1-2 2h-21a2 2 0 0 1-2-2Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <path d="M32 31.5 26.5 39M32 31.5 37.5 39M26.5 39h11" fill="none" stroke="#7DD3FC" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="32" cy="31.5" r="2.6" fill="#7DD3FC"/>
+    <circle cx="26.5" cy="39" r="2.3" fill="#7DD3FC"/>
+    <circle cx="37.5" cy="39" r="2.3" fill="#7DD3FC"/>
+  </g>
+</svg>

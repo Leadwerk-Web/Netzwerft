@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>Multimedia</title>
+  <defs>
+    <linearGradient id="kg-multimedia-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-multimedia-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-multimedia-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-multimedia-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Flaeche">
+    <path d="M17.5 28.5a1.5 1.5 0 0 1 1.5-1.5h4.5L31 21v22l-7.5-6H19a1.5 1.5 0 0 1-1.5-1.5Z" fill="#FFFFFF" opacity="0.16"/>
+  </g>
+  <g id="Kontur">
+    <path d="M17.5 28.5a1.5 1.5 0 0 1 1.5-1.5h4.5L31 21v22l-7.5-6H19a1.5 1.5 0 0 1-1.5-1.5Z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M40.5 23a12.5 12.5 0 0 1 0 18" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <path d="M36 27.5a6.5 6.5 0 0 1 0 9" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>Telefonanlagen</title>
+  <defs>
+    <linearGradient id="kg-telefonanlagen-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-telefonanlagen-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-telefonanlagen-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-telefonanlagen-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Flaeche">
+    <path d="M 45 38.4 v 3.9 a 2.6 2.6 0 0 1 -2.83 2.6 25.73 25.73 0 0 1 -11.22 -3.99 25.35 25.35 0 0 1 -7.8 -7.8 25.73 25.73 0 0 1 -3.99 -11.27 A 2.6 2.6 0 0 1 21.74 19 h 3.9 a 2.6 2.6 0 0 1 2.6 2.24 16.69 16.69 0 0 0 0.91 3.65 2.6 2.6 0 0 1 -0.59 2.74 L 26.92 29.28 a 20.8 20.8 0 0 0 7.8 7.8 l 1.65 -1.65 a 2.6 2.6 0 0 1 2.74 -0.59 16.69 16.69 0 0 0 3.65 0.91 A 2.6 2.6 0 0 1 45 38.4 z" fill="#FFFFFF" opacity="0.16"/>
+  </g>
+  <g id="Kontur">
+    <path d="M 45 38.4 v 3.9 a 2.6 2.6 0 0 1 -2.83 2.6 25.73 25.73 0 0 1 -11.22 -3.99 25.35 25.35 0 0 1 -7.8 -7.8 25.73 25.73 0 0 1 -3.99 -11.27 A 2.6 2.6 0 0 1 21.74 19 h 3.9 a 2.6 2.6 0 0 1 2.6 2.24 16.69 16.69 0 0 0 0.91 3.65 2.6 2.6 0 0 1 -0.59 2.74 L 26.92 29.28 a 20.8 20.8 0 0 0 7.8 7.8 l 1.65 -1.65 a 2.6 2.6 0 0 1 2.74 -0.59 16.69 16.69 0 0 0 3.65 0.91 A 2.6 2.6 0 0 1 45 38.4 z" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <path d="M 34.66 19 a 11.7 11.7 0 0 1 10.4 10.32 M 34.66 24.2 A 6.5 6.5 0 0 1 39.8 29.4" fill="none" stroke="#7DD3FC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

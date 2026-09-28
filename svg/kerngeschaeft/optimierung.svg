@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>Optimierung</title>
+  <defs>
+    <linearGradient id="kg-optimierung-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-optimierung-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-optimierung-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-optimierung-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Kontur">
+    <path d="M18 24h28M18 32h28M18 40h28" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <circle cx="37" cy="24" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="25" cy="32" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="33" cy="40" r="3.8" fill="#7DD3FC" stroke="#FFFFFF" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>KI-Tools</title>
+  <defs>
+    <linearGradient id="kg-ki-tools-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-ki-tools-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-ki-tools-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-ki-tools-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Flaeche">
+    <rect x="22" y="22" width="20" height="20" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+  </g>
+  <g id="Kontur">
+    <rect x="22" y="22" width="20" height="20" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M27 17v5M37 17v5M27 42v5M37 42v5M17 27h5M17 37h5M42 27h5M42 37h5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <path d="M32 25.5Q32.8 31.2 38.5 32 32.8 32.8 32 38.5 31.2 32.8 25.5 32 31.2 31.2 32 25.5Z" fill="#7DD3FC" stroke="#7DD3FC" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
+</svg>

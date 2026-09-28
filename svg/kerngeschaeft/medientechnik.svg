@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64" width="64" height="64">
+  <title>Medientechnik</title>
+  <defs>
+    <linearGradient id="kg-medientechnik-verlauf" x1="12" y1="4" x2="52" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2A9BF2"/>
+      <stop offset="0.5" stop-color="#0E6CA6"/>
+      <stop offset="1" stop-color="#004562"/>
+    </linearGradient>
+    <radialGradient id="kg-medientechnik-glanz" cx="20" cy="14" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Hintergrund">
+    <circle cx="32" cy="32" r="32" fill="url(#kg-medientechnik-verlauf)"/>
+    <circle cx="32" cy="32" r="32" fill="url(#kg-medientechnik-glanz)"/>
+    <circle cx="32" cy="32" r="30.75" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.22"/>
+  </g>
+  <g id="Flaeche">
+    <rect x="16" y="25" width="32" height="15.5" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+  </g>
+  <g id="Kontur">
+    <rect x="16" y="25" width="32" height="15.5" rx="3.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="38.5" cy="32.75" r="4.25" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21.5 30.5h6M21.5 35h6M21 40.5V43M43 40.5V43" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Akzent">
+    <circle cx="38.5" cy="32.75" r="1.6" fill="#7DD3FC"/>
+    <path d="M38.5 21v-3M33.5 21.8l-1.5-2.3M43.5 21.8l1.5-2.3" fill="none" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
