@@ -1,0 +1,439 @@
+/* ============================================================
+   Hero V4 — Drei Einstiege (Praxisgründung, Praxisübergabe, Softwarewechsel)
+   Ersetzt das Leistungs-Karussell aus index-v2: Die drei Leistungsgruppen
+   stehen gleichwertig und gleichzeitig sichtbar im Hero, jeweils nur mit
+   Bild, Icon, Titel, einem Satz zum Anlass und Link zur Landingpage.
+   Farben, Verlauf, Partikel und Typo bleiben wie in index-v2.
+   ============================================================ */
+
+/* ── Grundgerüst (aus index-v2.css übernommen) ─────────────── */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    color: var(--nw-on-dark);
+    background: var(--grad-dark);
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--grad-dark);
+}
+
+.hero__blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 90% 70% at 12% 18%,
+            rgba(30, 136, 229, 0.22) 0%,
+            transparent 58%
+        ),
+        radial-gradient(
+            ellipse 55% 45% at 88% 12%,
+            rgba(30, 136, 229, 0.1) 0%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse 80% 55% at 50% 108%,
+            rgba(13, 71, 161, 0.55) 0%,
+            transparent 62%
+        );
+}
+
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.hero__eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.hero__title,
+.hero__title .headline-bold {
+    letter-spacing: normal;
+}
+
+.hero__title {
+    font-weight: var(--headline-weight-thin);
+    line-height: 1.1;
+    color: var(--nw-on-dark);
+}
+
+.hero__title .headline-bold {
+    font-weight: var(--headline-weight-bold);
+}
+
+/* ── Layout ────────────────────────────────────────────────── */
+
+.wege {
+    position: relative;
+    z-index: 4;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(var(--container) + 2 * var(--edge));
+    margin: 0 auto;
+    padding:
+        calc(var(--nav-h, 136px) + clamp(1rem, 3vh, 2.5rem))
+        var(--edge)
+        clamp(2.5rem, 7vh, 4.5rem);
+}
+
+/* Kopf: Headline links, Einleitung + CTA rechts — spart Höhe für die Karten */
+.wege__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+.wege__title {
+    margin: 0;
+    font-size: clamp(2.25rem, 1.4rem + 2.4vw, 3.5rem);
+}
+
+.wege__lead {
+    margin: 0;
+    max-width: 40ch;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--nw-on-dark-soft);
+}
+
+.wege__actions {
+    margin-top: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.wege__frage {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: clamp(2.25rem, 6vh, 3.75rem) 0 clamp(1rem, 2vh, 1.35rem);
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+    font-weight: 600;
+    color: #fff;
+}
+
+.wege__frage::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), transparent);
+}
+
+.wege__liste {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.9rem, 1.6vw, 1.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wege__eintrag {
+    display: flex;
+    animation: weg-rein 0.9s var(--ease-soft) both;
+}
+
+.wege__eintrag:nth-child(2) { animation-delay: 0.1s; }
+.wege__eintrag:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes weg-rein {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+}
+
+/* ── Karte ─────────────────────────────────────────────────── */
+
+.weg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    /* fast deckend, damit die Leiterbahnen aus hero-particles.js nicht durch den Text laufen */
+    background: linear-gradient(180deg, rgba(14, 38, 74, 0.94), rgba(7, 24, 52, 0.94));
+    box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.7);
+    color: var(--nw-on-dark);
+    transition: transform 0.45s var(--ease-soft), border-color 0.3s ease,
+        box-shadow 0.45s var(--ease-soft), filter 0.3s ease;
+}
+
+.weg:hover,
+.weg:focus-visible {
+    transform: translateY(-6px);
+    border-color: rgba(100, 181, 246, 0.5);
+    box-shadow: 0 40px 70px -34px rgba(0, 0, 0, 0.75);
+}
+
+.weg:focus-visible {
+    outline: 2px solid var(--color-mint);
+    outline-offset: 3px;
+}
+
+/* Die anderen Karten treten zurück, solange eine gewählt wird */
+@media (hover: hover) {
+    .wege__liste:has(.weg:hover) .weg:not(:hover) {
+        filter: brightness(0.72) saturate(0.8);
+    }
+}
+
+.weg__media {
+    position: relative;
+    display: block;
+    height: clamp(110px, 15vh, 150px);
+    overflow: hidden;
+}
+
+.weg__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 78% 60%;
+    transform: scale(1.04);
+    transition: transform 0.9s var(--ease-soft);
+}
+
+.weg__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 24, 52, 0) 35%, rgba(12, 34, 68, 0.95) 100%);
+}
+
+.weg:hover .weg__media img,
+.weg:focus-visible .weg__media img {
+    transform: scale(1.1);
+}
+
+.weg__body {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0 clamp(1.25rem, 1.8vw, 1.75rem) clamp(1.25rem, 1.8vw, 1.6rem);
+}
+
+.weg__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    margin-bottom: 1rem;
+    border-radius: var(--nw-icon-radius);
+    background: var(--nw-icon-bg);
+    color: var(--nw-icon-color);
+    box-shadow: 0 10px 24px -10px var(--nw-glow), 0 0 0 5px rgb(12, 34, 68);
+}
+
+.weg__icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.weg__titel {
+    margin: 0 0 0.45rem;
+    font-size: clamp(1.25rem, 1rem + 0.7vw, 1.6rem);
+    font-weight: var(--headline-weight-bold);
+    line-height: 1.15;
+    color: #fff;
+    hyphens: manual;
+}
+
+.weg__anlass {
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--nw-on-dark-soft);
+}
+
+.weg__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: auto;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-mint);
+}
+
+.weg__link svg {
+    width: 2.4rem;
+    height: 0.6rem;
+    transition: transform 0.45s var(--ease-soft);
+}
+
+.weg:hover .weg__link svg,
+.weg:focus-visible .weg__link svg {
+    transform: translateX(6px);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+/* Niedrige, breite Fenster (Laptop 1366 × 768, Browser-Zoom): Kopf kompakter */
+@media (min-width: 900px) and (max-height: 860px) {
+    .wege {
+        padding-top: calc(var(--nav-h, 136px) + 0.5rem);
+        padding-bottom: 2rem;
+    }
+
+    .wege__title {
+        font-size: clamp(2rem, 6.5vh, 3.4rem);
+    }
+
+    .wege__frage {
+        margin-top: 1.75rem;
+    }
+
+    .weg__media {
+        height: 96px;
+    }
+}
+
+/* Tablet: Kopf einspaltig, Karten bleiben nebeneinander */
+@media (max-width: 991px) {
+    .wege__intro {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .wege__lead {
+        max-width: 60ch;
+    }
+
+    .weg__link {
+        gap: 0.5rem;
+        font-size: 0.88rem;
+        white-space: nowrap;
+    }
+
+    .weg__link svg {
+        width: 1.75rem;
+    }
+}
+
+/* Schmale Tablets und Handy: Karten untereinander, kompakt als Zeile */
+@media (max-width: 767px) {
+    .wege {
+        padding-top: calc(var(--nav-h, 110px) + 0.5rem);
+    }
+
+    .wege__liste {
+        grid-template-columns: 1fr;
+    }
+
+    .weg__media {
+        display: none;
+    }
+
+    .weg__body {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: 1rem;
+        padding: 1.1rem 1.15rem;
+    }
+
+    .weg__icon {
+        grid-row: 1 / span 3;
+        margin: 0.15rem 0 0;
+        box-shadow: 0 10px 24px -10px var(--nw-glow);
+    }
+
+    .weg__titel,
+    .weg__anlass,
+    .weg__link {
+        grid-column: 2;
+    }
+
+    .weg__titel {
+        margin-bottom: 0.2rem;
+    }
+
+    .weg__anlass {
+        margin-bottom: 0;
+        font-size: 0.88rem;
+    }
+
+    .weg__link {
+        margin-top: 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Handy: Karten direkt unter die Headline, Einleitung und CTA danach */
+@media (max-width: 575px) {
+    .wege__intro {
+        display: contents;
+    }
+
+    .wege__intro-main { order: 1; }
+    .wege__frage      { order: 2; margin-top: 1.5rem; }
+    .wege__liste      { order: 3; }
+    .wege__intro-side { order: 4; margin-top: 1.75rem; }
+
+    .wege__title {
+        font-size: clamp(2rem, 8.5vw, 2.5rem);
+    }
+
+    .wege__actions .btn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wege__eintrag {
+        animation: none;
+    }
+
+    .weg,
+    .weg__media img,
+    .weg__link svg {
+        transition: none;
+    }
+
+    .weg:hover,
+    .weg:focus-visible {
+        transform: none;
+    }
+}
