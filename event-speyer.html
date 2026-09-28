@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- SEO -->
+    <title>Event in Speyer: Digitale Praxisorganisation | die netzwerft</title>
+    <meta name="description" content="Mittwoch, 4. November 2026 in der RheinVilla Speyer: Get-Together mit Live-Demo von T2med und Raum für Ihre Fragen. Teilnahme vor Ort oder online." />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="die netzwerft GmbH" />
+    <meta property="og:title" content="Digitale Praxisorganisation – Event in Speyer am 4. November 2026" />
+    <meta property="og:description" content="Get-Together mit Live-Demo von T2med und Raum für Ihre Fragen. RheinVilla Speyer oder online." />
+    <meta property="og:image" content="https://dienetzwerft.de/Fotos/og/og-t2med.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_DE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Digitale Praxisorganisation – Event in Speyer am 4. November 2026" />
+    <meta name="twitter:description" content="Get-Together mit Live-Demo von T2med und Raum für Ihre Fragen. RheinVilla Speyer oder online." />
+    <meta name="twitter:image" content="https://dienetzwerft.de/Fotos/og/og-t2med.jpg" />
+    <meta name="theme-color" content="#004562" />
+    <link rel="canonical" href="/event-speyer/" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="svg/Favicon.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="css/montserrat-local.css" />
+    <link rel="stylesheet" href="css/styles-v2.css" />
+    <link rel="stylesheet" href="css/landing-t2med-v2.css" />
+    <link rel="stylesheet" href="css/event-speyer.css" />
+
+    <!-- Strukturierte Daten -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Digitale Praxisorganisation – effizient, persönlich, regional",
+        "description": "Get-Together der netzwerft mit Live-Demo von T2med und Raum für Fragen. Teilnahme vor Ort in Speyer oder online.",
+        "startDate": "2026-11-04T17:30:00+01:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "location": [
+            {
+                "@type": "Place",
+                "name": "RheinVilla",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Hafenstraße 39",
+                    "postalCode": "67346",
+                    "addressLocality": "Speyer",
+                    "addressCountry": "DE"
+                }
+            },
+            {
+                "@type": "VirtualLocation",
+                "url": "https://dienetzwerft.de/event-speyer/"
+            }
+        ],
+        "organizer": {
+            "@type": "Organization",
+            "name": "die netzwerft GmbH",
+            "url": "https://dienetzwerft.de/"
+        }
+    }
+    </script>
+</head>
+
+<body class="lp">
+    <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+    <!-- =====================================================
+         Navigation (schlank, Landingpage)
+         ===================================================== -->
+    <header class="site-header" id="site-header">
+        <div class="site-header__inner">
+            <a class="brand" href="/" aria-label="die netzwerft - zur Startseite">
+                <img class="brand__logo" src="svg/logo.svg" alt="die netzwerft" width="2911" height="782" decoding="async">
+            </a>
+
+            <nav class="site-nav" id="site-nav" aria-label="Hauptnavigation">
+                <ul class="site-nav__list">
+                    <li><a class="site-nav__link" href="#programm">Programm</a></li>
+                    <li><a class="site-nav__link" href="#live-demo">Live-Demo</a></li>
+                    <li><a class="site-nav__link" href="#anfahrt">Anfahrt</a></li>
+                    <li><a class="site-nav__link" href="#faq">FAQ</a></li>
+                </ul>
+                <div class="site-nav__cta">
+                    <a class="btn btn--primary" href="#anmeldung" data-cta="ev-nav">Jetzt anmelden</a>
+                </div>
+            </nav>
+
+            <button class="nav-toggle" aria-label="Men&uuml; &ouml;ffnen" aria-expanded="false" aria-controls="site-nav">
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+        </div>
+    </header>
+    <div class="nav-backdrop" aria-hidden="true"></div>
+
+    <main id="hauptinhalt">
+        <span id="top"></span>
+
+        <!-- =====================================================
+             1. Hero mit Einladungskarte
+             ===================================================== -->
+        <section class="lp-hero ev-hero" id="hero" aria-labelledby="ev-hero-title" data-lw-section="hero">
+            <div class="lp-hero__bg" aria-hidden="true">
+                <div class="lp-hero__blur"></div>
+                <canvas class="lp-hero__particles" id="hero-particles"></canvas>
+            </div>
+            <div class="container ev-hero__grid">
+                <div class="lp-hero__content" data-animate>
+                    <span class="eyebrow lp-hero__eyebrow" data-lw-field="hero.eyebrow" data-lw-type="text">Einladung &middot; Speyer &amp; online</span>
+                    <h1 class="lp-hero__title" id="ev-hero-title" data-lw-field="hero.title" data-lw-type="text">
+                        Digitale Praxisorganisation &ndash; <span class="headline-bold">effizient, pers&ouml;nlich, regional.</span>
+                    </h1>
+                    <p class="lp-hero__sub" data-lw-field="hero.sub" data-lw-type="text">
+                        Wir stellen uns in Speyer offiziell und pers&ouml;nlich vor: ein zwangloses Get-Together
+                        mit Live-Demo von T2med und viel Raum f&uuml;r Ihre Fragen. Sie k&ouml;nnen auch online
+                        dabei sein.
+                    </p>
+
+                    <div class="lp-hero__actions ev-hero__actions">
+                        <a class="btn btn--light btn--lg" href="#anmeldung" data-cta="ev-hero">Jetzt anmelden</a>
+                        <a class="btn btn--ghost-light btn--lg" href="#anfahrt" data-cta="ev-hero-route">Anfahrt</a>
+                    </div>
+                </div>
+
+                <aside class="ev-ticket" aria-label="Eckdaten der Veranstaltung" data-animate>
+                    <div class="ev-ticket__top">
+                        <span class="ev-ticket__kicker">Save the Date</span>
+                        <span class="ev-ticket__badge">Vor Ort &amp; online</span>
+                    </div>
+                    <p class="ev-ticket__date">
+                        <span class="ev-ticket__day" aria-hidden="true">04</span>
+                        <span class="ev-ticket__date-text">
+                            <strong data-lw-field="hero.date" data-lw-type="text">November 2026</strong>
+                            <span data-lw-field="hero.weekday" data-lw-type="text">Mittwoch</span>
+                        </span>
+                        <span class="visually-hidden">Mittwoch, 4. November 2026</span>
+                    </p>
+                    <div class="ev-ticket__cut" aria-hidden="true"></div>
+                    <ul class="ev-ticket__list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <span><strong>Onboarding: 17:30 Uhr</strong></span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                            <span><strong>RheinVilla</strong> Hafenstra&szlig;e 39 &middot; 67346 Speyer</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                            <span><strong>Online-Teilnahme m&ouml;glich</strong></span>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             2. Begrüßung + Was Sie erwartet
+             ===================================================== -->
+        <section class="section section--white" id="einladung" aria-labelledby="ev-welcome-title" data-lw-section="welcome">
+            <div class="container">
+                <div class="section__head section__head--center" data-animate>
+                    <span class="eyebrow" data-lw-field="welcome.eyebrow" data-lw-type="text">Herzlich willkommen</span>
+                    <h2 class="section__title" id="ev-welcome-title" data-lw-field="welcome.title" data-lw-type="text">
+                        Wir freuen uns, Sie bei unserem Event <span class="headline-bold">begr&uuml;&szlig;en zu d&uuml;rfen.</span>
+                    </h2>
+                    <p class="section__intro" data-lw-field="welcome.intro" data-lw-type="text">
+                        Lernen Sie uns kennen, bevor Sie sich f&uuml;r etwas entscheiden m&uuml;ssen. Bei einem
+                        zwanglosen Abend zeigen wir, wie digitale Praxisorganisation mit T2med im Alltag aussieht,
+                        und nehmen uns Zeit f&uuml;r Ihre Fragen.
+                    </p>
+                </div>
+
+                <div class="grid grid--3">
+                    <article class="card" data-animate>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m10.5 7.8 3.6 2.2-3.6 2.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="welcome.card1.title" data-lw-type="text">Live-Demo von T2med</h3>
+                        <p class="card__text" data-lw-field="welcome.card1.text" data-lw-type="text">
+                            Wir zeigen die Praxissoftware im echten Ablauf, von der Tagesliste bis zur Verordnung,
+                            statt Folien zu pr&auml;sentieren.
+                        </p>
+                    </article>
+
+                    <article class="card" data-animate>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M3 20a6 6 0 0 1 12 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M16 14.1a5 5 0 0 1 5 4.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="welcome.card2.title" data-lw-type="text">Zwangloses Get-Together</h3>
+                        <p class="card__text" data-lw-field="welcome.card2.text" data-lw-type="text">
+                            Lernen Sie das Team der netzwerft pers&ouml;nlich kennen und kommen Sie mit Kolleginnen
+                            und Kollegen aus der Region ins Gespr&auml;ch.
+                        </p>
+                    </article>
+
+                    <article class="card" data-animate>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9.5L4 20z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 9.3a2 2 0 1 1 2.7 1.9c-.45.2-.7.55-.7 1v.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 14h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="welcome.card3.title" data-lw-type="text">Raum f&uuml;r Ihre Fragen</h3>
+                        <p class="card__text" data-lw-field="welcome.card3.text" data-lw-type="text">
+                            Softwarewechsel, Praxis-IT, Telefonie oder TI: Fragen Sie, was Ihre Praxis gerade
+                            besch&auml;ftigt. Vor Ort oder im Online-Chat.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             3. Motto: effizient, persönlich, regional
+             ===================================================== -->
+        <section class="section section--dark" id="motto" aria-labelledby="ev-motto-title" data-lw-section="motto">
+            <div class="container">
+                <div class="section__head section__head--center" data-animate>
+                    <span class="eyebrow" data-lw-field="motto.eyebrow" data-lw-type="text">Worum es geht</span>
+                    <h2 class="section__title" id="ev-motto-title" data-lw-field="motto.title" data-lw-type="text">
+                        Praxisorganisation, <span class="headline-bold">die zu Ihrem Alltag passt.</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid--3 ev-motto">
+                    <article class="card" data-animate>
+                        <span class="ev-motto__word">Effizient</span>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="motto.card1.title" data-lw-type="text">Weniger Klicks, klare Abl&auml;ufe</h3>
+                        <p class="card__text" data-lw-field="motto.card1.text" data-lw-type="text">
+                            Anmeldung, Dokumentation und Abrechnung in einer Oberfl&auml;che, damit mehr Zeit f&uuml;r
+                            Patientinnen und Patienten bleibt.
+                        </p>
+                    </article>
+
+                    <article class="card" data-animate>
+                        <span class="ev-motto__word">Pers&ouml;nlich</span>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="motto.card2.title" data-lw-type="text">Feste Ansprechpartner</h3>
+                        <p class="card__text" data-lw-field="motto.card2.text" data-lw-type="text">
+                            Menschen, die Ihre Praxis und ihre Technik kennen, statt einer anonymen Hotline.
+                        </p>
+                    </article>
+
+                    <article class="card" data-animate>
+                        <span class="ev-motto__word">Regional</span>
+                        <span class="card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="1.7"/></svg>
+                        </span>
+                        <h3 class="card__title" data-lw-field="motto.card3.title" data-lw-type="text">Aus Ettlingen und Speyer</h3>
+                        <p class="card__text" data-lw-field="motto.card3.text" data-lw-type="text">
+                            Zwei Standorte in der Region, kurze Wege und Betreuung vor Ort, wenn es darauf ankommt.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             4. Programm
+             ===================================================== -->
+        <section class="section section--surface" id="programm" aria-labelledby="ev-program-title" data-lw-section="program">
+            <div class="container">
+                <div class="section__head section__head--center" data-animate>
+                    <span class="eyebrow" data-lw-field="program.eyebrow" data-lw-type="text">Programm</span>
+                    <h2 class="section__title" id="ev-program-title" data-lw-field="program.title" data-lw-type="text">
+                        So l&auml;uft der Abend ab &ndash; <span class="headline-bold">entspannt und kompakt.</span>
+                    </h2>
+                    <p class="section__intro" data-lw-field="program.intro" data-lw-type="text">
+                        Mittwoch, 4. November 2026, in der RheinVilla Speyer und parallel online.
+                    </p>
+                </div>
+
+                <div class="steps ev-steps">
+                    <div class="step" data-animate>
+                        <span class="step__num">1</span>
+                        <h3 class="step__title" data-lw-field="program.step1.title" data-lw-type="text">Onboarding <span class="ev-steps__time">17:30 Uhr</span></h3>
+                        <p class="step__text" data-lw-field="program.step1.text" data-lw-type="text">Ankommen, Getr&auml;nk nehmen, erste Gespr&auml;che. Online-G&auml;ste w&auml;hlen sich ein.</p>
+                    </div>
+                    <div class="step" data-animate>
+                        <span class="step__num">2</span>
+                        <h3 class="step__title" data-lw-field="program.step2.title" data-lw-type="text">Begr&uuml;&szlig;ung &amp; Vorstellung</h3>
+                        <p class="step__text" data-lw-field="program.step2.text" data-lw-type="text">Wer wir sind und wie wir Arztpraxen bei Software, IT und Telefonie begleiten.</p>
+                    </div>
+                    <div class="step" data-animate>
+                        <span class="step__num">3</span>
+                        <h3 class="step__title" data-lw-field="program.step3.title" data-lw-type="text">Live-Demo T2med</h3>
+                        <p class="step__text" data-lw-field="program.step3.text" data-lw-type="text">Die Praxissoftware im echten Ablauf, live gezeigt vor Ort und im Stream.</p>
+                    </div>
+                    <div class="step" data-animate>
+                        <span class="step__num">4</span>
+                        <h3 class="step__title" data-lw-field="program.step4.title" data-lw-type="text">Fragen &amp; Get-Together</h3>
+                        <p class="step__text" data-lw-field="program.step4.text" data-lw-type="text">Offene Runde f&uuml;r Ihre Fragen und Zeit f&uuml;r pers&ouml;nliche Gespr&auml;che.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             5. Live-Demo: Einblick in T2med
+             ===================================================== -->
+        <section class="section section--white lp-screens" id="live-demo" aria-labelledby="ev-demo-title" data-lw-section="demo">
+            <div class="container">
+                <div class="section__head section__head--center" data-animate>
+                    <span class="eyebrow" data-lw-field="demo.eyebrow" data-lw-type="text">Live-Demo</span>
+                    <h2 class="section__title" id="ev-demo-title" data-lw-field="demo.title" data-lw-type="text">
+                        Das zeigen wir live &ndash; <span class="headline-bold">T2med im Praxisalltag.</span>
+                    </h2>
+                    <p class="section__intro" data-lw-field="demo.intro" data-lw-type="text">
+                        Ein Vorgeschmack auf die Demo: Akte, Kalender und Verordnung in einer Oberfl&auml;che,
+                        im Browser und in der PatMed-App.
+                    </p>
+                </div>
+                <ul class="lp-screens__grid" data-animate>
+                    <li class="lp-screens__item">
+                        <figure>
+                            <img src="Fotos/T2med-Web-Screens/Basisansicht%2004.2026_mockUp_web.webp" alt="T2med Basisansicht mit Patientenakte und Tagesliste" width="1920" height="1200" loading="lazy" decoding="async" />
+                            <figcaption><strong>Basisansicht</strong> Akte, Tagesliste und Aufgaben auf einen Blick.</figcaption>
+                        </figure>
+                    </li>
+                    <li class="lp-screens__item">
+                        <figure>
+                            <img src="Fotos/T2med-Web-Screens/Kalender_01.2026_1080p.webp" alt="T2med Kalender mit Terminplanung" width="1920" height="1080" loading="lazy" decoding="async" />
+                            <figcaption><strong>Kalender</strong> Termine je Behandlungsraum und Person planen.</figcaption>
+                        </figure>
+                    </li>
+                    <li class="lp-screens__item">
+                        <figure>
+                            <img src="Fotos/T2med-Web-Screens/Verordnung%2004.2026_mockUp_web.webp" alt="T2med Verordnung mit E-Rezept" width="1920" height="1200" loading="lazy" decoding="async" />
+                            <figcaption><strong>Verordnung</strong> Rezepte und E-Rezept direkt aus der Akte.</figcaption>
+                        </figure>
+                    </li>
+                </ul>
+                <p class="lp-screens__note">Screens: T2med, Stand 2026.</p>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             6. Anmeldung
+             ===================================================== -->
+        <section class="section section--dark" id="anmeldung" aria-labelledby="ev-register-title" data-lw-section="register">
+            <div class="container ev-register">
+                <div class="ev-register__aside" data-animate>
+                    <span class="eyebrow" data-lw-field="register.eyebrow" data-lw-type="text">Anmeldung</span>
+                    <h2 class="section__title" id="ev-register-title" data-lw-field="register.title" data-lw-type="text">
+                        Jetzt Platz <span class="headline-bold">sichern.</span>
+                    </h2>
+                    <p class="section__intro" data-lw-field="register.intro" data-lw-type="text">
+                        Damit wir gut planen k&ouml;nnen, melden Sie sich bitte kurz an. W&auml;hlen Sie einfach,
+                        ob Sie vor Ort in Speyer oder online dabei sind.
+                    </p>
+                    <dl class="ev-facts">
+                        <div>
+                            <dt>Datum</dt>
+                            <dd>Mittwoch, 4. November 2026</dd>
+                        </div>
+                        <div>
+                            <dt>Onboarding</dt>
+                            <dd>17:30 Uhr</dd>
+                        </div>
+                        <div>
+                            <dt>Ort</dt>
+                            <dd>RheinVilla<br>Hafenstra&szlig;e 39<br>67346 Speyer</dd>
+                        </div>
+                        <div class="ev-facts__wide">
+                            <dt>Fragen vorab</dt>
+                            <dd><a href="tel:+497243350600">07243 350600</a><br><a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a></dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <form class="ev-form" id="ev-register-form" data-animate novalidate>
+                    <div class="ev-form__grid">
+                        <div class="ev-form__field">
+                            <label for="ev-name">Name*</label>
+                            <input class="funnel-input" id="ev-name" name="name" type="text" required autocomplete="name" placeholder="Vor- und Nachname" />
+                        </div>
+                        <div class="ev-form__field">
+                            <label for="ev-praxis">Praxis*</label>
+                            <input class="funnel-input" id="ev-praxis" name="praxis" type="text" required autocomplete="organization" placeholder="Name der Praxis" />
+                        </div>
+                        <div class="ev-form__field ev-form__field--full">
+                            <label for="ev-position">Position*</label>
+                            <input class="funnel-input" id="ev-position" name="position" type="text" required autocomplete="organization-title" placeholder="z. B. Praxisinhaber/in, MFA" />
+                        </div>
+                        <div class="ev-form__field">
+                            <label for="ev-email">E-Mail-Adresse*</label>
+                            <input class="funnel-input" id="ev-email" name="email" type="email" required autocomplete="email" />
+                        </div>
+                        <div class="ev-form__field">
+                            <label for="ev-telefon">Telefon <span class="ev-form__optional">(optional)</span></label>
+                            <input class="funnel-input" id="ev-telefon" name="telefon" type="tel" autocomplete="tel" />
+                        </div>
+
+                        <fieldset class="ev-form__field ev-form__field--full ev-choice-group">
+                            <legend>Wie nehmen Sie teil?*</legend>
+                            <div class="ev-choice-group__options">
+                                <label class="ev-choice">
+                                    <input type="radio" name="teilnahme" value="Ich bin persönlich vor Ort" required />
+                                    <span class="ev-choice__box">
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                                        <span>
+                                            <strong>Ich bin pers&ouml;nlich vor Ort</strong>
+                                            <small>RheinVilla, Speyer</small>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="ev-choice">
+                                    <input type="radio" name="teilnahme" value="Ich nehme online teil" />
+                                    <span class="ev-choice__box">
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                                        <span>
+                                            <strong>Ich nehme online teil</strong>
+                                            <small>Zugangslink per E-Mail</small>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="ev-form__field ev-form__field--full">
+                            <label class="ev-form__check" for="ev-dsgvo">
+                                <input id="ev-dsgvo" name="dsgvo" type="checkbox" required />
+                                <span>Ich bin einverstanden, dass die netzwerft meine Angaben zur Organisation der Veranstaltung speichert und verarbeitet. Hinweise stehen in der <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn--light btn--lg btn--block" type="submit" data-cta="ev-register-submit">
+                        Jetzt anmelden
+                    </button>
+                    <p class="ev-form__note">
+                        Es &ouml;ffnet sich Ihr E-Mail-Programm mit der fertigen Anmeldung an
+                        <a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a>. Bitte dort nur noch absenden.
+                    </p>
+                    <p class="ev-form__status" id="ev-register-status" role="status" hidden></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             7. Anfahrt
+             ===================================================== -->
+        <section class="section section--surface" id="anfahrt" aria-labelledby="ev-route-title" data-lw-section="route">
+            <div class="container ev-route">
+                <div class="ev-route__text" data-animate>
+                    <span class="eyebrow" data-lw-field="route.eyebrow" data-lw-type="text">Anfahrt</span>
+                    <h2 class="section__title" id="ev-route-title" data-lw-field="route.title" data-lw-type="text">
+                        Direkt am Rhein &ndash; <span class="headline-bold">die RheinVilla in Speyer.</span>
+                    </h2>
+                    <address class="ev-route__address">
+                        <strong>RheinVilla</strong>
+                        Hafenstra&szlig;e 39<br>67346 Speyer
+                    </address>
+                    <ul class="ev-route__list">
+                        <li>
+                            <span class="ev-route__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M3 9c2 0 2-1.5 4.5-1.5S9.5 9 12 9s2.5-1.5 4.5-1.5S19 9 21 9M3 15c2 0 2-1.5 4.5-1.5S9.5 15 12 15s2.5-1.5 4.5-1.5S19 15 21 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                            </span>
+                            <span data-lw-field="route.item1" data-lw-type="text">Historische Villa direkt am Rhein, bei Rheinkilometer&nbsp;400.</span>
+                        </li>
+                        <li>
+                            <span class="ev-route__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M5 17v-5l2-5.2A1.8 1.8 0 0 1 8.7 5.5h6.6a1.8 1.8 0 0 1 1.7 1.3L19 12v5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 12h16v5H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6.5 20v-3M17.5 20v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                            </span>
+                            <span data-lw-field="route.item2" data-lw-type="text">Mit dem Auto gut erreichbar &uuml;ber die A61 und die A65.</span>
+                        </li>
+                        <li>
+                            <span class="ev-route__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="13" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 10h12M9 16l-2 5M15 16l2 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9.5 13h.01M14.5 13h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                            </span>
+                            <span data-lw-field="route.item3" data-lw-type="text">Hauptbahnhof Speyer und Bushaltestellen in der N&auml;he.</span>
+                        </li>
+                        <li>
+                            <span class="ev-route__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span data-lw-field="route.item4" data-lw-type="text">Online dabei? Den Zugangslink senden wir Ihnen vorab per E-Mail.</span>
+                        </li>
+                    </ul>
+                    <div class="ev-route__actions">
+                        <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=RheinVilla%2C%20Hafenstra%C3%9Fe%2039%2C%2067346%20Speyer" target="_blank" rel="noopener noreferrer" data-cta="ev-route-google">
+                            Route planen
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Hafenstra%C3%9Fe%2039%2C%2067346%20Speyer" target="_blank" rel="noopener noreferrer" data-cta="ev-route-osm">
+                            In OpenStreetMap &ouml;ffnen
+                        </a>
+                    </div>
+                    <p class="ev-route__note">Die Links &ouml;ffnen externe Kartendienste in einem neuen Tab.</p>
+                </div>
+
+                <figure class="ev-map" data-animate>
+                    <svg class="ev-map__svg" viewBox="0 0 480 400" role="img" aria-labelledby="ev-map-title">
+                        <title id="ev-map-title">Schematische Karte: die RheinVilla liegt in Speyer direkt am Rhein</title>
+                        <rect width="480" height="400" class="ev-map__land" />
+                        <g class="ev-map__roads" fill="none" stroke-linecap="round">
+                            <path d="M-10 250 C 90 240 170 220 250 200 S 330 170 350 150" />
+                            <path d="M40 -10 C 60 90 90 170 120 245 S 170 360 180 410" />
+                            <path d="M-10 120 C 80 130 160 150 250 200" />
+                            <path d="M150 410 C 200 330 250 270 300 230" />
+                            <path class="ev-map__road-minor" d="M210 -10 C 220 60 240 130 250 200" />
+                            <path class="ev-map__road-minor" d="M-10 330 C 60 320 120 300 160 290" />
+                        </g>
+                        <path class="ev-map__river" d="M420 -10 C 380 60 360 110 372 170 S 420 270 390 330 S 360 380 372 410" />
+                        <text class="ev-map__label ev-map__label--river" x="428" y="255" transform="rotate(72 428 255)">Rhein</text>
+                        <text class="ev-map__label" x="70" y="200">Speyer</text>
+                        <g class="ev-map__pin" transform="translate(348 176)">
+                            <circle class="ev-map__pulse" r="22" />
+                            <path d="M0 0c-10-12-15-19-15-26a15 15 0 0 1 30 0c0 7-5 14-15 26z" />
+                            <circle cy="-26" r="5.5" class="ev-map__pin-dot" />
+                        </g>
+                        <g class="ev-map__tag" transform="translate(196 262)">
+                            <rect width="164" height="52" rx="14" />
+                            <text x="16" y="23" class="ev-map__tag-title">RheinVilla</text>
+                            <text x="16" y="40" class="ev-map__tag-sub">Hafenstra&szlig;e 39</text>
+                        </g>
+                    </svg>
+                    <figcaption>Schematische Darstellung, nicht ma&szlig;stabsgetreu.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             8. FAQ
+             ===================================================== -->
+        <section class="section section--white" id="faq" aria-labelledby="ev-faq-title" data-lw-section="faq">
+            <div class="container">
+                <div class="section__head section__head--center" data-animate>
+                    <span class="eyebrow">FAQ</span>
+                    <h2 class="section__title" id="ev-faq-title">H&auml;ufige <span class="headline-bold">Fragen zum Event</span></h2>
+                </div>
+
+                <div class="faq" data-animate>
+                    <div class="faq__item">
+                        <button class="faq__trigger" aria-expanded="false" aria-controls="ev-faq-1" id="ev-faq-1-btn">
+                            F&uuml;r wen ist die Veranstaltung gedacht?
+                            <span class="faq__icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq__panel" id="ev-faq-1" role="region" aria-labelledby="ev-faq-1-btn">
+                            <div class="faq__panel-inner" data-lw-field="faq.a1" data-lw-type="text">
+                                F&uuml;r &Auml;rztinnen, &Auml;rzte und Praxisteams, die ihre Praxisorganisation digitaler
+                                aufstellen m&ouml;chten und die netzwerft und T2med pers&ouml;nlich kennenlernen wollen.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__trigger" aria-expanded="false" aria-controls="ev-faq-2" id="ev-faq-2-btn">
+                            Kann ich auch online teilnehmen?
+                            <span class="faq__icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq__panel" id="ev-faq-2" role="region" aria-labelledby="ev-faq-2-btn">
+                            <div class="faq__panel-inner" data-lw-field="faq.a2" data-lw-type="text">
+                                Ja. W&auml;hlen Sie bei der Anmeldung &bdquo;Ich nehme online teil&ldquo;. Den Zugangslink
+                                erhalten Sie vorab per E-Mail.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__trigger" aria-expanded="false" aria-controls="ev-faq-3" id="ev-faq-3-btn">
+                            Muss ich T2med bereits nutzen?
+                            <span class="faq__icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq__panel" id="ev-faq-3" role="region" aria-labelledby="ev-faq-3-btn">
+                            <div class="faq__panel-inner" data-lw-field="faq.a3" data-lw-type="text">
+                                Nein. Die Live-Demo richtet sich gerade an Praxen, die T2med noch nicht kennen oder
+                                &uuml;ber einen Wechsel der Praxissoftware nachdenken.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__trigger" aria-expanded="false" aria-controls="ev-faq-4" id="ev-faq-4-btn">
+                            Kann ich Kolleginnen und Kollegen mitbringen?
+                            <span class="faq__icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq__panel" id="ev-faq-4" role="region" aria-labelledby="ev-faq-4-btn">
+                            <div class="faq__panel-inner" data-lw-field="faq.a4" data-lw-type="text">
+                                Gern. Bitte melden Sie jede Person einzeln an, damit wir vor Ort gut planen k&ouml;nnen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             9. Abschluss-CTA
+             ===================================================== -->
+        <section class="section section--surface final-cta" id="kontakt" aria-labelledby="ev-final-title" data-lw-section="final">
+            <div class="container">
+                <div class="final-cta__card" data-animate>
+                    <h2 id="ev-final-title" data-lw-field="final.title" data-lw-type="text">Wir freuen uns auf Sie &ndash; <span class="headline-bold">in Speyer oder online.</span></h2>
+                    <p data-lw-field="final.text" data-lw-type="text">
+                        Mittwoch, 4. November 2026 &middot; Onboarding 17:30 Uhr &middot; RheinVilla, Hafenstra&szlig;e 39, 67346 Speyer
+                    </p>
+                    <div class="cta-actions">
+                        <a class="btn btn--light btn--lg" href="#anmeldung" data-cta="ev-final">Jetzt anmelden</a>
+                    </div>
+                    <p class="cta-note">
+                        Fragen vorab? <a href="tel:+497243350600">07243 350600</a>
+                        &middot; <a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================
+         Footer
+         ===================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img class="brand__logo brand__logo--footer" src="svg/logo.svg" alt="die netzwerft" width="2911" height="782" decoding="async">
+                    <p class="footer__desc">
+                        Medizin-IT aus einer Hand &ndash; von T2med bis Telefonie. Pers&ouml;nliche
+                        Betreuung f&uuml;r Arztpraxen im Raum Karlsruhe, Ettlingen und Speyer.
+                    </p>
+                </div>
+
+                <nav class="footer__col" aria-label="Navigation Footer">
+                    <h3>Event</h3>
+                    <ul class="footer__list">
+                        <li><a href="#programm">Programm</a></li>
+                        <li><a href="#live-demo">Live-Demo</a></li>
+                        <li><a href="#anmeldung">Anmeldung</a></li>
+                        <li><a href="#anfahrt">Anfahrt</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="footer__col" aria-label="Mehr Footer">
+                    <h3>Mehr</h3>
+                    <ul class="footer__list">
+                        <li><a href="/">T2med-Wechsel</a></li>
+                        <li><a href="/#leistungen">Leistungen</a></li>
+                        <li><a href="/#ablauf">Ablauf</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <div class="footer__col">
+                    <h3>Kontakt</h3>
+                    <address class="footer__contact">
+                        <strong>die netzwerft GmbH</strong>
+                        <span>Otto-Dix-Stra&szlig;e 9<br />76275 Ettlingenweier</span>
+                        <a href="mailto:info@dienetzwerft.de">info@dienetzwerft.de</a>
+                        <a href="tel:+497243350600">07243 350600</a>
+                    </address>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <span>&copy; <span id="footer-year">2026</span> die netzwerft GmbH</span>
+                <nav class="footer__legal" aria-label="Rechtliches">
+                    <a href="/impressum/">Impressum</a>
+                    <a href="/datenschutz/">Datenschutz</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky-Ecke: Back-to-Top -->
+    <div class="sticky-corner" aria-label="Schnellaktionen">
+        <button type="button" class="btn btn--primary btn--lg back-to-top" data-back-to-top aria-label="Nach oben scrollen" hidden>
+            Nach oben
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Sticky-CTA Mobile -->
+    <div class="sticky-cta" data-sticky-cta>
+        <a class="btn btn--primary" href="#anmeldung" data-cta="ev-sticky-mobile">Jetzt anmelden</a>
+    </div>
+
+    <script src="js/lenis.min.js" defer></script>
+    <script src="js/scroll-smooth.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/hero-particles.js" defer></script>
+    <script src="js/event-speyer.js" defer></script>
+</body>
+</html>

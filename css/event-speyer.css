@@ -1,0 +1,651 @@
+/* =========================================================
+   Event Speyer — Landingpage
+   Baut auf styles-v2.css + landing-t2med-v2.css auf
+   Einladungskarte · Programm · Anmeldung · Anfahrt
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. Hero: Text + Einladungskarte
+   --------------------------------------------------------- */
+.ev-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+}
+
+.ev-hero .lp-hero__content {
+    max-width: none;
+    padding-right: 0;
+}
+
+.ev-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.ev-ticket {
+    position: relative;
+    padding: clamp(1.6rem, 3vw, 2.2rem);
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    color: var(--nw-on-dark);
+}
+
+.ev-ticket__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.ev-ticket__kicker {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.ev-ticket__badge {
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--nw-mint-soft);
+    background: var(--nw-mint-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.ev-ticket__date {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin: 1.4rem 0 0;
+}
+
+.ev-ticket__day {
+    font-family: var(--font-heading);
+    font-weight: var(--headline-weight-thin);
+    font-size: clamp(4.2rem, 3rem + 4vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: #fff;
+}
+
+.ev-ticket__date-text {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.ev-ticket__date-text strong {
+    font-family: var(--font-heading);
+    font-weight: var(--headline-weight-bold);
+    font-size: clamp(1.25rem, 1rem + 0.8vw, 1.6rem);
+    line-height: 1.15;
+    color: #fff;
+}
+
+.ev-ticket__date-text span {
+    color: var(--nw-on-dark-soft);
+    font-size: 1rem;
+}
+
+/* Perforation mit seitlichen Ausstanzungen */
+.ev-ticket__cut {
+    position: relative;
+    height: 1px;
+    margin: 1.5rem calc(-1 * clamp(1.6rem, 3vw, 2.2rem));
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.28) 50%, transparent 50%);
+    background-size: 12px 1px;
+}
+
+.ev-ticket__cut::before,
+.ev-ticket__cut::after {
+    content: "";
+    position: absolute;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #081a36;
+}
+
+.ev-ticket__cut::before {
+    left: -13px;
+}
+
+.ev-ticket__cut::after {
+    right: -13px;
+}
+
+.ev-ticket__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.ev-ticket__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    line-height: 1.45;
+    color: var(--nw-on-dark-soft);
+}
+
+.ev-ticket__list strong {
+    display: block;
+    color: #fff;
+}
+
+.ev-ticket__list svg {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-top: 0.05rem;
+    color: var(--nw-mint);
+}
+
+/* ---------------------------------------------------------
+   2. Motto-Karten (dunkle Section)
+   --------------------------------------------------------- */
+.ev-motto .card {
+    position: relative;
+    overflow: hidden;
+}
+
+.ev-motto__word {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--nw-mint);
+}
+
+/* ---------------------------------------------------------
+   3. Programm (4 Schritte)
+   --------------------------------------------------------- */
+.ev-steps {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ev-steps__time {
+    color: var(--nw-accent);
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   4. Anmeldung
+   --------------------------------------------------------- */
+.ev-register {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+}
+
+.ev-register__aside .section__intro {
+    margin: 0 0 1.5rem;
+}
+
+.ev-facts {
+    margin: 0;
+    padding: 1.25rem 1.35rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 1.25rem;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ev-facts__wide {
+    grid-column: 1 / -1;
+}
+
+.ev-facts dt {
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--nw-mint);
+}
+
+.ev-facts dd {
+    margin: 0;
+    color: var(--nw-on-dark);
+    line-height: 1.5;
+}
+
+.ev-facts a {
+    color: #fff;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.ev-facts a:hover,
+.ev-facts a:focus-visible {
+    text-decoration: underline;
+}
+
+.ev-form {
+    padding: clamp(1.5rem, 3vw, 2.1rem);
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ev-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.1rem;
+}
+
+.ev-form__field {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+.ev-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.ev-form__field > label:not(.ev-form__check),
+.ev-choice-group legend {
+    font-size: 0.88rem;
+    font-weight: 650;
+    color: var(--nw-on-dark);
+}
+
+.ev-form__optional {
+    font-weight: 400;
+    color: var(--nw-on-dark-muted);
+}
+
+.ev-form .funnel-input {
+    min-height: 2.85rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+.ev-form .funnel-input::placeholder {
+    color: var(--nw-on-dark-muted);
+}
+
+.ev-form .funnel-input:focus {
+    outline: none;
+    border-color: var(--nw-mint);
+    box-shadow: 0 0 0 4px var(--nw-mint-muted);
+}
+
+.ev-form .funnel-input[aria-invalid="true"] {
+    border-color: #ff8a8a;
+}
+
+/* Teilnahme: Radio-Karten */
+.ev-choice-group {
+    margin: 0.35rem 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.ev-choice-group legend {
+    padding: 0;
+    margin-bottom: 0.55rem;
+}
+
+.ev-choice-group__options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.ev-choice {
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.ev-choice input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.ev-choice__box {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    height: 100%;
+    padding: 0.95rem 1.05rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--nw-on-dark-soft);
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ev-choice__box svg {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    color: var(--nw-mint);
+}
+
+.ev-choice__box strong {
+    display: block;
+    color: #fff;
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+
+.ev-choice__box small {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.82rem;
+    color: var(--nw-on-dark-muted);
+}
+
+.ev-choice:hover .ev-choice__box {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ev-choice input:checked + .ev-choice__box {
+    border-color: var(--nw-mint);
+    background: rgba(215, 244, 250, 0.12);
+    box-shadow: inset 0 0 0 1px var(--nw-mint);
+}
+
+.ev-choice input:focus-visible + .ev-choice__box {
+    box-shadow: 0 0 0 4px var(--nw-mint-muted);
+    border-color: var(--nw-mint);
+}
+
+.ev-choice-group[aria-invalid="true"] .ev-choice__box {
+    border-color: #ff8a8a;
+}
+
+.ev-form__check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    color: var(--nw-on-dark-soft);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.ev-form__check input {
+    flex: none;
+    margin-top: 0.25rem;
+    accent-color: var(--nw-mint);
+}
+
+.ev-form a {
+    color: var(--nw-mint);
+}
+
+.ev-form .btn {
+    margin-top: 1.25rem;
+}
+
+.ev-form__note {
+    margin: 0.85rem 0 0;
+    font-size: 0.88rem;
+    color: var(--nw-on-dark-muted);
+}
+
+.ev-form__status {
+    margin: 0.9rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+.ev-form__status[hidden] {
+    display: none;
+}
+
+.ev-form__status--ok {
+    background: rgba(215, 244, 250, 0.12);
+    color: #fff;
+}
+
+.ev-form__status--err {
+    background: rgba(255, 80, 80, 0.12);
+    color: #ffd0d0;
+}
+
+/* ---------------------------------------------------------
+   5. Anfahrt
+   --------------------------------------------------------- */
+.ev-route {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+.ev-route__address {
+    margin: 0 0 1.5rem;
+    font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--nw-ink-soft);
+}
+
+.ev-route__address strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--nw-primary);
+}
+
+.ev-route__list {
+    list-style: none;
+    margin: 0 0 1.8rem;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.ev-route__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: var(--nw-ink-soft);
+    line-height: 1.45;
+}
+
+.ev-route__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--nw-accent-soft);
+    color: var(--nw-primary);
+}
+
+.ev-route__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.ev-route__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.ev-route__note {
+    margin: 0.9rem 0 0;
+    font-size: 0.85rem;
+    color: var(--nw-ink-muted);
+}
+
+/* Schematische Karte */
+.ev-map {
+    margin: 0;
+}
+
+.ev-map__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--nw-line);
+    background: #eef3f7;
+}
+
+.ev-map__land {
+    fill: #eef3f7;
+}
+
+.ev-map__roads path {
+    stroke: #fff;
+    stroke-width: 9;
+}
+
+.ev-map__roads .ev-map__road-minor {
+    stroke-width: 5;
+}
+
+.ev-map__river {
+    fill: none;
+    stroke: #9fd0f5;
+    stroke-width: 46;
+    stroke-linecap: round;
+}
+
+.ev-map__label {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    fill: var(--nw-ink-muted);
+}
+
+.ev-map__label--river {
+    fill: #1565c0;
+    opacity: 0.7;
+}
+
+.ev-map__pin path {
+    fill: var(--color-primary);
+}
+
+.ev-map__pin-dot {
+    fill: #fff;
+}
+
+.ev-map__pulse {
+    fill: var(--color-accent);
+    opacity: 0.18;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .ev-map__pulse {
+        animation: ev-pulse 2.4s ease-out infinite;
+    }
+}
+
+@keyframes ev-pulse {
+    from {
+        transform: scale(0.5);
+        opacity: 0.35;
+    }
+
+    to {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+.ev-map__tag rect {
+    fill: #fff;
+    filter: drop-shadow(0 10px 18px rgba(0, 39, 60, 0.18));
+}
+
+.ev-map__tag-title {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 700;
+    fill: var(--color-primary);
+}
+
+.ev-map__tag-sub {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    fill: var(--nw-ink-soft);
+}
+
+.ev-map figcaption {
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+    color: var(--nw-ink-muted);
+    text-align: right;
+}
+
+/* ---------------------------------------------------------
+   6. Responsiv
+   --------------------------------------------------------- */
+@media (max-width: 1100px) {
+    .ev-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 980px) {
+    .ev-hero__grid,
+    .ev-register,
+    .ev-route {
+        grid-template-columns: 1fr;
+    }
+
+    .ev-ticket {
+        max-width: 30rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .ev-form__grid,
+    .ev-choice-group__options {
+        grid-template-columns: 1fr;
+    }
+
+    .ev-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .ev-hero__actions .btn {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .ev-steps {
+        grid-template-columns: 1fr;
+    }
+}
