@@ -1,0 +1,607 @@
+/* ============================================================
+   Hero V7 — senkrechtes Karussell
+   Text links, rechts laufen drei Bildfolien endlos nach oben;
+   vorige/nächste Folie schauen angeschnitten hervor (js/hero-v7.js).
+   Farben, Verlauf, Partikel und Typo bleiben wie in index-v2.
+   ============================================================ */
+
+/* ── Grundgerüst (aus index-v2.css übernommen) ─────────────── */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    color: var(--nw-on-dark);
+    background: var(--grad-dark);
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--grad-dark);
+}
+
+.hero__blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 90% 70% at 12% 18%,
+            rgba(30, 136, 229, 0.22) 0%,
+            transparent 58%
+        ),
+        radial-gradient(
+            ellipse 55% 45% at 88% 12%,
+            rgba(30, 136, 229, 0.1) 0%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse 80% 55% at 50% 108%,
+            rgba(13, 71, 161, 0.55) 0%,
+            transparent 62%
+        );
+}
+
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* leiser als in index-v2, damit die Linien die duennen Headline-Woerter nicht kreuzen */
+    opacity: 0.45;
+}
+
+.hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.hero__eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.hero__title,
+.hero__title .headline-bold {
+    letter-spacing: normal;
+}
+
+.hero__title {
+    font-weight: var(--headline-weight-thin);
+    line-height: 1.1;
+    color: var(--nw-on-dark);
+}
+
+.hero__title .headline-bold {
+    font-weight: var(--headline-weight-bold);
+}
+
+/* ── Layout: Text links, Karussell rechts bis an den Rand ───── */
+
+.hero--karussell {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 640px;
+}
+
+.karussell-hero {
+    position: relative;
+    z-index: 4;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+    min-height: 0;
+    padding:
+        var(--nav-h, 136px)
+        clamp(12px, 1.4vw, 24px)
+        0
+        max(var(--edge), calc((100% - var(--container)) / 2));
+}
+
+.karussell-hero__text {
+    align-self: center;
+    padding-bottom: 6vh;
+}
+
+.karussell-hero__title {
+    margin: 0;
+    font-size: clamp(2.75rem, 1.2rem + 4.2vw, 5.5rem);
+    line-height: 1.02;
+}
+
+/* Headline-Navigation wie in V5: das Wort der aktiven Leistung wird fett */
+.karussell-hero__wort {
+    display: block;
+    width: fit-content;
+    font-weight: var(--headline-weight-thin);
+    color: rgba(255, 255, 255, 0.38);
+    transition: color 0.6s ease, font-weight 0.6s var(--ease-soft);
+}
+
+.karussell-hero__wort.is-aktiv {
+    font-weight: var(--headline-weight-bold);
+    color: #fff;
+}
+
+.karussell-hero__punkt {
+    transition: color 0.6s ease;
+}
+
+.karussell-hero__wort.is-aktiv .karussell-hero__punkt {
+    color: var(--color-mint);
+}
+
+.karussell-hero__zusatz {
+    display: block;
+    margin-top: 0.75em;
+    font-size: clamp(1.15rem, 0.85rem + 0.9vw, 1.65rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: #fff;
+}
+
+.karussell-hero__lead {
+    margin: 1rem 0 0;
+    max-width: 40ch;
+    font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+    line-height: 1.6;
+    color: var(--nw-on-dark-soft);
+}
+
+.karussell-hero__aktion .btn {
+    margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* ── Karussell ─────────────────────────────────────────────── */
+
+.karussell {
+    /* Laufzeit einer Folie; die Füllung der Leiste schaltet weiter (js/hero-v7.js) */
+    --dauer: 6s;
+    display: flex;
+    gap: clamp(1rem, 1.6vw, 1.5rem);
+    min-height: 0;
+}
+
+.karussell__buehne {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* vorige und nächste Folie laufen oben und unten weich aus */
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+}
+
+/* Rollen: aktiv in der Mitte, vor/nach angeschnitten, raus = unsichtbar außerhalb */
+.folie {
+    --y: calc(-50% + 200%);
+    --s: 0.8;
+    --o: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 60%;
+    opacity: var(--o);
+    transform: translateY(var(--y)) scale(var(--s));
+    transition: transform 0.9s var(--ease-soft), opacity 0.45s ease;
+}
+
+.folie.is-aktiv   { --y: -50%;               --s: 1;    --o: 1; z-index: 2; }
+.folie.is-vor     { --y: calc(-50% - 103%);  --s: 0.9;  --o: 1; }
+.folie.is-nach    { --y: calc(-50% + 103%);  --s: 0.9;  --o: 1; }
+.folie.is-raus-oben  { --y: calc(-50% - 200%); --s: 0.8; --o: 0; }
+.folie.is-raus-unten { --y: calc(-50% + 200%); --s: 0.8; --o: 0; }
+
+.folie.ohne-uebergang,
+.folie.ohne-uebergang * {
+    transition: none !important;
+}
+
+.folie__link {
+    position: absolute;
+    inset: 0;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-primary-dark);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px -36px rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.folie__link:focus-visible {
+    outline: 2px solid var(--color-mint);
+    outline-offset: 3px;
+}
+
+.folie__bild {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* angeschnittene Folien nur leicht abgedunkelt, damit das Blau sichtbar bleibt */
+    filter: brightness(0.55) saturate(1.1);
+    transition: filter 0.8s ease;
+}
+
+.folie.is-aktiv .folie__bild {
+    filter: saturate(1.05);
+}
+
+.folie:not(.is-aktiv) .folie__link:hover .folie__bild {
+    filter: brightness(0.75) saturate(1.1);
+}
+
+/* Bildausschnitt je Motiv: Netzwerk im Grundriss, Monitore, Server mit Datenstrom */
+.folie__bild--gruendung { object-position: center 55%; }
+.folie__bild--uebergabe { object-position: center 45%; }
+.folie__bild--software  { object-position: center 40%; }
+
+/* Verlauf unten für den Text der aktiven Folie */
+.folie__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    background: linear-gradient(0deg, rgba(4, 16, 38, 0.95) 0%, rgba(4, 16, 38, 0.78) 28%, rgba(4, 16, 38, 0) 60%);
+    transition: opacity 0.8s ease;
+}
+
+.folie.is-aktiv .folie__link::after {
+    opacity: 1;
+}
+
+.folie__nr {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-mint);
+}
+
+/* Vorschau: Titel am sichtbaren Rand der angeschnittenen Folie */
+.folie__vorschau {
+    position: absolute;
+    left: clamp(1.25rem, 2.2vw, 2.25rem);
+    right: clamp(1.25rem, 2.2vw, 2.25rem);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 0.85rem + 0.5vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.folie.is-nach .folie__vorschau { top: clamp(1rem, 2vh, 1.4rem); }
+.folie.is-vor  .folie__vorschau { bottom: clamp(1rem, 2vh, 1.4rem); }
+
+.folie.is-vor .folie__vorschau,
+.folie.is-nach .folie__vorschau {
+    opacity: 1;
+    transition: opacity 0.5s ease 0.45s;
+}
+
+.folie__inhalt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(1.5rem, 2.6vw, 2.5rem);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.folie.is-aktiv .folie__inhalt {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s ease 0.4s, transform 0.7s var(--ease-soft) 0.4s;
+}
+
+.folie__titel {
+    margin: 0.5rem 0 0.6rem;
+    font-size: clamp(1.5rem, 1rem + 1.3vw, 2.35rem);
+    font-weight: var(--headline-weight-bold);
+    line-height: 1.1;
+    color: #fff;
+}
+
+.folie__text {
+    max-width: 44ch;
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--nw-on-dark);
+}
+
+.folie__mehr {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.1rem;
+    font-weight: 700;
+    color: var(--color-mint);
+}
+
+.folie__mehr svg {
+    width: 2.4rem;
+    height: 0.6rem;
+    transition: transform 0.45s var(--ease-soft);
+}
+
+.folie.is-aktiv .folie__link:hover .folie__mehr svg,
+.folie.is-aktiv .folie__link:focus-visible .folie__mehr svg {
+    transform: translateX(6px);
+}
+
+/* ── Steuerung: Pfeile + Fortschrittsleiste ────────────────── */
+
+.karussell__steuerung {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.karussell__pfeil {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.karussell__pfeil:hover,
+.karussell__pfeil:focus-visible {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+}
+
+.karussell__pfeil svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.karussell__pfeil:first-child { margin-bottom: 0.6rem; }
+.karussell__pfeil:last-child  { margin-top: 0.6rem; }
+
+.karussell__punkt {
+    position: relative;
+    display: block;
+    width: 1.5rem;
+    height: clamp(3rem, 7vh, 4.25rem);
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+/* Schiene */
+.karussell__punkt::before,
+.karussell__fuellung {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    margin-left: -1.5px;
+    border-radius: 3px;
+}
+
+.karussell__punkt::before {
+    background: rgba(255, 255, 255, 0.22);
+    transition: background-color 0.3s ease;
+}
+
+.karussell__punkt:hover::before {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.karussell__fuellung {
+    background: var(--color-mint);
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+.karussell__punkt.is-aktiv .karussell__fuellung {
+    animation: karussell-fuellen var(--dauer) linear forwards;
+}
+
+.karussell.ist-pausiert .karussell__fuellung {
+    animation-play-state: paused;
+}
+
+@keyframes karussell-fuellen {
+    to { transform: scaleY(1); }
+}
+
+.karussell__punkt:focus-visible {
+    outline: 2px solid var(--color-mint);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+@media (min-width: 901px) and (max-height: 820px) {
+    .karussell-hero__title {
+        font-size: clamp(2.5rem, 9vh, 4.75rem);
+    }
+
+    .karussell-hero__lead {
+        display: none;
+    }
+
+    .folie__text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Tablet und Handy: Text oben, Karussell darunter mit fester Höhe,
+   Steuerung waagerecht unter der Bühne */
+@media (max-width: 900px) {
+    .hero--karussell {
+        height: auto;
+        min-height: 0;
+    }
+
+    .karussell-hero {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: calc(var(--nav-h, 110px) + 0.75rem) var(--edge) clamp(2.5rem, 7vw, 3.5rem);
+    }
+
+    .karussell-hero__text {
+        padding-bottom: 0;
+    }
+
+    .karussell {
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+    }
+
+    .karussell__buehne {
+        flex: none;
+        height: clamp(30rem, 70vw, 38rem);
+    }
+
+    .karussell__steuerung {
+        flex-direction: row;
+    }
+
+    .karussell__pfeil:first-child { margin: 0 0.6rem 0 0; }
+    .karussell__pfeil:last-child  { margin: 0 0 0 0.6rem; }
+
+    .karussell__punkt {
+        width: 3.5rem;
+        height: 1.5rem;
+    }
+
+    .karussell__punkt::before,
+    .karussell__fuellung {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 3px;
+        margin: -1.5px 0 0;
+    }
+
+    .karussell__fuellung {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    @keyframes karussell-fuellen {
+        to { transform: scaleX(1); }
+    }
+}
+
+/* Handy: Karussell direkt nach der Headline, Einleitung und CTA danach */
+@media (max-width: 575px) {
+    .karussell-hero__text {
+        display: contents;
+    }
+
+    .karussell-hero__eyebrow { order: 1; margin-bottom: -0.25rem; }
+    .karussell-hero__title   { order: 2; font-size: clamp(2.4rem, 11vw, 3rem); }
+    .karussell               { order: 3; }
+    .karussell-hero__aktion  { order: 4; margin-top: 0.75rem; }
+
+    .karussell__buehne {
+        height: 30rem;
+    }
+
+    .folie {
+        height: 64%;
+    }
+
+    .folie.is-vor  { --y: calc(-50% - 102%); --s: 0.92; }
+    .folie.is-nach { --y: calc(-50% + 102%); --s: 0.92; }
+
+    .folie__vorschau {
+        font-size: 0.95rem;
+    }
+
+    .folie__inhalt {
+        padding: 1.25rem 1.15rem;
+    }
+
+    .folie__titel {
+        font-size: 1.35rem;
+    }
+
+    .folie__text {
+        font-size: 0.92rem;
+    }
+
+    .folie__link::after {
+        background: linear-gradient(0deg, rgba(4, 16, 38, 0.96) 0%, rgba(4, 16, 38, 0.85) 45%, rgba(4, 16, 38, 0) 82%);
+    }
+
+    .karussell-hero__lead {
+        margin-top: 0;
+    }
+
+    .karussell-hero__aktion .btn {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .folie,
+    .folie *,
+    .folie__link::after {
+        transition: none !important;
+    }
+
+    /* kein Autoplay: aktive Leiste steht einfach voll */
+    .karussell__punkt.is-aktiv .karussell__fuellung {
+        animation: none;
+        transform: none;
+    }
+
+    .karussell-hero__wort,
+    .karussell-hero__punkt {
+        transition: none;
+    }
+}

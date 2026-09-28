@@ -46,7 +46,7 @@ Old WordPress suite only (`t2med-wechsel-v2/`): `php tests/validate-package.php`
 **Page groups:**
 - Service landings: `t2med-wechsel-v2`, `praxisgruendung-it`, `praxisuebernahme-it`, `praxissoftware-wechsel`, `ueber-uns`, `karriere`.
 - Wissen: `wissen.html` hub + `wissen-*.html` articles (long-form ones have images in `Fotos/wissen/`, FAQ and cross-links); OG images live in `Fotos/og/`.
-- `hero-v2.html` … `hero-v5.html`: copies of `index-v2.html` for testing new hero variants (assets in `Fotos/Hero-v2|v3|v5/`, `css/hero-v2…v5.css`). `hero-v4` shows the three service groups (Gründung, Übergabe, Softwarewechsel) as cards; `hero-v5` as an image accordion synced with the headline words (`js/hero-v5.js`).
+- `hero-v2.html` … `hero-v7.html`: copies of `index-v2.html` for testing new hero variants (assets in `Fotos/Hero-v2|v3|v5/`, `css/hero-v2…v7.css`). `hero-v4` shows the three service groups (Gründung, Übergabe, Softwarewechsel) as cards; `hero-v5` as a horizontal image accordion synced with the headline words (`js/hero-v5.js`); `hero-v6` as a vertical image accordion (`js/hero-v6.js`); `hero-v7` as an endless vertical carousel with progress rail (`js/hero-v7.js`). v6 and v7 reuse the V5 headline navigation and the `Fotos/Hero-v5/` images.
 - `design-handout*.html`: internal design references, not site pages.
 
 ## Conventions

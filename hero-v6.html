@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- SEO -->
-    <title>Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V5)</title>
+    <title>Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V6)</title>
     <meta name="description" content="die netzwerft begleitet Arztpraxen bei T2med, Praxis-IT, Telefonie, Security und Digitalisierung &ndash; pers&ouml;nlich, regional und aus einer Hand." />
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="die netzwerft GmbH" />
-    <meta property="og:title" content="Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V5)" />
+    <meta property="og:title" content="Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V6)" />
     <meta property="og:description" content="die netzwerft begleitet Arztpraxen bei T2med, Praxis-IT, Telefonie, Security und Digitalisierung &ndash; pers&ouml;nlich, regional und aus einer Hand." />
     <meta property="og:url" content="https://dienetzwerft.de/" />
     <meta property="og:image" content="https://dienetzwerft.de/Fotos/og/og-praxis-it.jpg" />
@@ -18,7 +18,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="de_DE" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V5)" />
+    <meta name="twitter:title" content="Praxis-IT &amp; T2med Karlsruhe | die netzwerft (Hero V6)" />
     <meta name="twitter:description" content="die netzwerft begleitet Arztpraxen bei T2med, Praxis-IT, Telefonie, Security und Digitalisierung &ndash; pers&ouml;nlich, regional und aus einer Hand." />
     <meta name="twitter:image" content="https://dienetzwerft.de/Fotos/og/og-praxis-it.jpg" />
     <meta name="theme-color" content="#004562" />
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" />
 
     <link rel="stylesheet" href="css/styles-v2.css?v=20260723f" />
-    <link rel="stylesheet" href="css/hero-v5.css?v=20260928a" />
+    <link rel="stylesheet" href="css/hero-v6.css?v=20260928a" />
 
     <!-- Strukturierte Daten (Umlaute als \uXXXX-JSON-Escapes) -->
     <script type="application/ld+json">
@@ -169,28 +169,28 @@
         <span id="top"></span>
 
         <!-- =====================================================
-             HeroSection V5 - drei Tueren
-             Headline aus drei Verben, rechts drei Bildtafeln. Die aktive
-             Tafel klappt auf und hebt das passende Wort in der Headline
-             hervor (js/hero-v5.js). Ohne JS bleibt die erste Tafel offen.
+             HeroSection V6 - senkrechtes Akkordeon
+             Text links, rechts drei Bildetagen uebereinander. Die aktive
+             Etage klappt nach unten auf und zeigt Bild, Satz und Link
+             (js/hero-v6.js). Ohne JS bleibt die erste Etage offen.
              ===================================================== -->
-        <section class="hero hero--tueren" id="hero" aria-labelledby="hero-title">
+        <section class="hero hero--etagen" id="hero" aria-labelledby="hero-title">
             <div class="hero__bg" aria-hidden="true">
                 <div class="hero__blur"></div>
                 <canvas class="hero__particles" id="hero-particles"></canvas>
             </div>
 
-            <div class="tueren-hero" data-tueren>
-                <div class="tueren-hero__text">
-                    <span class="hero__eyebrow tueren-hero__eyebrow">Praxis-IT aus einer Hand</span>
-                    <h1 class="hero__title tueren-hero__title" id="hero-title">
-                        <span class="tueren-hero__wort is-aktiv">Gr&uuml;nden<span class="tueren-hero__punkt">.</span></span>
-                        <span class="tueren-hero__wort">&Uuml;bernehmen<span class="tueren-hero__punkt">.</span></span>
-                        <span class="tueren-hero__wort">Wechseln<span class="tueren-hero__punkt">.</span></span>
-                        <span class="tueren-hero__zusatz">Wir machen die IT Ihrer Arztpraxis startklar.</span>
+            <div class="etagen-hero" data-etagen>
+                <div class="etagen-hero__text">
+                    <span class="hero__eyebrow etagen-hero__eyebrow">Praxis-IT aus einer Hand</span>
+                    <h1 class="hero__title etagen-hero__title" id="hero-title">
+                        <span class="etagen-hero__wort is-aktiv">Gr&uuml;nden<span class="etagen-hero__punkt">.</span></span>
+                        <span class="etagen-hero__wort">&Uuml;bernehmen<span class="etagen-hero__punkt">.</span></span>
+                        <span class="etagen-hero__wort">Wechseln<span class="etagen-hero__punkt">.</span></span>
+                        <span class="etagen-hero__zusatz">Wir machen die IT Ihrer Arztpraxis startklar.</span>
                     </h1>
-                    <div class="tueren-hero__aktion">
-                        <p class="tueren-hero__lead">
+                    <div class="etagen-hero__aktion">
+                        <p class="etagen-hero__lead">
                             Netzwerk, Arbeitspl&auml;tze, Telefonie, TI und Praxissoftware &ndash;
                             mit einem festen Ansprechpartner aus der Region Karlsruhe.
                         </p>
@@ -200,51 +200,54 @@
                     </div>
                 </div>
 
-                <ul class="tueren" aria-label="Unsere drei Schwerpunkte">
-                    <li class="tuer is-aktiv">
-                        <a class="tuer__link" href="praxisgruendung-it.html" data-cta="homepage-hero-gruendung">
-                            <img class="tuer__bild tuer__bild--gruendung" src="Fotos/Hero-v5/hero-v5-gruendung.webp" alt="" width="1400" height="933" decoding="async" fetchpriority="high">
-                            <span class="tuer__nr" aria-hidden="true">01</span>
-                            <span class="tuer__zu" aria-hidden="true">
-                                <span class="tuer__zu-titel">Praxisgr&uuml;ndung &amp; Neubezug</span>
-                                <span class="tuer__plus"></span>
+                <ul class="etagen" aria-label="Unsere drei Schwerpunkte">
+                    <li class="etage is-aktiv">
+                        <a class="etage__link" href="praxisgruendung-it.html" data-cta="homepage-hero-gruendung">
+                            <img class="etage__bild etage__bild--gruendung" src="Fotos/Hero-v5/hero-v5-gruendung.webp" alt="" width="1400" height="933" decoding="async" fetchpriority="high">
+                            <span class="etage__kopf">
+                                <span class="etage__nr" aria-hidden="true">01</span>
+                                <h2 class="etage__titel">Praxisgr&uuml;ndung &amp; Neubezug</h2>
+                                <span class="etage__plus" aria-hidden="true"></span>
                             </span>
-                            <span class="tuer__auf">
-                                <h2 class="tuer__titel">Praxisgr&uuml;ndung &amp; Neubezug</h2>
-                                <span class="tuer__text">Netzwerk, Arbeitspl&auml;tze, Telefonie und Praxissoftware &ndash; geplant und startklar zum ersten Praxistag.</span>
-                                <span class="tuer__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li class="tuer">
-                        <a class="tuer__link" href="praxisuebernahme-it.html" data-cta="homepage-hero-uebergabe">
-                            <img class="tuer__bild tuer__bild--uebergabe" src="Fotos/Hero-v5/hero-v5-uebergabe.webp" alt="" width="1400" height="933" decoding="async">
-                            <span class="tuer__nr" aria-hidden="true">02</span>
-                            <span class="tuer__zu" aria-hidden="true">
-                                <span class="tuer__zu-titel">Praxis&uuml;bergabe &amp; Nachfolge</span>
-                                <span class="tuer__plus"></span>
-                            </span>
-                            <span class="tuer__auf">
-                                <h2 class="tuer__titel">Praxis&uuml;bergabe &amp; Nachfolge</h2>
-                                <span class="tuer__text">Wir pr&uuml;fen die vorhandene IT, modernisieren gezielt und sorgen f&uuml;r einen &Uuml;bergang ohne Stillstand.</span>
-                                <span class="tuer__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span class="etage__auf">
+                                <span class="etage__inhalt">
+                                    <span class="etage__text">Netzwerk, Arbeitspl&auml;tze, Telefonie und Praxissoftware &ndash; geplant und startklar zum ersten Praxistag.</span>
+                                    <span class="etage__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                </span>
                             </span>
                         </a>
                     </li>
 
-                    <li class="tuer">
-                        <a class="tuer__link" href="praxissoftware-wechsel.html" data-cta="homepage-hero-software">
-                            <img class="tuer__bild tuer__bild--software" src="Fotos/Hero-v5/hero-v5-software.webp" alt="" width="1012" height="941" decoding="async">
-                            <span class="tuer__nr" aria-hidden="true">03</span>
-                            <span class="tuer__zu" aria-hidden="true">
-                                <span class="tuer__zu-titel">Praxissoftware wechseln</span>
-                                <span class="tuer__plus"></span>
+                    <li class="etage">
+                        <a class="etage__link" href="praxisuebernahme-it.html" data-cta="homepage-hero-uebergabe">
+                            <img class="etage__bild etage__bild--uebergabe" src="Fotos/Hero-v5/hero-v5-uebergabe.webp" alt="" width="1400" height="933" decoding="async">
+                            <span class="etage__kopf">
+                                <span class="etage__nr" aria-hidden="true">02</span>
+                                <h2 class="etage__titel">Praxis&uuml;bergabe &amp; Nachfolge</h2>
+                                <span class="etage__plus" aria-hidden="true"></span>
                             </span>
-                            <span class="tuer__auf">
-                                <h2 class="tuer__titel">Praxissoftware wechseln</h2>
-                                <span class="tuer__text">Datenmigration, Einf&uuml;hrung von T2med und Schulung &ndash; damit der Wechsel den Alltag nicht ausbremst.</span>
-                                <span class="tuer__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span class="etage__auf">
+                                <span class="etage__inhalt">
+                                    <span class="etage__text">Wir pr&uuml;fen die vorhandene IT, modernisieren gezielt und sorgen f&uuml;r einen &Uuml;bergang ohne Stillstand.</span>
+                                    <span class="etage__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="etage">
+                        <a class="etage__link" href="praxissoftware-wechsel.html" data-cta="homepage-hero-software">
+                            <img class="etage__bild etage__bild--software" src="Fotos/Hero-v5/hero-v5-software.webp" alt="" width="1012" height="941" decoding="async">
+                            <span class="etage__kopf">
+                                <span class="etage__nr" aria-hidden="true">03</span>
+                                <h2 class="etage__titel">Praxissoftware wechseln</h2>
+                                <span class="etage__plus" aria-hidden="true"></span>
+                            </span>
+                            <span class="etage__auf">
+                                <span class="etage__inhalt">
+                                    <span class="etage__text">Datenmigration, Einf&uuml;hrung von T2med und Schulung &ndash; damit der Wechsel den Alltag nicht ausbremst.</span>
+                                    <span class="etage__mehr">Mehr erfahren <svg viewBox="0 0 48 12" fill="none" aria-hidden="true"><path d="M0 6h42M36 1.5 44.5 6 36 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                </span>
                             </span>
                         </a>
                     </li>
@@ -1015,7 +1018,7 @@
     <script src="js/scroll-smooth.js" defer></script>
     <script src="js/hero-particles.js?v=20260723d" defer></script>
     <script src="js/references.js" defer></script>
-    <script src="js/hero-v5.js?v=20260928b" defer></script>
+    <script src="js/hero-v6.js?v=20260928a" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>

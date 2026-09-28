@@ -1,0 +1,515 @@
+/* ============================================================
+   Hero V6 — Drei Etagen (senkrechtes Akkordeon)
+   Text links, rechts drei Bildetagen übereinander. Die offene Etage
+   zeigt Bild, Satz und Link (js/hero-v6.js).
+   Farben, Verlauf, Partikel und Typo bleiben wie in index-v2.
+   ============================================================ */
+
+/* ── Grundgerüst (aus index-v2.css übernommen) ─────────────── */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    color: var(--nw-on-dark);
+    background: var(--grad-dark);
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--grad-dark);
+}
+
+.hero__blur {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse 90% 70% at 12% 18%,
+            rgba(30, 136, 229, 0.22) 0%,
+            transparent 58%
+        ),
+        radial-gradient(
+            ellipse 55% 45% at 88% 12%,
+            rgba(30, 136, 229, 0.1) 0%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse 80% 55% at 50% 108%,
+            rgba(13, 71, 161, 0.55) 0%,
+            transparent 62%
+        );
+}
+
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* leiser als in index-v2, damit die Linien die duennen Headline-Woerter nicht kreuzen */
+    opacity: 0.45;
+}
+
+.hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.hero__eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.hero__title,
+.hero__title .headline-bold {
+    letter-spacing: normal;
+}
+
+.hero__title {
+    font-weight: var(--headline-weight-thin);
+    line-height: 1.1;
+    color: var(--nw-on-dark);
+}
+
+.hero__title .headline-bold {
+    font-weight: var(--headline-weight-bold);
+}
+
+/* ── Layout: Text links, Etagen rechts bis an den Rand ──────── */
+
+.hero--etagen {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 640px;
+}
+
+.etagen-hero {
+    position: relative;
+    z-index: 4;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: clamp(2rem, 4.5vw, 5rem);
+    min-height: 0;
+    padding:
+        calc(var(--nav-h, 136px) + clamp(0.25rem, 1.5vh, 1rem))
+        clamp(12px, 1.4vw, 24px)
+        clamp(12px, 1.4vw, 24px)
+        max(var(--edge), calc((100% - var(--container)) / 2));
+}
+
+.etagen-hero__text {
+    align-self: center;
+    padding-bottom: 4vh;
+}
+
+.etagen-hero__title {
+    margin: 0;
+    font-size: clamp(2.75rem, 1.2rem + 4.2vw, 5.5rem);
+    line-height: 1.02;
+}
+
+/* Headline-Navigation wie in V5: das Wort der aktiven Leistung wird fett */
+.etagen-hero__wort {
+    display: block;
+    width: fit-content;
+    font-weight: var(--headline-weight-thin);
+    color: rgba(255, 255, 255, 0.38);
+    transition: color 0.6s ease, font-weight 0.6s var(--ease-soft);
+}
+
+.etagen-hero__wort.is-aktiv {
+    font-weight: var(--headline-weight-bold);
+    color: #fff;
+}
+
+.etagen-hero__punkt {
+    transition: color 0.6s ease;
+}
+
+.etagen-hero__wort.is-aktiv .etagen-hero__punkt {
+    color: var(--color-mint);
+}
+
+.etagen-hero__zusatz {
+    display: block;
+    margin-top: 0.75em;
+    font-size: clamp(1.15rem, 0.85rem + 0.9vw, 1.65rem);
+    font-weight: 400;
+    line-height: 1.3;
+    color: #fff;
+}
+
+.etagen-hero__lead {
+    margin: 1rem 0 0;
+    max-width: 40ch;
+    font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+    line-height: 1.6;
+    color: var(--nw-on-dark-soft);
+}
+
+.etagen-hero__aktion .btn {
+    margin-top: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* ── Etagen ────────────────────────────────────────────────── */
+
+.etagen {
+    /* Höhe einer geschlossenen Etage; die offene nimmt den Rest */
+    --zu-h: clamp(4.5rem, 10vh, 6.25rem);
+    --pad-x: clamp(1.25rem, 2.2vw, 2.25rem);
+    --nr-w: 2.25rem;
+    --einzug: calc(var(--pad-x) + var(--nr-w) + 1rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 0.8vw, 12px);
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.etage {
+    display: flex;
+    flex: 0 0 var(--zu-h);
+    min-height: 0;
+    transition: flex-grow 0.85s var(--ease-soft);
+}
+
+.etage.is-aktiv {
+    flex-grow: 1;
+}
+
+.etage__link {
+    position: relative;
+    isolation: isolate;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--color-primary-dark);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px -36px rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+
+.etage__link:focus-visible {
+    outline: 2px solid var(--color-mint);
+    outline-offset: 3px;
+}
+
+.etage__bild {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* geschlossen nur leicht abgedunkelt, damit das Blau der Motive sichtbar bleibt */
+    filter: brightness(0.6) saturate(1.1);
+    transform: scale(1.06);
+    transition: filter 0.8s ease, transform 1.4s var(--ease-soft);
+}
+
+.etage.is-aktiv .etage__bild {
+    filter: saturate(1.05);
+    transform: scale(1);
+}
+
+/* Bildausschnitt je Motiv: Netzwerk im Grundriss, Monitore, Server mit Datenstrom */
+.etage__bild--gruendung { object-position: center 55%; }
+.etage__bild--uebergabe { object-position: center 45%; }
+.etage__bild--software  { object-position: center 40%; }
+
+/* Geschlossen: Verlauf von links für den Titel; offen: Verlauf von unten für den Text */
+.etage__link::before,
+.etage__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: opacity 0.8s ease;
+}
+
+.etage__link::before {
+    background: linear-gradient(90deg, rgba(4, 16, 38, 0.88) 0%, rgba(4, 16, 38, 0.5) 55%, rgba(4, 16, 38, 0.15) 100%);
+}
+
+.etage__link::after {
+    opacity: 0;
+    background: linear-gradient(0deg, rgba(4, 16, 38, 0.95) 0%, rgba(4, 16, 38, 0.78) 26%, rgba(4, 16, 38, 0) 58%);
+}
+
+.etage.is-aktiv .etage__link::before {
+    opacity: 0;
+}
+
+.etage.is-aktiv .etage__link::after {
+    opacity: 1;
+}
+
+.etage__kopf {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 1rem;
+    min-height: var(--zu-h);
+    padding: 0 var(--pad-x);
+    transition: min-height 0.6s var(--ease-soft);
+}
+
+/* offen rückt der Text näher an den Titel */
+.etage.is-aktiv .etage__kopf {
+    min-height: calc(var(--zu-h) * 0.72);
+}
+
+.etage__nr {
+    flex: 0 0 var(--nr-w);
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.4s ease;
+}
+
+.etage.is-aktiv .etage__nr {
+    color: var(--color-mint);
+}
+
+.etage__titel {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    font-size: clamp(1.15rem, 0.85rem + 0.85vw, 1.75rem);
+    font-weight: var(--headline-weight-bold);
+    line-height: 1.15;
+    color: #fff;
+}
+
+.etage__plus {
+    position: relative;
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    transition: opacity 0.3s ease, transform 0.45s var(--ease-soft),
+        background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.etage__plus::before,
+.etage__plus::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.9rem;
+    height: 1.5px;
+    background: #fff;
+    transform: translate(-50%, -50%);
+}
+
+.etage__plus::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.etage__link:hover .etage__plus {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+}
+
+.etage.is-aktiv .etage__plus {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.6);
+}
+
+/* Offen: Satz und Link klappen unter dem Titel auf */
+.etage__auf {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.6s var(--ease-soft);
+}
+
+.etage.is-aktiv .etage__auf {
+    grid-template-rows: 1fr;
+}
+
+.etage__inhalt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.etage.is-aktiv .etage__inhalt {
+    opacity: 1;
+    transition: opacity 0.5s ease 0.35s;
+}
+
+.etage__text {
+    max-width: 44ch;
+    margin: 0 var(--pad-x) 0 var(--einzug);
+    font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--nw-on-dark);
+}
+
+.etage__mehr {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1rem var(--pad-x) clamp(1.35rem, 2.4vw, 2rem) var(--einzug);
+    font-weight: 700;
+    color: var(--color-mint);
+}
+
+.etage__mehr svg {
+    width: 2.4rem;
+    height: 0.6rem;
+    transition: transform 0.45s var(--ease-soft);
+}
+
+.etage__link:hover .etage__mehr svg,
+.etage__link:focus-visible .etage__mehr svg {
+    transform: translateX(6px);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+@media (min-width: 901px) and (max-height: 820px) {
+    .etagen-hero__title {
+        font-size: clamp(2.5rem, 9vh, 4.75rem);
+    }
+
+    .etagen-hero__lead {
+        display: none;
+    }
+
+    .etagen {
+        --zu-h: 4.25rem;
+    }
+}
+
+/* Tablet und Handy: Text oben, Akkordeon darunter mit fester Höhe,
+   damit beim Umschalten nichts darunter springt */
+@media (max-width: 900px) {
+    .hero--etagen {
+        height: auto;
+        min-height: 0;
+    }
+
+    .etagen-hero {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding: calc(var(--nav-h, 110px) + 0.75rem) var(--edge) clamp(2.5rem, 7vw, 3.5rem);
+    }
+
+    .etagen-hero__text {
+        padding-bottom: 0;
+    }
+
+    .etagen {
+        --zu-h: 4.5rem;
+        height: clamp(27rem, 62vw, 33rem);
+    }
+}
+
+/* Handy: Akkordeon direkt nach der Headline, Einleitung und CTA danach */
+@media (max-width: 575px) {
+    .etagen-hero__text {
+        display: contents;
+    }
+
+    .etagen-hero__eyebrow { order: 1; margin-bottom: -1rem; }
+    .etagen-hero__title   { order: 2; font-size: clamp(2.4rem, 11vw, 3rem); }
+    .etagen               { order: 3; }
+    .etagen-hero__aktion  { order: 4; }
+
+    .etagen {
+        --zu-h: 4rem;
+        --pad-x: 1.1rem;
+        --nr-w: 1.6rem;
+        height: 28rem;
+    }
+
+    .etagen-hero__lead {
+        margin-top: 0;
+    }
+
+    .etagen-hero__aktion .btn {
+        width: 100%;
+    }
+
+    .etage__titel {
+        font-size: 1.08rem;
+    }
+
+    .etage__plus {
+        width: 2.1rem;
+        height: 2.1rem;
+    }
+
+    /* Titel sind hier zweizeilig: Kopf nicht verkleinern, Verlauf höher ziehen */
+    .etage.is-aktiv .etage__kopf {
+        min-height: var(--zu-h);
+    }
+
+    .etage__link::after {
+        background: linear-gradient(0deg, rgba(4, 16, 38, 0.96) 0%, rgba(4, 16, 38, 0.85) 45%, rgba(4, 16, 38, 0) 80%);
+    }
+
+    .etage__text {
+        margin-left: var(--pad-x);
+        font-size: 0.92rem;
+    }
+
+    .etage__mehr {
+        margin-left: var(--pad-x);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .etage,
+    .etage__bild,
+    .etage__kopf,
+    .etage__link::before,
+    .etage__link::after,
+    .etage__plus,
+    .etage__auf,
+    .etage__inhalt,
+    .etage.is-aktiv .etage__inhalt,
+    .etage__mehr svg {
+        transition: none;
+    }
+
+    .etagen-hero__wort,
+    .etagen-hero__punkt {
+        transition: none;
+    }
+}
