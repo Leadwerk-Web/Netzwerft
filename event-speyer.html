@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/montserrat-local.css" />
     <link rel="stylesheet" href="css/styles-v2.css" />
     <link rel="stylesheet" href="css/landing-t2med-v2.css" />
-    <link rel="stylesheet" href="css/event-speyer.css" />
+    <link rel="stylesheet" href="css/event-speyer.css?v=20260930a" />
 
     <!-- Strukturierte Daten -->
     <script type="application/ld+json">
@@ -355,8 +355,8 @@
                         Jetzt Platz <span class="headline-bold">sichern.</span>
                     </h2>
                     <p class="section__intro" data-lw-field="register.intro" data-lw-type="text">
-                        Damit wir gut planen k&ouml;nnen, melden Sie sich bitte kurz an. W&auml;hlen Sie einfach,
-                        ob Sie vor Ort in Speyer oder online dabei sind.
+                        W&auml;hlen Sie zuerst, wie Sie dabei sind: Vor Ort in Speyer melden Sie sich bitte kurz an,
+                        damit wir gut planen k&ouml;nnen. Online kommen Sie direkt zum Teams-Link.
                     </p>
                     <dl class="ev-facts">
                         <div>
@@ -378,70 +378,94 @@
                     </dl>
                 </div>
 
+                <!-- Erst Teilnahmeart, darunter immer das Anmeldeformular. Bei "online" blendet
+                     js/event-speyer.js zusaetzlich den Teams-Link ein (ohne JS immer sichtbar). -->
                 <form class="ev-form" id="ev-register-form" data-animate novalidate>
-                    <div class="ev-form__grid">
-                        <div class="ev-form__field">
-                            <label for="ev-name">Name*</label>
-                            <input class="funnel-input" id="ev-name" name="name" type="text" required autocomplete="name" placeholder="Vor- und Nachname" />
-                        </div>
-                        <div class="ev-form__field">
-                            <label for="ev-praxis">Praxis*</label>
-                            <input class="funnel-input" id="ev-praxis" name="praxis" type="text" required autocomplete="organization" placeholder="Name der Praxis" />
-                        </div>
-                        <div class="ev-form__field ev-form__field--full">
-                            <label for="ev-position">Position*</label>
-                            <input class="funnel-input" id="ev-position" name="position" type="text" required autocomplete="organization-title" placeholder="z. B. Praxisinhaber/in, MFA" />
-                        </div>
-                        <div class="ev-form__field">
-                            <label for="ev-email">E-Mail-Adresse*</label>
-                            <input class="funnel-input" id="ev-email" name="email" type="email" required autocomplete="email" />
-                        </div>
-                        <div class="ev-form__field">
-                            <label for="ev-telefon">Telefon <span class="ev-form__optional">(optional)</span></label>
-                            <input class="funnel-input" id="ev-telefon" name="telefon" type="tel" autocomplete="tel" />
-                        </div>
-
-                        <fieldset class="ev-form__field ev-form__field--full ev-choice-group">
-                            <legend>Wie nehmen Sie teil?*</legend>
-                            <div class="ev-choice-group__options">
-                                <label class="ev-choice">
-                                    <input type="radio" name="teilnahme" value="Ich bin persönlich vor Ort" required />
-                                    <span class="ev-choice__box">
-                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
-                                        <span>
-                                            <strong>Ich bin pers&ouml;nlich vor Ort</strong>
-                                            <small>RheinVilla, Speyer</small>
-                                        </span>
+                    <fieldset class="ev-choice-group">
+                        <legend>Wie nehmen Sie teil?*</legend>
+                        <div class="ev-choice-group__options">
+                            <label class="ev-choice">
+                                <input type="radio" name="teilnahme" value="Ich bin persönlich vor Ort" data-ev-choice="vor-ort" required />
+                                <span class="ev-choice__box">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                                    <span>
+                                        <strong>Ich bin pers&ouml;nlich vor Ort</strong>
+                                        <small>RheinVilla, Speyer &middot; Anmeldung erforderlich</small>
                                     </span>
-                                </label>
-                                <label class="ev-choice">
-                                    <input type="radio" name="teilnahme" value="Ich nehme online teil" />
-                                    <span class="ev-choice__box">
-                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-                                        <span>
-                                            <strong>Ich nehme online teil</strong>
-                                            <small>Zugangslink per E-Mail</small>
-                                        </span>
+                                </span>
+                            </label>
+                            <label class="ev-choice">
+                                <input type="radio" name="teilnahme" value="Ich nehme online teil" data-ev-choice="online" aria-controls="ev-step-online" />
+                                <span class="ev-choice__box">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                                    <span>
+                                        <strong>Ich nehme online teil</strong>
+                                        <small>Direkt per Microsoft Teams</small>
                                     </span>
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <div class="ev-form__field ev-form__field--full">
-                            <label class="ev-form__check" for="ev-dsgvo">
-                                <input id="ev-dsgvo" name="dsgvo" type="checkbox" required />
-                                <span>Ich bin einverstanden, dass die netzwerft meine Angaben zur Organisation der Veranstaltung speichert und verarbeitet. Hinweise stehen in der <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>.</span>
+                                </span>
                             </label>
                         </div>
+                    </fieldset>
+
+                    <!-- Online: direkt zum Teams-Meeting, Anmeldung nicht noetig -->
+                    <div class="ev-step ev-online" id="ev-step-online" data-ev-step="online">
+                        <p class="ev-online__title">Online dabei &ndash; direkt zum Teams-Meeting.</p>
+                        <p class="ev-online__text">
+                            Schalten Sie sich am Mittwoch, 4. November 2026, ab 17:30 Uhr einfach &uuml;ber
+                            Microsoft Teams zu. Ihre Fragen k&ouml;nnen Sie im Chat stellen. Eine Anmeldung ist
+                            f&uuml;r die Online-Teilnahme nicht n&ouml;tig, hilft uns aber bei der Planung.
+                        </p>
+                        <!-- TODO: Teams-Link eintragen, sobald er vorliegt: das <span> ersetzen durch
+                             <a class="btn btn--light btn--lg btn--block" href="https://teams.microsoft.com/..." target="_blank" rel="noopener noreferrer" data-cta="ev-teams-link">Zum Teams-Meeting</a> -->
+                        <span class="btn btn--light btn--lg btn--block ev-online__pending" aria-disabled="true">
+                            Teams-Link folgt in K&uuml;rze
+                        </span>
+                        <p class="ev-form__note">
+                            Fragen vorab? <a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a>
+                            oder <a href="tel:+497243350600">07243 350600</a>.
+                        </p>
                     </div>
 
-                    <button class="btn btn--light btn--lg btn--block" type="submit" data-cta="ev-register-submit">
-                        Jetzt anmelden
-                    </button>
-                    <p class="ev-form__note">
-                        Es &ouml;ffnet sich Ihr E-Mail-Programm mit der fertigen Anmeldung an
-                        <a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a>. Bitte dort nur noch absenden.
-                    </p>
+                    <!-- Anmeldung per E-Mail (immer sichtbar) -->
+                    <div class="ev-step" id="ev-step-anmeldung">
+                        <div class="ev-form__grid">
+                            <div class="ev-form__field">
+                                <label for="ev-name">Name*</label>
+                                <input class="funnel-input" id="ev-name" name="name" type="text" required autocomplete="name" placeholder="Vor- und Nachname" />
+                            </div>
+                            <div class="ev-form__field">
+                                <label for="ev-praxis">Praxis <span class="ev-form__optional">(optional)</span></label>
+                                <input class="funnel-input" id="ev-praxis" name="praxis" type="text" autocomplete="organization" placeholder="Name der Praxis" />
+                            </div>
+                            <div class="ev-form__field ev-form__field--full">
+                                <label for="ev-position">Position <span class="ev-form__optional">(optional)</span></label>
+                                <input class="funnel-input" id="ev-position" name="position" type="text" autocomplete="organization-title" placeholder="z. B. Praxisinhaber/in, MFA" />
+                            </div>
+                            <div class="ev-form__field">
+                                <label for="ev-email">E-Mail-Adresse*</label>
+                                <input class="funnel-input" id="ev-email" name="email" type="email" required autocomplete="email" />
+                            </div>
+                            <div class="ev-form__field">
+                                <label for="ev-telefon">Telefon <span class="ev-form__optional">(optional)</span></label>
+                                <input class="funnel-input" id="ev-telefon" name="telefon" type="tel" autocomplete="tel" />
+                            </div>
+
+                            <div class="ev-form__field ev-form__field--full">
+                                <label class="ev-form__check" for="ev-dsgvo">
+                                    <input id="ev-dsgvo" name="dsgvo" type="checkbox" required />
+                                    <span>Ich bin einverstanden, dass die netzwerft meine Angaben zur Organisation der Veranstaltung speichert und verarbeitet. Hinweise stehen in der <a href="/datenschutz/">Datenschutzerkl&auml;rung</a>.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn--light btn--lg btn--block" type="submit" data-cta="ev-register-submit">
+                            Jetzt anmelden
+                        </button>
+                        <p class="ev-form__note">
+                            Es &ouml;ffnet sich Ihr E-Mail-Programm mit der fertigen Anmeldung an
+                            <a href="mailto:vertrieb@dienetzwerft.de">vertrieb@dienetzwerft.de</a>. Bitte dort nur noch absenden.
+                        </p>
+                    </div>
                     <p class="ev-form__status" id="ev-register-status" role="status" hidden></p>
                 </form>
             </div>
@@ -484,7 +508,7 @@
                             <span class="ev-route__icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="13" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m16 10.5 5-3v9l-5-3" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
                             </span>
-                            <span data-lw-field="route.item4" data-lw-type="text">Online dabei? Den Zugangslink senden wir Ihnen vorab per E-Mail.</span>
+                            <span data-lw-field="route.item4" data-lw-type="text">Online dabei? Den Teams-Link finden Sie direkt bei der Anmeldung.</span>
                         </li>
                     </ul>
                     <div class="ev-route__actions">
@@ -561,8 +585,8 @@
                         </button>
                         <div class="faq__panel" id="ev-faq-2" role="region" aria-labelledby="ev-faq-2-btn">
                             <div class="faq__panel-inner" data-lw-field="faq.a2" data-lw-type="text">
-                                Ja. W&auml;hlen Sie bei der Anmeldung &bdquo;Ich nehme online teil&ldquo;. Den Zugangslink
-                                erhalten Sie vorab per E-Mail.
+                                Ja. W&auml;hlen Sie bei der Anmeldung &bdquo;Ich nehme online teil&ldquo;. Dort finden Sie
+                                direkt den Link zum Teams-Meeting, eine Anmeldung ist daf&uuml;r nicht n&ouml;tig.
                             </div>
                         </div>
                     </div>
@@ -691,6 +715,6 @@
     <script src="js/scroll-smooth.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/hero-particles.js" defer></script>
-    <script src="js/event-speyer.js" defer></script>
+    <script src="js/event-speyer.js?v=20260930a" defer></script>
 </body>
 </html>

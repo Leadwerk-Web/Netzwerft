@@ -1,7 +1,9 @@
 /* =========================================================
    Event Speyer — Anmeldeformular
-   Prüft Pflichtfelder und öffnet das E-Mail-Programm mit
-   vorausgefüllter Anmeldung (wie Bewerbungsformular Karriere)
+   Zuerst die Teilnahmeart, darunter immer das Anmeldeformular.
+   Bei "online" erscheint zusätzlich der Teams-Link.
+   Die Anmeldung prüft Pflichtfelder und öffnet das E-Mail-Programm
+   mit vorausgefüllter Nachricht (wie Bewerbungsformular Karriere)
    ========================================================= */
 
 (() => {
@@ -16,6 +18,18 @@
 
     const choiceGroup = form.querySelector(".ev-choice-group");
     const radios = Array.from(form.querySelectorAll('input[name="teilnahme"]'));
+    const steps = Array.from(form.querySelectorAll("[data-ev-step]"));
+
+    // Bereiche mit data-ev-step (Teams-Link) nur bei passender Teilnahmeart zeigen
+    const showStep = (choice) => {
+        steps.forEach((step) => {
+            step.hidden = step.dataset.evStep !== choice;
+        });
+        if (status) status.hidden = true;
+    };
+
+    const checked = radios.find((radio) => radio.checked);
+    showStep(checked ? checked.dataset.evChoice : null);
 
     const showStatus = (text, ok) => {
         if (!status) return;
@@ -38,7 +52,10 @@
         if (input && input.checkValidity()) input.removeAttribute("aria-invalid");
     });
     radios.forEach((radio) => {
-        radio.addEventListener("change", () => choiceGroup?.removeAttribute("aria-invalid"));
+        radio.addEventListener("change", () => {
+            choiceGroup?.removeAttribute("aria-invalid");
+            showStep(radio.dataset.evChoice);
+        });
     });
 
     form.addEventListener("submit", (event) => {
@@ -63,15 +80,15 @@
             "",
             "Teilnahme: " + valueOf("teilnahme"),
             "Name: " + valueOf("name"),
-            "Praxis: " + valueOf("praxis"),
-            "Position: " + valueOf("position"),
+            "Praxis: " + (valueOf("praxis") || "nicht angegeben"),
+            "Position: " + (valueOf("position") || "nicht angegeben"),
             "E-Mail: " + valueOf("email"),
             "Telefon: " + (valueOf("telefon") || "nicht angegeben"),
             "",
             "Einwilligung Datenschutz: ja"
         ].join("\n");
 
-        const subject = "Anmeldung " + EVENT_LABEL + ": " + valueOf("praxis");
+        const subject = "Anmeldung " + EVENT_LABEL + ": " + (valueOf("praxis") || valueOf("name"));
         window.location.href = "mailto:" + RECIPIENT +
             "?subject=" + encodeURIComponent(subject) +
             "&body=" + encodeURIComponent(lines);

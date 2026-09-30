@@ -296,9 +296,9 @@
     border-color: #ff8a8a;
 }
 
-/* Teilnahme: Radio-Karten */
+/* Teilnahme: Radio-Karten (erster Schritt des Formulars) */
 .ev-choice-group {
-    margin: 0.35rem 0 0;
+    margin: 0;
     padding: 0;
     border: 0;
 }
@@ -424,6 +424,38 @@
 .ev-form__status--ok {
     background: rgba(215, 244, 250, 0.12);
     color: #fff;
+}
+
+/* Zweiter Schritt: vor Ort Anmeldefelder, online Teams-Link */
+.ev-step {
+    margin-top: 1.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ev-step[hidden] {
+    display: none;
+}
+
+.ev-online__title {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.ev-online__text {
+    margin: 0;
+    color: var(--nw-on-dark-soft);
+    line-height: 1.55;
+}
+
+/* Platzhalter, bis der Teams-Link vorliegt */
+.ev-online__pending {
+    cursor: default;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .ev-form__status--err {
