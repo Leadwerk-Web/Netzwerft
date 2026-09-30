@@ -367,6 +367,20 @@
     object-fit: cover;
 }
 
+/* Freigestelltes Portrait vor hellblauem Verlauf. Kopf bleibt im Ausschnitt. */
+.about-team-lead__photo--portrait {
+    display: block;
+    min-height: 0;
+    aspect-ratio: 5 / 4;
+    background:
+        radial-gradient(circle at 38% 34%, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(155deg, var(--nw-accent-soft) 0%, #cfe5f7 55%, #b3d6f2 100%);
+}
+
+.about-team-lead__photo--portrait img {
+    object-position: 50% 0;
+}
+
 .about-team-lead__body {
     display: flex;
     flex-direction: column;
@@ -916,5 +930,345 @@
 @media (max-width: 640px) {
     .lp-steps--4 {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------------------------------------------------
+   Events — links Detailkarte (helle Variante von .ev-ticket
+   aus event-speyer.css), rechts Terminliste. Hover/Fokus in
+   der Liste zeigt die passende Karte (js/main.js).
+   Ohne JS stehen die Karten untereinander.
+   --------------------------------------------------------- */
+.about-events {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+}
+
+.about-events__stage {
+    display: grid;
+    gap: 1.25rem;
+}
+
+/* Mit JS liegen alle Karten in einer Zelle: Hoehe = hoechste Karte, kein Springen */
+.about-events.is-enhanced .about-events__stage > .about-event {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.35s var(--ease-soft), transform 0.35s var(--ease-soft),
+        visibility 0s linear 0.35s;
+}
+
+.about-events.is-enhanced .about-events__stage > .about-event.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.35s var(--ease-soft), transform 0.35s var(--ease-soft),
+        visibility 0s;
+}
+
+/* Terminliste im Stil der Punkte-Liste aus "die netzwerft" (.about-story-points):
+   Trennlinien statt Kaesten, Datum als Akzentzahl. Aktiv = Akzentfarbe + dunkler Titel. */
+.about-events__list {
+    display: grid;
+    align-content: start;
+}
+
+.about-events__item {
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: baseline;
+    width: 100%;
+    margin: 0;
+    padding: 1.35rem 0;
+    border: 0;
+    border-top: 1px solid var(--nw-line);
+    border-radius: 0;
+    background: none;
+    color: var(--nw-ink-soft);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.about-events__item:last-child {
+    border-bottom: 1px solid var(--nw-line);
+}
+
+.about-events__item:focus-visible {
+    outline: 2px solid var(--nw-accent);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+.about-events__item-date {
+    display: grid;
+    justify-items: start;
+    color: var(--nw-ink-muted);
+    transition: color 0.25s ease;
+}
+
+.about-events__item-date strong {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.1rem + 0.45vw, 1.55rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+}
+
+.about-events__item-date span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.about-events__item-body {
+    display: grid;
+    gap: 0.35rem;
+    min-width: 0;
+}
+
+.about-events__item-title {
+    font-size: clamp(1.12rem, 1.02rem + 0.4vw, 1.28rem);
+    font-weight: 400;
+    line-height: 1.45;
+    transition: color 0.25s ease;
+}
+
+.about-events__item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--nw-ink-muted);
+}
+
+.about-events__item[aria-selected="true"] .about-events__item-date {
+    color: var(--nw-accent);
+}
+
+.about-events__item[aria-selected="true"] .about-events__item-title {
+    color: var(--nw-ink);
+}
+
+.about-events__item-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--nw-line-strong);
+    background: var(--nw-surface-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--nw-primary);
+}
+
+.about-events__item-badge--open {
+    border-color: transparent;
+    background: var(--nw-accent-soft);
+    color: var(--nw-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-events.is-enhanced .about-events__stage > .about-event {
+        transition: none;
+    }
+}
+
+/* Ticket aus Kopf + Rumpf: beide Haelften bekommen per Maske einen Halbkreis
+   ausgestanzt, so bleiben die Kerben echte Loecher. Die Kontur (drop-shadow)
+   folgt der Form; der weiche Schatten sitzt nur unter dem unteren Kartenteil,
+   damit er nicht in die Kerben faellt. */
+.about-event {
+    --about-event-pad: clamp(1.5rem, 3vw, 2.2rem);
+    --about-event-notch: 12px;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    color: var(--nw-ink-soft);
+    filter: drop-shadow(0 0 0.5px rgba(0, 69, 98, 0.35));
+}
+
+.about-event::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    height: 45%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+}
+
+.about-event__head,
+.about-event__body {
+    background-color: var(--nw-white);
+    padding: var(--about-event-pad);
+}
+
+.about-event__head {
+    padding-bottom: 1.5rem;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    -webkit-mask:
+        radial-gradient(circle at 0 100%, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) left / 51% 100% no-repeat,
+        radial-gradient(circle at 100% 100%, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) right / 51% 100% no-repeat;
+    mask:
+        radial-gradient(circle at 0 100%, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) left / 51% 100% no-repeat,
+        radial-gradient(circle at 100% 100%, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) right / 51% 100% no-repeat;
+}
+
+/* Rumpf mit Perforation (gestrichelte Linie) zwischen den Kerben */
+.about-event__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    background-image: linear-gradient(90deg, var(--nw-line-strong) 50%, transparent 50%);
+    background-size: 12px 1px;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    -webkit-mask:
+        radial-gradient(circle at 0 0, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) left / 51% 100% no-repeat,
+        radial-gradient(circle at 100% 0, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) right / 51% 100% no-repeat;
+    mask:
+        radial-gradient(circle at 0 0, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) left / 51% 100% no-repeat,
+        radial-gradient(circle at 100% 0, transparent var(--about-event-notch), #000 calc(var(--about-event-notch) + 0.5px)) right / 51% 100% no-repeat;
+}
+
+.about-event__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.about-event__kicker {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--nw-accent);
+}
+
+.about-event__badge {
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--nw-line-strong);
+    background: var(--nw-surface-2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--nw-primary);
+}
+
+.about-event__badge--open {
+    border-color: transparent;
+    background: var(--nw-accent-soft);
+    color: var(--nw-accent);
+}
+
+.about-event__date {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin: 1.4rem 0 0;
+}
+
+.about-event__day {
+    font-family: var(--font-heading);
+    font-weight: var(--headline-weight-thin);
+    font-size: clamp(3.6rem, 2.6rem + 3vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    color: var(--nw-primary);
+}
+
+.about-event__date-text {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.about-event__date-text strong {
+    font-family: var(--font-heading);
+    font-weight: var(--headline-weight-bold);
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem);
+    line-height: 1.15;
+    color: var(--nw-ink);
+}
+
+.about-event__date-text span {
+    font-size: 1rem;
+    color: var(--nw-ink-muted);
+}
+
+.about-event__title {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.2rem, 1rem + 0.6vw, 1.45rem);
+    font-weight: var(--headline-weight-bold);
+    line-height: 1.25;
+    color: var(--nw-ink);
+}
+
+.about-event__text {
+    margin: 0 0 1.25rem;
+    line-height: 1.6;
+}
+
+.about-event__list {
+    list-style: none;
+    display: grid;
+    gap: 0.7rem;
+    margin: 0 0 1.75rem;
+    padding: 0;
+}
+
+.about-event__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 1.45;
+    color: var(--nw-ink);
+}
+
+.about-event__list svg {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    color: var(--nw-accent);
+}
+
+/* CTA bzw. Hinweis sitzen unten, damit beide Karten buendig enden */
+.about-event__cta,
+.about-event__note {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.about-event__note {
+    margin-bottom: 0;
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--radius-pill);
+    border: 1px dashed var(--nw-line-strong);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--nw-ink-muted);
+}
+
+/* Mobil: Liste oben, darunter die gewaehlte Karte (Antippen wechselt) */
+@media (max-width: 860px) {
+    .about-events {
+        grid-template-columns: 1fr;
+    }
+
+    .about-events__list {
+        order: -1;
     }
 }

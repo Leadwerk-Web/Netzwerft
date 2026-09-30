@@ -177,6 +177,50 @@
         });
     }
 
+    /* ---------- Events: Terminliste steuert Detailkarte ---------- */
+    /* Hover, Fokus und Klick (Touch) zeigen die passende Karte. */
+    document.querySelectorAll("[data-events]").forEach((events) => {
+        const tabs = Array.from(events.querySelectorAll("[data-event-tab]"));
+        const panels = Array.from(events.querySelectorAll("[data-event-panel]"));
+        if (!tabs.length || !panels.length) return;
+
+        const activateEvent = (tab) => {
+            tabs.forEach((t) => {
+                const active = t === tab;
+                t.setAttribute("aria-selected", active ? "true" : "false");
+                t.tabIndex = active ? 0 : -1;
+            });
+            panels.forEach((panel) => {
+                const active = panel.id === tab.getAttribute("aria-controls");
+                panel.classList.toggle("is-active", active);
+                panel.inert = !active;
+            });
+        };
+
+        events.classList.add("is-enhanced");
+        activateEvent(tabs.find((t) => t.getAttribute("aria-selected") === "true") || tabs[0]);
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("mouseenter", () => activateEvent(tab));
+            tab.addEventListener("focus", () => activateEvent(tab));
+            tab.addEventListener("click", () => activateEvent(tab));
+
+            tab.addEventListener("keydown", (e) => {
+                const current = tabs.indexOf(tab);
+                let next = current;
+
+                if (e.key === "ArrowDown") next = (current + 1) % tabs.length;
+                else if (e.key === "ArrowUp") next = (current - 1 + tabs.length) % tabs.length;
+                else if (e.key === "Home") next = 0;
+                else if (e.key === "End") next = tabs.length - 1;
+                else return;
+
+                e.preventDefault();
+                tabs[next].focus();
+            });
+        });
+    });
+
     /* ---------- Sticky-CTA (Mobile-Bar) & Back-to-Top ---------- */
     const stickyEls = document.querySelectorAll("[data-sticky-cta]");
     const backToTop = document.querySelector("[data-back-to-top]");

@@ -98,6 +98,7 @@
         "@type": "Person",
         "name": "Simon Fuß",
         "jobTitle": "Geschäftsführer",
+        "image": "https://dienetzwerft.de/Fotos/team/simon-fuss.webp",
         "worksFor": {
             "@type": "Organization",
             "@id": "https://dienetzwerft.de/#organization",
@@ -444,9 +445,8 @@
                 </div>
 
                 <div class="about-team-lead" data-animate>
-                    <!-- TODO: echtes Portrait von Simon Fuß ergänzen -->
-                    <figure class="about-team-lead__photo" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    <figure class="about-team-lead__photo about-team-lead__photo--portrait">
+                        <img src="Fotos/team/simon-fuss.webp" alt="Simon Fu&szlig;, Gesch&auml;ftsf&uuml;hrer der die netzwerft GmbH" width="1000" height="1372" loading="lazy" decoding="async" />
                     </figure>
                     <div class="about-team-lead__body">
                         <span class="about-team-lead__role">Gesch&auml;ftsf&uuml;hrung</span>
@@ -811,6 +811,129 @@
                         Alle Beitr&auml;ge auf Wissen
                         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12b. Events: links Detailkarte, rechts Terminliste (Umschaltung in js/main.js) -->
+        <section class="section section--surface" id="events" aria-labelledby="about-events-title">
+            <div class="container">
+                <div class="section__head" data-animate>
+                    <span class="eyebrow">Events</span>
+                    <h2 class="section__title" id="about-events-title">
+                        Lernen Sie uns <span class="headline-bold">pers&ouml;nlich kennen.</span>
+                    </h2>
+                    <p class="section__intro">
+                        Vortr&auml;ge, Live-Demos und Gespr&auml;che rund um die digitale Arztpraxis &ndash;
+                        vor Ort in der Region und online.
+                    </p>
+                </div>
+
+                <div class="about-events" data-events data-animate>
+                    <div class="about-events__stage">
+                        <!-- TODO: Titel, Uhrzeit, Ort und Anmeldung nachtragen, sobald die Infos vorliegen. -->
+                        <article class="about-event is-active" id="event-panel-digital" role="tabpanel" aria-labelledby="event-tab-digital" data-event-panel>
+                            <div class="about-event__head">
+                                <div class="about-event__top">
+                                    <span class="about-event__kicker">Save the Date</span>
+                                    <span class="about-event__badge">Infos folgen</span>
+                                </div>
+                                <p class="about-event__date">
+                                    <span class="about-event__day" aria-hidden="true">16</span>
+                                    <span class="about-event__date-text" aria-hidden="true">
+                                        <strong>Oktober 2026</strong>
+                                        <span>Freitag</span>
+                                    </span>
+                                    <span class="visually-hidden">Freitag, 16. Oktober 2026</span>
+                                </p>
+                            </div>
+                            <div class="about-event__body">
+                                <h3 class="about-event__title">Digitalisierung in der Arztpraxis</h3>
+                                <p class="about-event__text">
+                                    Ein Termin rund um die Digitalisierung von Praxisabl&auml;ufen. Programm, Ort und Anmeldung
+                                    ver&ouml;ffentlichen wir in K&uuml;rze an dieser Stelle.
+                                </p>
+                                <ul class="about-event__list">
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        <span>Uhrzeit folgt</span>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                                        <span>Ort folgt</span>
+                                    </li>
+                                </ul>
+                                <p class="about-event__note">Anmeldung in K&uuml;rze m&ouml;glich</p>
+                            </div>
+                        </article>
+
+                        <article class="about-event" id="event-panel-speyer" role="tabpanel" aria-labelledby="event-tab-speyer" data-event-panel>
+                            <div class="about-event__head">
+                                <div class="about-event__top">
+                                    <span class="about-event__kicker">Get-Together</span>
+                                    <span class="about-event__badge about-event__badge--open">Anmeldung offen</span>
+                                </div>
+                                <p class="about-event__date">
+                                    <span class="about-event__day" aria-hidden="true">04</span>
+                                    <span class="about-event__date-text" aria-hidden="true">
+                                        <strong>November 2026</strong>
+                                        <span>Mittwoch</span>
+                                    </span>
+                                    <span class="visually-hidden">Mittwoch, 4. November 2026</span>
+                                </p>
+                            </div>
+                            <div class="about-event__body">
+                                <h3 class="about-event__title">Digitale Praxisorganisation in Speyer</h3>
+                                <p class="about-event__text">
+                                    Wir stellen uns in Speyer pers&ouml;nlich vor: Get-Together mit Live-Demo von T2med
+                                    und viel Raum f&uuml;r Ihre Fragen.
+                                </p>
+                                <ul class="about-event__list">
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                        <span>Onboarding ab 17:30 Uhr</span>
+                                    </li>
+                                    <li>
+                                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                                        <span>RheinVilla, Speyer &middot; auch online</span>
+                                    </li>
+                                </ul>
+                                <a class="btn btn--primary about-event__cta" href="event-speyer.html" data-cta="about-event-speyer">
+                                    Details &amp; Anmeldung
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="about-events__list" role="tablist" aria-label="Alle Termine" aria-orientation="vertical">
+                        <button class="about-events__item" id="event-tab-digital" type="button" role="tab" aria-selected="true" aria-controls="event-panel-digital" data-event-tab>
+                            <span class="about-events__item-date" aria-hidden="true">
+                                <strong>16</strong>
+                                <span>Okt</span>
+                            </span>
+                            <span class="about-events__item-body">
+                                <span class="about-events__item-title">Digitalisierung in der Arztpraxis</span>
+                                <span class="about-events__item-meta">
+                                    Fr, 16.10.2026 &middot; Ort folgt
+                                    <span class="about-events__item-badge">Infos folgen</span>
+                                </span>
+                            </span>
+                        </button>
+                        <button class="about-events__item" id="event-tab-speyer" type="button" role="tab" aria-selected="false" aria-controls="event-panel-speyer" tabindex="-1" data-event-tab>
+                            <span class="about-events__item-date" aria-hidden="true">
+                                <strong>04</strong>
+                                <span>Nov</span>
+                            </span>
+                            <span class="about-events__item-body">
+                                <span class="about-events__item-title">Digitale Praxisorganisation in Speyer</span>
+                                <span class="about-events__item-meta">
+                                    Mi, 04.11.2026 &middot; Speyer &amp; online
+                                    <span class="about-events__item-badge about-events__item-badge--open">Anmeldung offen</span>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
